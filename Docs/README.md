@@ -5,7 +5,7 @@ For NITCONF
 
 Version 1.0 approved 
 
-Prepared by group 2
+Prepared by Johann B Simon, Rajnesh B and Joel Joseph.
 
 
 # Table of Contents
@@ -57,12 +57,12 @@ Prepared by group 2
 
 # 1. Introduction
 
-This project is a prototype for NITCONF, a conference website designed to facilitate the submission, review and evaluation of academic papers. The section for the Program Committee includes functionality that enables members to view the submitted papers, assign reviewers to them and decide whether to accept the papers or not . The repository encompasses the entire Program Committee section for this project. This document provides a fundamental overview of the project’s goals, highlighting the significance and utility of the software product, while also focusing on the target user base.
+This project is a prototype for NITCONF, a conference website designed to facilitate the submission, review and evaluation of academic papers. The section for the Program Committee includes functionality that enables members to view the submitted papers, assign reviewers to them and decide whether to accept the papers or not . This repository encompasses the Program Committee section for this project. This document provides a fundamental overview of the project’s goals, highlighting the significance and utility of the software product, while also focusing on the target user base.
 
 
 ## 1.1 Purpose
 
-The Program Committee platform provides a smooth and easy environment for Program Committee members to assign reviewers to review the papers submitted by authors.
+The Program Committee section provides a smooth and easy environment for members to assign reviewers to review the papers submitted by authors.
 
 
 ## 1.2 Document Conventions
@@ -92,7 +92,7 @@ This document is intended to several groups of audience members
 
 1. User Authentication :
 
-    A secure login page for the members of the Program Committee to access the system.
+    A secure login page for the members of the Program Committee to access the functionalities.
 
 2. Dashboard :
 
@@ -120,16 +120,20 @@ Refer to the following links for additional information :
 # **2. Overall description**
 
 
-## ** 2.1 Product Overview**
+## **2.1 Product Overview**
 
-The program committee page on NITCONF will function as an interface for program committee members to manage reviewer profiles. They can view all papers submitted by authors, assign reviewing tasks to reviewers, send reminders if reviewers are behind schedule, contact authors, and ultimately make decisions to ACCEPT or REJECT papers.
+The program committee page on NITCONF will function as an interface for program committee members. They can view all papers submitted by authors, assign reviewing tasks to reviewers, send reminders if reviewers are behind schedule, contact authors, and ultimately make decisions to ACCEPT or REJECT papers.
 
 
+<<<<<<< HEAD
 
 <p id="gdcalert1" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to ./images.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert2">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
 
 ![alt_text](./image.png "image_tooltip")
+=======
+![alt_text](./newimage.png "image_tooltip")
+>>>>>>> 51adb77a3d730a8af532d32f4a41826d4e24b9b9
 
 
 
@@ -364,7 +368,7 @@ The system requires a dedicated server with modern processors, at least 8GB of R
 
 * **Login** : Program committee members log in with their credentials and are directed to the member's dashboard.
 * **Profile**: The User’s profile icon is displayed in the top right corner, linking to the profile page.
-* **Side Navigation Bar: **Features  a collapsible navigation with the following options:
+* **Side Navigation Bar** : Features  a collapsible navigation with the following options:
 * View Reviewed Papers
 * View UnReviewed Papers.
 
@@ -380,7 +384,7 @@ The system requires a dedicated server with modern processors, at least 8GB of R
 
 * **Layout** - Displays the reviewed papers in a row-wise manner
 
-**Columns : **
+**Columns** :
 
 i. **_Filter_** : includes a filter button to display the required papers based on topic.
 
@@ -388,7 +392,7 @@ ii. **_View a reviewed paper_** : Here it shows paper title and some information
 
 iii. **_Status_** : indicates the status of the assigned reviewers for each paper (is reviewed or not ).
 
-iv. **_Add reviewer _**: here program committee members can add reviewer if needed for further review.
+iv. **_Add reviewer_**: here program committee members can add reviewer if needed for further review.
 
 v. **_accept/reject_** : program committee members can decide whether to accept the paper or to reject it.
 
@@ -401,7 +405,7 @@ v. **_accept/reject_** : program committee members can decide whether to accept 
 
 **Columns :**
 
-i. **_Filter _**: includes a filter button to display the required papers based on topic.
+i. **_Filter_**: includes a filter button to display the required papers based on topic.
 
 ii. **_View unreviewed paper_** : Here it shows paper title and some information regarding the paper and display paper upon clicking on it
 
@@ -411,7 +415,7 @@ iv. **_Contact Author_** : For any queries regarding the submitted papers commit
 
 v. **_Status_** : Here it shows the status of reviewer (is reviewed or not ).
 
-vi. **_Send Reminder _**: send reminder to the reviewer if he has not reviewed the assigned paper.
+vi. **_Send Reminder_**: send reminder to the reviewer if he has not reviewed the assigned paper.
 
 
 ## 2.7 Assumptions and Dependencies
@@ -483,8 +487,8 @@ This feature enables users to log in and validates their credentials. It is of H
 
 * User provides login credentials.
 * System validates credentials.
-    * If validation fails, return to the Login feature.
-    * If validation succeeds, proceed to the Profile, View-reviewed-papers, and View-all-papers features.
+* If validation fails, return to the Login feature.
+* If validation succeeds, proceed to the Profile, View-reviewed-papers, and View-all-papers features.
 
 
 ### 3.1.3 Functional Requirements
