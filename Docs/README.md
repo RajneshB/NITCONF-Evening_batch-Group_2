@@ -5,7 +5,7 @@ For NITCONF
 
 Version 1.0 approved 
 
-Prepared by group 2,4,9 of evening batch
+Prepared by Johann B Simon, Rajnesh B and Joel Joseph.
 
 
 # Table of Contents
@@ -57,12 +57,12 @@ Prepared by group 2,4,9 of evening batch
 
 # 1. Introduction
 
-This project is a prototype for NITCONF, a conference website designed to facilitate the submission, review and evaluation of academic papers. The section for the Program Committee includes functionality that enables members to view the submitted papers, assign reviewers to them and decide whether to accept the papers or not . The repository encompasses the entire Program Committee section for this project. This document provides a fundamental overview of the project’s goals, highlighting the significance and utility of the software product, while also focusing on the target user base.
+This project is a prototype for NITCONF, a conference website designed to facilitate the submission, review and evaluation of academic papers. The section for the Program Committee includes functionality that enables members to view the submitted papers, assign reviewers to them and decide whether to accept the papers or not . This repository encompasses the Program Committee section for this project. This document provides a fundamental overview of the project’s goals, highlighting the significance and utility of the software product, while also focusing on the target user base.
 
 
 ## 1.1 Purpose
 
-The Program Committee platform provides a smooth and easy environment for Program Committee members to assign reviewers to review the papers submitted by authors.
+The Program Committee section provides a smooth and easy environment for members to assign reviewers to review the papers submitted by authors.
 
 
 ## 1.2 Document Conventions
@@ -92,7 +92,7 @@ This document is intended to several groups of audience members
 
 1. User Authentication :
 
-    A secure login page for the members of the Program Committee to access the system.
+    A secure login page for the members of the Program Committee to access the functionalities.
 
 2. Dashboard :
 
