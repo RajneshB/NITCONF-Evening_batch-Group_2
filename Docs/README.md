@@ -360,7 +360,7 @@ The system requires a dedicated server with modern processors, at least 8GB of R
 
 * **Login** : Program committee members log in with their credentials and are directed to the member's dashboard.
 * **Profile**: The User’s profile icon is displayed in the top right corner, linking to the profile page.
-* **Side Navigation Bar: **Features  a collapsible navigation with the following options:
+* **Side Navigation Bar** : Features  a collapsible navigation with the following options:
 * View Reviewed Papers
 * View UnReviewed Papers.
 
@@ -376,7 +376,7 @@ The system requires a dedicated server with modern processors, at least 8GB of R
 
 * **Layout** - Displays the reviewed papers in a row-wise manner
 
-**Columns : **
+**Columns** :
 
 i. **_Filter_** : includes a filter button to display the required papers based on topic.
 
@@ -384,7 +384,7 @@ ii. **_View a reviewed paper_** : Here it shows paper title and some information
 
 iii. **_Status_** : indicates the status of the assigned reviewers for each paper (is reviewed or not ).
 
-iv. **_Add reviewer _**: here program committee members can add reviewer if needed for further review.
+iv. **_Add reviewer_**: here program committee members can add reviewer if needed for further review.
 
 v. **_accept/reject_** : program committee members can decide whether to accept the paper or to reject it.
 
@@ -397,7 +397,7 @@ v. **_accept/reject_** : program committee members can decide whether to accept 
 
 **Columns :**
 
-i. **_Filter _**: includes a filter button to display the required papers based on topic.
+i. **_Filter_**: includes a filter button to display the required papers based on topic.
 
 ii. **_View unreviewed paper_** : Here it shows paper title and some information regarding the paper and display paper upon clicking on it
 
@@ -407,7 +407,7 @@ iv. **_Contact Author_** : For any queries regarding the submitted papers commit
 
 v. **_Status_** : Here it shows the status of reviewer (is reviewed or not ).
 
-vi. **_Send Reminder _**: send reminder to the reviewer if he has not reviewed the assigned paper.
+vi. **_Send Reminder_**: send reminder to the reviewer if he has not reviewed the assigned paper.
 
 
 ## 2.7 Assumptions and Dependencies
