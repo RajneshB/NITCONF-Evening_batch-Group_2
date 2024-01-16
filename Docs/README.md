@@ -5,7 +5,7 @@ For NITCONF
 
 Version 1.0 approved 
 
-Prepared by group 2
+Prepared by group 2,4,9 of evening batch
 
 
 # Table of Contents
