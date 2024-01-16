@@ -120,7 +120,7 @@ Refer to the following links for additional information :
 # **2. Overall description**
 
 
-## ** 2.1 Product Overview**
+## **2.1 Product Overview**
 
 The program committee page on NITCONF will function as an interface for program committee members to manage reviewer profiles. They can view all papers submitted by authors, assign reviewing tasks to reviewers, send reminders if reviewers are behind schedule, contact authors, and ultimately make decisions to ACCEPT or REJECT papers.
 
