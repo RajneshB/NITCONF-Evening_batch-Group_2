@@ -483,8 +483,8 @@ This feature enables users to log in and validates their credentials. It is of H
 
 * User provides login credentials.
 * System validates credentials.
-    * If validation fails, return to the Login feature.
-    * If validation succeeds, proceed to the Profile, View-reviewed-papers, and View-all-papers features.
+* If validation fails, return to the Login feature.
+* If validation succeeds, proceed to the Profile, View-reviewed-papers, and View-all-papers features.
 
 
 ### 3.1.3 Functional Requirements
