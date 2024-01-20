@@ -1,0 +1,143 @@
+*{
+    border: 0;
+      margin: 0;
+      padding:0;
+      box-sizing: border-box;
+  }
+.login--container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: white
+  }
+  .login--card{
+    display: flex;
+
+    background-color: white;
+    height: 75%;
+    width: 75%;
+    box-shadow: 0 0 6px;
+    border-radius: 16px;
+}
+  .login--image{
+    border-radius: 16px 0 0 16px;
+    height: 100%;
+    width: 62%;
+  }
+  .login--contents{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    height: 100%;
+    flex:auto;
+  }
+
+  .toggle--bar--light{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-left: auto;
+    padding: 3px;
+    width: 56px;
+    height: 24px;
+    border: 2px solid black;
+    border-radius: 50rem;
+    background-color: black;
+  }
+.toggle--circle--light{
+    background-color: white;
+    height: 18px;
+    width: 18px;
+    border: 1px solid white;
+    border-radius: 50%;
+
+}
+.toggle--bar--dark{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-left: auto;
+    padding: 4px;
+    width: 56px;
+    height: 24px;
+    border: 2px solid black;
+    border-radius: 50rem;
+    background-color: white;
+  }
+.toggle--circle--dark{
+    background-color: black;
+    height: 18px;
+    width: 18px;
+    border: 1px solid black;
+    border-radius: 50%;
+
+}
+  .login--text{
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 180px;
+    margin-bottom: 40px;
+  }
+  .input--login{
+    height: 48px;
+    display: flex;
+    align-items: center;
+    width: 75%;
+    margin: 0 auto 25px auto;
+    padding: 8px;
+    border: 1px solid black;
+    border-radius: 16px;
+    text-indent: 5px;
+    box-shadow: 0 0 6px 1px;
+  }
+  .input--icon{
+    margin-right: 10px;
+  }
+  .input--text{
+    width:90%;
+    flex-shrink: 1;
+    font-size: 16px;
+    outline: none;
+  }
+  .login--extra{
+    display: flex;
+    width:75%;
+    margin: 24px auto;
+    font-weight: 8px;
+    align-items: center;
+  }
+
+  #remember--check{
+    box-shadow: 0 0 1.5px;
+
+  }
+  .remember--text{
+    font-size: 18px;
+    margin-left: 6px;
+  }
+  .forgot--pass{
+    color: #4c68d7 ;
+    margin-left: auto;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .login--submit{
+    color: white;
+    display: flex;
+    align-items: center;
+    margin: 44px auto;
+    height: 44px;
+    font-size: 24px;
+    padding: 14px;
+    border-radius: 8px;
+    background-color: #4c68d7 ;
+    outline: none;
+    cursor: pointer;
+  }
+  .eye-icon{
+    font-size: 24px;
+  }
