@@ -25,6 +25,8 @@
     border-radius: 16px 0 0 16px;
     height: 100%;
     width: 62%;
+    object-fit: cover;
+    object-position: 0% 0%;
   }
   .login--contents{
     display: flex;
