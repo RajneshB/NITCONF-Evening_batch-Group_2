@@ -51,6 +51,7 @@
 .toggle--bar[data-isOn="true"]{
   justify-content: flex-end;
   background-color: black;
+  border-color: white;
 
 }
 
@@ -64,46 +65,6 @@
   background-color: white;
 }
 
-  /* .toggle--bar--light{
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    margin-left: auto;
-    padding: 3px;
-    width: 56px;
-    height: 24px;
-    border: 2px solid black;
-    border-radius: 50rem;
-    background-color: black;
-  }
-.toggle--circle--light{
-    background-color: white;
-    height: 18px;
-    width: 18px;
-    border: 1px solid white;
-    border-radius: 50%;
-
-}
-.toggle--bar--dark{
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    margin-left: auto;
-    padding: 4px;
-    width: 56px;
-    height: 24px;
-    border: 2px solid black;
-    border-radius: 50rem;
-    background-color: white;
-  }
-.toggle--circle--dark{
-    background-color: black;
-    height: 18px;
-    width: 18px;
-    border: 1px solid black;
-    border-radius: 50%;
-
-} */
   .login--text{
     font-size: 24px;
     font-weight: bold;
