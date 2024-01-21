@@ -1,5 +1,5 @@
 .profile{
-    background: #a7bcff;
+    // background: #a7bcff;
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
@@ -8,6 +8,7 @@
     justify-content: center;
 
     .profileContainer{
+        background: white;
         border: 1px solid black;
         border-radius: 10px;
         width: 65%;
@@ -19,7 +20,9 @@
         box-shadow: 0 0 20px #060c21;
 
         .profilePic{
+            background-color: #a7bcff;
             flex: 1;
+            height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -31,10 +34,14 @@
                 object-fit: cover;
                 width: 40em;
                 height: 40em;
+                margin-bottom: 1em;
             }
 
             button{
-                width: 50%;
+                width: 30%;
+                height: 3em;
+                margin-top: 1em;
+                border-radius: 5px;
             }
         }
         .profileInfo{
@@ -43,9 +50,116 @@
             justify-content: center;
             align-items: center;
             flex: 1;
+            padding: 20px;
+
+            .toggleBarLight{
+                position: absolute;
+                right: 18%;
+                top: 11%;
+                display: flex;
+                align-items: center;
+                justify-content: start;
+                padding: 3px;
+                width: 56px;
+                height: 24px;
+                border: 2px solid black;
+                border-radius: 50rem;
+                background-color: black;
+
+                .toggleCircleLight{
+                    background-color: white;
+                    height: 18px;
+                    width: 18px;
+                    border: 1px solid white;
+                    border-radius: 50%;
+                }
+            }
+
+            .toggleBarDark{
+                position: absolute;
+                right: 18%;
+                top: 11%;
+                display: flex;
+                align-items: center;
+                justify-content: end;
+                padding: 4px;
+                width: 56px;
+                height: 24px;
+                border: 2px solid black;
+                border-radius: 50rem;
+                background-color: white;
+
+                .toggleCircleDark{
+                    background-color: black;
+                    height: 18px;
+                    width: 18px;
+                    border: 1px solid black;
+                    border-radius: 50%;
+                }
+            }
 
             h1{
-                font-size: 5em;
+                font-size: 4em;
+                font-weight: bold;
+                margin-bottom: 1em;
+            }
+
+            ul{
+            
+                li{
+                    height: 48px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    text-align: start;
+                    width: 380px;
+                    margin: 0 auto 25px auto;
+                    border: 1px solid black;
+                    border-radius: 16px;
+                    box-shadow: 0 0 6px 1px;
+                    font-size: 1.5em;
+
+                    span{
+                        height: 46px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: 16px 0 0 16px;
+
+                        &:first-child{
+                            width: 33%;
+                            background-color: #a7bcff;
+                        }
+                        &:last-child{
+                            margin-left: 10px;
+                        }
+                    }
+                }
+            }
+            .inputProf{
+                height: 48px;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                text-align: start;
+                width: 380px;
+                margin: 0 auto 25px auto;
+                border: 1px solid black;
+                border-radius: 16px;
+                box-shadow: 0 0 6px 1px;
+                font-size: 1.5em;
+
+                .profIcon{
+                    margin: 0 15px;
+                    height: 1.5em;
+                }
+                input{
+                    width: 90%;
+                    flex-shrink: 1;
+                    font-size: 1.2em;
+                    border: none;
+                    outline: none;
+                }
             }
         }
     }
