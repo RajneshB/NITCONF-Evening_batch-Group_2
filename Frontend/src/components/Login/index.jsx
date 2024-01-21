@@ -32,12 +32,12 @@ const Login = () =>{
           
             <p className="login--text">Program Committee Login</p>
             <div className="input--login">
-                <FontAwesomeIcon icon={faEnvelope} size='1.7x' className="input--icon"/>
+                <FontAwesomeIcon icon={faEnvelope}  className="input--icon"/>
                 <input type="text" placeholder="Email"  className="input--text"/>
 
             </div>
             <div className="input--login">
-                <FontAwesomeIcon icon={faLock} size='1.7x' className="input--icon"/>
+                <FontAwesomeIcon icon={faLock}  className="input--icon"/>
                 <input type={showPass? "text":"password"} placeholder="Password"  className="input--text"/>
                 {eyeIcon}
 
