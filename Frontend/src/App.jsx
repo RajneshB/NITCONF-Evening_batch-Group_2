@@ -1,13 +1,14 @@
 import './App.css'
 import Profile from './pages/Profile'
-import { Routes, Route } from "react-router-dom";
 import Login from './components/Login'
+import Navbar from './components/Navbar';
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/" >
+        <Route path="/" element={<Navbar/>}>
           <Route index element={<Profile/>} />
           <Route path="login" element={<Login />} />
           <Route path="profile" element={<Profile />} />
