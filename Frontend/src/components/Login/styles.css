@@ -35,8 +35,36 @@
     height: 100%;
     flex:auto;
   }
+.toggle--bar{
+  width: 90px;
+  margin-left: auto;
+  height: 30px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: 1px solid black;
+  border-radius: 50px;
+  padding: 6px;
+  cursor: pointer;
+}
+.toggle--bar[data-isOn="true"]{
+  justify-content: flex-end;
+  background-color: black;
 
-  .toggle--bar--light{
+}
+
+.toggle--circle {
+  width: 22px;
+  height: 22px;
+  background-color: black;
+  border-radius: 40px;
+}
+.toggle--circle[data-isOn="true"]{
+  background-color: white;
+}
+
+  /* .toggle--bar--light{
     display: flex;
     align-items: center;
     justify-content: start;
@@ -75,7 +103,7 @@
     border: 1px solid black;
     border-radius: 50%;
 
-}
+} */
   .login--text{
     font-size: 24px;
     font-weight: bold;
