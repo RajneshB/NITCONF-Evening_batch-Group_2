@@ -1,6 +1,8 @@
 import React from 'react';
 import Navbar from '../../components/Navbar';
 import './Dashboard.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -25,7 +27,100 @@ const Dashboard = () => {
                 </div>
                 <div className='dashboard-card-grid'>
                     <div className='dashboard-card'>
-
+                        <iframe src='/Assignment2.pdf' className='dashboard-card-pdf'/>
+                        <div className='dashboard-card-info'>    
+                            <h1 className='dashboard-card-pname'>Paper Name</h1>
+                            <div className='rating-container'>
+                                <FontAwesomeIcon icon={faStar} color='yellow'></FontAwesomeIcon>
+                                <p>Rating amount</p>
+                            </div>
+                            <h2 className='dashboard-card-aname'>Author Name</h2>
+                            <p>Tags</p>
+                        </div>
+                    </div>
+                    <div className='dashboard-card'>
+                        <iframe src='/Assignment2.pdf' className='dashboard-card-pdf'/>
+                        <div className='dashboard-card-info'>    
+                            <h1 className='dashboard-card-pname'>Paper Name</h1>
+                            <div className='rating-container'>
+                                <FontAwesomeIcon icon={faStar} color='yellow'></FontAwesomeIcon>
+                                <p>Rating amount</p>
+                            </div>
+                            <h2 className='dashboard-card-aname'>Author Name</h2>
+                            <p>Tags</p>
+                        </div>
+                    </div>
+                    <div className='dashboard-card'>
+                        <iframe src='/Assignment2.pdf' className='dashboard-card-pdf'/>
+                        <div className='dashboard-card-info'>    
+                            <h1 className='dashboard-card-pname'>Paper Name</h1>
+                            <div className='rating-container'>
+                                <FontAwesomeIcon icon={faStar} color='yellow'></FontAwesomeIcon>
+                                <p>Rating amount</p>
+                            </div>
+                            <h2 className='dashboard-card-aname'>Author Name</h2>
+                            <p>Tags</p>
+                        </div>
+                    </div>
+                    <div className='dashboard-card'>
+                        <iframe src='/Assignment2.pdf' className='dashboard-card-pdf'/>
+                        <div className='dashboard-card-info'>    
+                            <h1 className='dashboard-card-pname'>Paper Name</h1>
+                            <div className='rating-container'>
+                                <FontAwesomeIcon icon={faStar} color='yellow'></FontAwesomeIcon>
+                                <p>Rating amount</p>
+                            </div>
+                            <h2 className='dashboard-card-aname'>Author Name</h2>
+                            <p>Tags</p>
+                        </div>
+                    </div>
+                    <div className='dashboard-card'>
+                        <iframe src='/Assignment2.pdf' className='dashboard-card-pdf'/>
+                        <div className='dashboard-card-info'>    
+                            <h1 className='dashboard-card-pname'>Paper Name</h1>
+                            <div className='rating-container'>
+                                <FontAwesomeIcon icon={faStar} color='yellow'></FontAwesomeIcon>
+                                <p>Rating amount</p>
+                            </div>
+                            <h2 className='dashboard-card-aname'>Author Name</h2>
+                            <p>Tags</p>
+                        </div>
+                    </div>
+                    <div className='dashboard-card'>
+                        <iframe src='/Assignment2.pdf' className='dashboard-card-pdf'/>
+                        <div className='dashboard-card-info'>    
+                            <h1 className='dashboard-card-pname'>Paper Name</h1>
+                            <div className='rating-container'>
+                                <FontAwesomeIcon icon={faStar} color='yellow'></FontAwesomeIcon>
+                                <p>Rating amount</p>
+                            </div>
+                            <h2 className='dashboard-card-aname'>Author Name</h2>
+                            <p>Tags</p>
+                        </div>
+                    </div>
+                    <div className='dashboard-card'>
+                        <iframe src='/Assignment2.pdf' className='dashboard-card-pdf'/>
+                        <div className='dashboard-card-info'>    
+                            <h1 className='dashboard-card-pname'>Paper Name</h1>
+                            <div className='rating-container'>
+                                <FontAwesomeIcon icon={faStar} color='yellow'></FontAwesomeIcon>
+                                <p>Rating amount</p>
+                            </div>
+                            <h2 className='dashboard-card-aname'>Author Name</h2>
+                            <p>Tags</p>
+                        </div>
+                    </div>
+                    <div className='dashboard-card'>
+                        <iframe src='/Assignment2.pdf' className='dashboard-card-pdf'/>
+                        <div className='dashboard-card-info'>    
+                            <h1 className='dashboard-card-pname'>Paper Name</h1>
+                            <div className='rating-container'>
+                                <FontAwesomeIcon icon={faStar} color='yellow'></FontAwesomeIcon>
+                                <p>Rating amount</p>
+                            </div>
+                            <h2 className='dashboard-card-aname'>Author Name</h2>
+                            <p>Tags</p>
+                        </div>
                     </div>
                 </div>  
             </div>

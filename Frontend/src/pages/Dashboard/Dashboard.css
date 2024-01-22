@@ -40,3 +40,52 @@
     align-self: flex-end;
     display: flex;
 }
+
+.dashboard-card-grid{
+    margin-top:30px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap:20px;
+}
+
+.dashboard-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+    background-color: black;
+    color: white;
+    gap:5px;
+    border-radius: 10px;
+}
+
+.dashboard-card-pdf{
+    width:110%;
+}
+
+.dashboard-card-info{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+}
+
+.dashboard-card-pname{
+    font-size: 3em;
+}
+
+.rating-container{
+    margin-left:5px;
+    display: flex;
+    font-size: 1.5em;
+}
+
+.dashboard-card-aname{
+    font-size: 2em;
+}
+
+.dashboard-card-info > p{
+    font-size: 1.5em;
+}
+
