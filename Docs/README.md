@@ -11,16 +11,12 @@ Prepared by Johann B Simon, Rajnesh B and Joel Joseph.
 # Table of Contents
 
 
-##### . Revision History
-
-
-
+* [Revision History](#RevisionHistory)
 * [Introduction](#1-introduction)
   * 1.1 [Purpose](#11-purpose)
-  * 1.2 [Document Conventions](#12-document-conventions)
-  * 1.3 [Intended Audience](#13-intended-audience)
-  * 1.4 [Product Scope](#14-product-scope)
-  * 1.5 [References](#15-references)
+  * 1.2 [Intended Audience](#12-intended-audience)
+  * 1.3 [Product Scope](#13-product-scope)
+  * 1.4 [References](#14-references)
 * [Overall Description](#2-overall-description)
   * 2.1 [Product Overview](#21-product-overview)
   * 2.2 [Product Functions](#22-product-functions)
@@ -65,7 +61,7 @@ This project is a prototype for NITCONF, a conference website designed to facili
 The purpose of this document is to specify the requirements for the Program Committee section of NITCONF which provides a smooth and easy environment for members to view the submitted papers, assign reviewers to it and finally take a decision on whether to accept or reject it. It also includes a login page for members to login to their account and a profile page for members to view and edit their profile.
 
 
-## 1.3 Intended Audience
+## 1.2 Intended Audience
 
 This document is intended to :
 
@@ -73,19 +69,19 @@ This document is intended to :
 
     They are the primary audience. It provides crucial information guiding the design phase.
 
-2. Tester :
+2. Testers :
 
     They will refer to the SRS to ensure that the actual implementation aligns seamlessly with the specified requirements.
 
 
 
-## 1.4 Product Scope
+## 1.3 Product Scope
 
 
 This section aims to implement the functionalities required for Program Committee members to carry out their duties effectively.
 
 
-## 1.5 References
+## 1.4 References
 
 Refer to the following links for additional information :
 
@@ -102,10 +98,7 @@ Refer to the following links for additional information :
 The program committee page on NITCONF will function as an interface for program committee members. They can view all papers submitted by authors, assign reviewing tasks to reviewers, send reminders if reviewers are behind schedule, contact authors, and ultimately make decisions to ACCEPT or REJECT papers.
 
 
-![alt_text](./image.png "image_tooltip")
-=======
 ![alt_text](./newimage.png "image_tooltip")
->>>>>>> 51adb77a3d730a8af532d32f4a41826d4e24b9b9
 
 
 
@@ -129,9 +122,9 @@ The program committee page on NITCONF will function as an interface for program 
 
 **Technical Expertise:** Program committee members should have a good understanding of the conference management system, as they are involved in various managerial and decision-making tasks. They don't need to be as technically proficient as reviewers but should be comfortable navigating the system.
 
-**Security Levels: **Program committee members require secure login credentials to access the system, ensuring the confidentiality and integrity of the reviewing and decision-making process.
+**Security Levels:** Program committee members require secure login credentials to access the system, ensuring the confidentiality and integrity of the reviewing and decision-making process.
 
-**Educational Level and Experience: **Program committee members possess significant expertise in their respective academic or industry fields. They have experience in conference organisation and management, enabling them to make informed decisions about paper acceptance or rejection. Their experience also allows them to effectively manage the reviewing process and assign tasks strategically.
+**Educational Level and Experience:** Program committee members possess significant expertise in their respective academic or industry fields. They have experience in conference organisation and management, enabling them to make informed decisions about paper acceptance or rejection. Their experience also allows them to effectively manage the reviewing process and assign tasks strategically.
 
 
 ## **2.4** **Operating Environment**
@@ -172,7 +165,7 @@ The system should be compatible with standard web browsers on all devices and re
 * Security considerations include user authentication, authorization mechanisms, and data protection measures to ensure the confidentiality and integrity of user information.
 
 
-### 2.4.7 Dependencies:
+### 2.4.6 Dependencies:
 
 
 
@@ -214,9 +207,6 @@ User documentation will include a user manual for members of the Program Committ
 
 
 ## 2.7 Assumptions and Dependencies
-
-
-### **2.7.1 Assumptions**	
 
 
 Users are assumed to have access to reliable internet connectivity and devices capable of running standard web browsers. Users are expected to follow the guidelines provided for using the website.
