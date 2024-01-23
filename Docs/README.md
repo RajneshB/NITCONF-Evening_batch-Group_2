@@ -62,19 +62,12 @@ This project is a prototype for NITCONF, a conference website designed to facili
 
 ## 1.1 Purpose
 
-The Program Committee section provides a smooth and easy environment for members to assign reviewers to review the papers submitted by authors.
-
-
-## 1.2 Document Conventions
-
-This document follows IEEE formatting requirements
+The purpose of this document is to specify the requirements for the Program Committee section of NITCONF which provides a smooth and easy environment for members to view the submitted papers, assign reviewers to it and finally take a decision on whether to accept or reject it. It also includes a login page for members to login to their account and a profile page for members to view and edit their profile.
 
 
 ## 1.3 Intended Audience
 
-This document is intended to several groups of audience members
-
-
+This document is intended to :
 
 1. System Designers :
 
@@ -89,23 +82,7 @@ This document is intended to several groups of audience members
 ## 1.4 Product Scope
 
 
-
-1. User Authentication :
-
-    A secure login page for the members of the Program Committee to access the functionalities.
-
-2. Dashboard :
-
-    After successful login, users are directed to a personalised homepage, having profile section, papers which are reviewed (view reviewed papers) and papers which are unreviewed (view unreviewed papers).
-
-3. Paper Presentation :
-
-    The system organises the uploaded papers in a clear and systematic row-wise fashion for easy navigation.
-
-4. Program Committee Functionality :
-
-    Program Committee members can seamlessly assign the reviewers to review the papers uploaded by the authors. Based on the reviews given by the reviewers, the Program Committee member decides whether to accept or reject the paper.
-
+This section aims to implement the functionalities required for Program Committee members to carry out their duties effectively.
 
 
 ## 1.5 References
@@ -125,11 +102,6 @@ Refer to the following links for additional information :
 The program committee page on NITCONF will function as an interface for program committee members. They can view all papers submitted by authors, assign reviewing tasks to reviewers, send reminders if reviewers are behind schedule, contact authors, and ultimately make decisions to ACCEPT or REJECT papers.
 
 
-<<<<<<< HEAD
-
-<p id="gdcalert1" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to ./images.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert2">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
 ![alt_text](./image.png "image_tooltip")
 =======
 ![alt_text](./newimage.png "image_tooltip")
@@ -140,67 +112,19 @@ The program committee page on NITCONF will function as an interface for program 
 ## **2.2 Product Functions**
 
 
-### **2.2.1.View Submissions by Authors:** 
-
-Program committee can comprehensively view all papers submitted by authors, gaining a holistic understanding of the conference content. 
-
-
-### **2.2.2.Assign Reviewing Tasks to Reviewers:**
-
- Program committee members have the authority to strategically allocate reviewing tasks to specific reviewers, ensuring a balanced and thorough evaluation process.
-
-
-### **2.2.3.Send Reminders for Reviewer Schedule:**
-
-The platform enables committee members to issue timely reminders to reviewers, helping to keep the evaluation process on track and ensuring deadlines are met
-
-
-### **2.2.4.Contact Authors for Clarifications:**
-
-Committee members can easily communicate with authors, seeking clarifications or additional information to enhance the evaluation process. 
-
-
-### **2.2.5.Make Acceptance or Rejection Decisions:**
-
-Ultimately, the committee possesses the power to make crucial decisions regarding the acceptance or rejection of papers, shaping the final composition of the conference program.
-
-
-### **2.2.6.Assign Additional Reviewer for Complex Cases:**
-
-
-In situations where committee members find it challenging to make decisions based on past reviews and comments, they can assign an additional reviewer to thoroughly assess the paper and contribute to informed decision-making. 
-
-
-### **2.2.7. Filter by Tags and Reviewer Ratings:**
-
-
-Committee members can utilise a sophisticated filtering system to categorise papers based on tags provided by the authors, allowing for streamlined navigation. Additionally, they can filter papers based on the ratings assigned by reviewers, aiding in the efficient identification of noteworthy submissions.
-
+* Login functionality for members of the Program Committee members.
+* Viewing and editing of member profiles.
+* View reviewed and unreviewed papers.
+* Filter papers based on tags and ratings.
+* Assign reviewers to papers.
+* Send reminders to reviewers to complete their task on time.
+* Accept or reject papers based on reviews.
 
 ## **2.3. User Classes and Characteristics**
 
 **USER**: PROGRAM COMMITTEE MEMBER
 
-**Frequency of Use:** Program committee members engage with the system periodically throughout the conference planning and reviewing process. Focusing on strategic decision-making and oversight.
-
- 
-
-**Functions Used:**
-
-- View Submissions by Authors: Program committee members can comprehensively view all papers submitted by authors, gaining a holistic understanding of the conference content.
-
-- Manage their Profile: They can update their profiles, ensuring accurate and up-to-date information, enhancing the overall effectiveness of the reviewing process.
-
-- Assign Reviewing Tasks to Reviewers: Program committee members strategically allocate reviewing tasks to specific reviewers, ensuring a balanced and thorough evaluation process.
-
-- Send Reminders for Reviewer Schedule: The platform enables committee members to issue timely reminders to reviewers, helping to keep the evaluation process on track and ensuring deadlines are met.
-
-- Contact Authors for Clarifications: Committee members can easily communicate with authors, seeking clarifications or additional information to enhance the evaluation process.
-
-- Make Acceptance or Rejection Decisions: The committee possesses the power to make crucial decisions regarding the acceptance or rejection of papers, shaping the final composition of the conference program.
-
-- Assign Additional Reviewer for Complex Cases: In situations where committee members find it challenging to make decisions based on past reviews and comments, they can assign an additional reviewer to thoroughly assess the paper and contribute to informed decision-making.
-
+**Frequency of Use:** Program committee members engage with the system periodically throughout the conference planning and reviewing process.
  
 
 **Technical Expertise:** Program committee members should have a good understanding of the conference management system, as they are involved in various managerial and decision-making tasks. They don't need to be as technically proficient as reviewers but should be comfortable navigating the system.
@@ -212,24 +136,20 @@ Committee members can utilise a sophisticated filtering system to categorise pap
 
 ## **2.4** **Operating Environment**
 
-The Program Committee Page of NITCONF is designed to operate within a well-defined environment, incorporating key features that ensure optimal functionality, security, and performance. The operating environment encompasses hardware, software, network conditions, performance expectations, security measures, compatibility considerations, and external dependencies.
-
 
 ### 2.4.1 Hardware Requirements:
 
-The system requires a dedicated server with modern processors, at least 8GB of RAM, and sufficient storage capacity to handle concurrent user sessions and data storage.
+The system should be compatible with standard web browsers on all devices and requires at least 8GB of RAM and sufficient storage capacity to handle concurrent user sessions and data storage.
 
 
 ### 2.4.2 Software Requirements:
 
 
-
-* The server must run a Java-compatible environment, with the choice of web servers like Apache Tomcat or Jetty, and Java JDK 8 or higher.
+* The browser must have JavaScript enabled.
 * Frontend technologies such as HTML5, CSS3, and JavaScript are utilised for the user interface.
 
 
 ### 2.4.3 Network requirements
-
 
 
 * Adequate bandwidth and network stability are crucial for seamless access and data exchange, especially for real-time features.
@@ -252,20 +172,11 @@ The system requires a dedicated server with modern processors, at least 8GB of R
 * Security considerations include user authentication, authorization mechanisms, and data protection measures to ensure the confidentiality and integrity of user information.
 
 
-### 2.4.6 Compatibility Requirements:
-
-
-
-* The application is designed for cross-platform compatibility, ensuring it runs smoothly irrespective of the user's operating system.
-* It is compatible with modern web browsers, including Google Chrome, Mozilla Firefox, Microsoft Edge, and Safari.
-
-
 ### 2.4.7 Dependencies:
 
 
 
-* The system relies on the Spring Framework (specific version as per development), a compatible database (e.g., MySQL, PostgreSQL), and frontend technologies (HTML5, CSS3, JavaScript).
-* Containerization is achieved using Docker and Kubernetes, and API testing tools such as Postman, swagger.io, and SoapUI are integrated into the development and testing process.
+* The system relies on the Spring Framework (specific version as per development), a compatible database (MongoDB), and frontend technologies (HTML5, CSS3, JavaScript).
 
 
 ## 2.5 Design and implementation constraints
@@ -295,127 +206,11 @@ The system requires a dedicated server with modern processors, at least 8GB of R
 * Implementation: Utilize scalable database architecture, optimize queries, and implement caching mechanisms to maintain performance as the user base and data volume grow.
 
 
-### 2.5.4 Notification Mechanism:
-
-
-
-* Constraint: Implement a real-time notification system for Program Committee members.
-* Implementation: Integrate a notification mechanism to alert committee members about new submissions, review comments, and decision outcomes promptly.
-
-
-### 2.5.5 Review Process Workflow:
-
-
-
-* Constraint: Define and implement a structured workflow for the review process.
-* Implementation: Develop clear steps for paper submission, reviewer assignment, review comments, and final decision-making. Ensure that the workflow is intuitive and follows the conference's guidelines.
-
-
-### 2.5.6 Security Measures:
-
-
-
-* Constraint: Implement robust security measures to safeguard user data and maintain the confidentiality of the review process.
-* Implementation: Employ encryption for data transmission, secure user authentication, and authorization mechanisms. Regularly update security protocols to address potential vulnerabilities.
-
-
-### 2.5.7 Integration with Reviewer Section:
-
-
-
-* Constraint: Facilitate seamless communication and data exchange between the Program Committee and Reviewer sections.
-* Implementation: Develop APIs or data-sharing mechanisms to enable smooth integration between the Program Committee and Reviewer sections, ensuring consistent data flow and accuracy.
-
-
-### 2.5.8 Data Privacy Compliance:
-
-
-
-* Constraint: Ensure compliance with data protection regulations.
-* Implementation: Incorporate features for data anonymization, obtain consent where necessary, and ensure that the system adheres to relevant data protection laws such as GDPR.
-
-
-### 2.5.9 Backup and Recovery:
-
-
-
-* Constraint: Establish a robust backup and recovery system for data preservation.
-* Implementation: Regularly back up the database, implement version control for the codebase, and devise a recovery plan to minimize data loss in case of system failures.
-
-
-### 2.5.10 Documentation:
-
-
-
-* Constraint: Provide comprehensive documentation for future maintenance and updates.
-* Implementation: Document the codebase, APIs, database schema, and system architecture thoroughly. Create user manuals to guide Program Committee members through the functionalities of the system.
-
-
-### 2.5.11 User Training:
-
-
-
-* Constraint: Consider the varying technical proficiency of Program Committee members.
-* Implementation: Develop training materials, tutorials, or conduct training sessions to ensure that Program Committee members can effectively use the system to perform their tasks.
-
 
 ## 2.6 User Documentation
 
-
-### Login and Dashboard Navigation .
-
-
-
-* **Login** : Program committee members log in with their credentials and are directed to the member's dashboard.
-* **Profile**: The User’s profile icon is displayed in the top right corner, linking to the profile page.
-* **Side Navigation Bar** : Features  a collapsible navigation with the following options:
-* View Reviewed Papers
-* View UnReviewed Papers.
-
-		
-
-
-## Pages and Functionalities
-
-
-### **‘View Reviewed Papers’ Page**
-
-
-
-* **Layout** - Displays the reviewed papers in a row-wise manner
-
-**Columns** :
-
-i. **_Filter_** : includes a filter button to display the required papers based on tags and ratings.
-
-ii. **_View a reviewed paper_** : Here it shows paper title and some information regarding the paper and display paper upon clicking on it
-
-iii. **_Status_** : indicates the status of the assigned reviewers for each paper (is reviewed or not ).
-
-iv. **_Add reviewer_**: here program committee members can add reviewer if needed for further review.
-
-v. **_accept/reject_** : program committee members can decide whether to accept the paper or to reject it.
-
-
-### **‘View Unreviewed Papers’ Page**
-
-
-
-* **Layout** -  Displays the unreviewed papers in a row-wise manner.
-
-**Columns :**
-
-i. **_Filter_**: includes a filter button to display the required papers based on tags.
-
-ii. **_View unreviewed paper_** : Here it shows paper title and some information regarding the paper and display paper upon clicking on it
-
-iii. **_Assign reviewer_** : here committee members can add reviewer to each paper to review and send mail to the reviewer (to notify reviewer).
-
-iv. **_Contact Author_** : For any queries regarding the submitted papers committee members can contact the respective author.
-
-v. **_Status_** : Here it shows the status of reviewer (is reviewed or not ).
-
-vi. **_Send Reminder_**: send reminder to the reviewer if he has not reviewed the assigned paper.
+User documentation will include a user manual for members of the Program Committee and online help resources.
+	
 
 
 ## 2.7 Assumptions and Dependencies
@@ -424,48 +219,8 @@ vi. **_Send Reminder_**: send reminder to the reviewer if he has not reviewed th
 ### **2.7.1 Assumptions**	
 
 
+Users are assumed to have access to reliable internet connectivity and devices capable of running standard web browsers. Users are expected to follow the guidelines provided for using the website.
 
-* **Active Participation of Reviewers**:
-
-    It is assumed that assigned reviewers will actively participate in the review process, providing timely and thorough assessments of submitted papers.
-
-* **Reviewer Availability:**
-
-    The system assumes that reviewers are available to fulfil their reviewing tasks within the designated timelines.
-
-* **Reviewer Proficiency**:
-
-    It is assumed that Program Committee members and reviewers possess the necessary technical skills to navigate and interact with the web-based system effectively.
-
-* **Access to Devices**:
-
-    Users are assumed to have access to reliable internet connectivity and devices capable of running standard web browsers.
-
-
-
-### **2.7.2 Dependencies**
-
-
-
-* **Database Management System:**
-
-    The system is dependent on a compatible database management system, such as MySQL, PostgreSQL, or similar, for storing and retrieving data related to papers, reviewers, and decisions.
-
-* **Web Server:**
-
-    The web application relies on a compatible web server, such as Apache Tomcat or Jetty, for hosting and serving pages. Any changes to the web server may affect the system's performance.
-
-* **Fronted Technologies:**
-
-    The system utilizes frontend technologies like HTML5, CSS3, and JavaScript for creating an interactive user interface. Changes in these technologies or browser updates may impact the user experience.
-
-* **Browser Compatibility:**
-
-    The System is dependent on users accessing it through modern web browsers (Google Chrome , Mozilla FireFox, Safari, etc.). The documentation will provide information on recommended browsers for optimal performance.
-
-* **User Account Management:**
-
-    The Successful Functioning of the Program Committee module is dependent on the proper management of user accounts, including the creation , modification, and deletion of accounts as needed.
 
 
 
