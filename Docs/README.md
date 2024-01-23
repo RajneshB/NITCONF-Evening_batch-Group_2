@@ -171,10 +171,10 @@ Ultimately, the committee possesses the power to make crucial decisions regardin
 In situations where committee members find it challenging to make decisions based on past reviews and comments, they can assign an additional reviewer to thoroughly assess the paper and contribute to informed decision-making. 
 
 
-### **2.2.7. Filter by Topic and Reviewer Ratings:**
+### **2.2.7. Filter by Tags and Reviewer Ratings:**
 
 
-Committee members can utilise a sophisticated filtering system to categorise papers based on topic names, allowing for streamlined navigation. Additionally, they can filter papers based on the ratings assigned by reviewers, aiding in the efficient identification of noteworthy submissions.
+Committee members can utilise a sophisticated filtering system to categorise papers based on tags provided by the authors, allowing for streamlined navigation. Additionally, they can filter papers based on the ratings assigned by reviewers, aiding in the efficient identification of noteworthy submissions.
 
 
 ## **2.3. User Classes and Characteristics**
@@ -386,7 +386,7 @@ The system requires a dedicated server with modern processors, at least 8GB of R
 
 **Columns** :
 
-i. **_Filter_** : includes a filter button to display the required papers based on topic.
+i. **_Filter_** : includes a filter button to display the required papers based on tags and ratings.
 
 ii. **_View a reviewed paper_** : Here it shows paper title and some information regarding the paper and display paper upon clicking on it
 
@@ -405,7 +405,7 @@ v. **_accept/reject_** : program committee members can decide whether to accept 
 
 **Columns :**
 
-i. **_Filter_**: includes a filter button to display the required papers based on topic.
+i. **_Filter_**: includes a filter button to display the required papers based on tags.
 
 ii. **_View unreviewed paper_** : Here it shows paper title and some information regarding the paper and display paper upon clicking on it
 
