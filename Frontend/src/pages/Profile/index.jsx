@@ -43,12 +43,12 @@ const Profile = () =>{
                 <div className="profilePic">
                     <input type="file" id="file" style={{ display: "none" }} onChange={event => handleImg(event)} />
                     <label htmlFor="file" style={{ cursor: "pointer" }}>
-                        <img src={img} alt=''/>
+                        <img src={img} alt='' title='click on image to edit'/>
                     </label>
                     <button onClick={handleSave}>Save changes</button>
                 </div>
                 <div className="profileInfo">
-                    <h1>Edit Profile</h1>
+                    <h2>Click to edit</h2>
                     <div className="inputProf">
                         <FontAwesomeIcon icon={faUser} className='profIcon'/>
                         <input type="text" name="uname"  placeholder='Name' value={data.uname} onChange={event => handleInputs(event)} />
