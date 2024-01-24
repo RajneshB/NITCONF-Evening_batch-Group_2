@@ -70,7 +70,7 @@
     font-weight: bold;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 180px;
+    margin-top: 40%;
     margin-bottom: 40px;
   }
   .input--login{
@@ -78,7 +78,7 @@
     display: flex;
     align-items: center;
     width: 75%;
-    margin: 0 auto 25px auto;
+    margin: 4% auto 4% auto;
     padding: 8px;
     border: 1px solid black;
     border-radius: 16px;
@@ -98,7 +98,7 @@
   .login--extra{
     display: flex;
     width:75%;
-    margin: 24px auto;
+    margin: 10% auto;
     font-weight: 8px;
     align-items: center;
   }
@@ -121,7 +121,7 @@
     color: white;
     display: flex;
     align-items: center;
-    margin: 44px auto;
+    margin: 8% auto;
     height: 44px;
     font-size: 24px;
     padding: 14px;
@@ -133,3 +133,40 @@
   .eye-icon{
     font-size: 24px;
   }
+  @media (max-height:900px){
+    .login--text{
+      margin-top: 110px;
+    }
+  }
+  @media (max-height:850px){
+    .login--text{
+      margin-top: 90px;
+    }
+  }
+  @media (max-height:800px){
+    .login--text{
+      margin-top: 70px;
+    }
+  }
+  @media (max-height:750px){
+    .login--text{
+      margin-top: 50px;
+    }
+  }
+  @media (max-height:700px){
+    .login--text{
+      margin-top: 30px;
+    }
+  }
+@media (max-height:650px){
+  .login--text{
+    margin-top: 20px;
+  }
+}
+@media (max-height:600px){
+  .login--text{
+    margin-top: 10px;
+  }
+}
+
+
