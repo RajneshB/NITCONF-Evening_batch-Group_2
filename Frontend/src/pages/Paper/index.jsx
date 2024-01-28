@@ -6,7 +6,7 @@ const Paper = () => {
     return (
         <>
         <Navbar/>
-        <div>
+        <div className='paperPage'>
             <div className="viewPaper">
                 <PDFViewer/>
             </div>
