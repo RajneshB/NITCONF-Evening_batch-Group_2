@@ -1,7 +1,8 @@
 import './index.scss';
+import axios from 'axios';
 import profPic from '../../assets/images/profpic.webp'
 import Navbar from '../../components/Navbar'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendar, faEnvelope, faMobile, faUser, faUserTie } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
@@ -10,11 +11,15 @@ const Profile = () =>{
     const [light,setLight]=useState(true);
     const [edit,setEdit]=useState(false);
     const [img,setImg]=useState(profPic);
-    const [data, setData] = useState({ uname: 'John Doe', contact: '+91 9747525206', mail: 'john@gmail.com', prof: 'Professor at NIT Calicut', doj: '2012-09-11' });
+    const [data, setData] = useState({ name: 'John Doe', contact: '+91 9747525206', mail: 'john@gmail.com', profession: 'Professor at NIT Calicut', doj: '2012-09-11' });
     const [err, setErr] = useState(false);
     const [loading, setLoading] = useState(false);
     const [file,setFile]=useState(null);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        getProfile();
+    },[])
 
     const handleEdit = () =>  {
         setEdit(true);
@@ -22,16 +27,27 @@ const Profile = () =>{
 
     const handleImg = (e) => {
         setImg(URL.createObjectURL(e.target.files[0]));
-        setFile(event.target.files[0]);
+        setFile(e.target.files[0]);
     }
 
     const handleSave = () => {
+        updateProfile();
         setEdit(false);
     }
 
     const handleInputs = (event) => {
         let inputs = { [event.target.name]: event.target.value };
         setData({ ...data, ...inputs });
+    }
+
+    const getProfile = async () => {
+        const details = await axios.get("http://localhost:8080/api/profile");
+        const profDetails = details.data;
+        setData(...profDetails);
+    }
+
+    const updateProfile = async () => {
+        const updateStatus = await axios.put("http://localhost:8080/api/profile/65b4e8c93dc997e3d8c39c56",data);
     }
 
     return(
@@ -51,7 +67,7 @@ const Profile = () =>{
                     <h2>Click to edit</h2>
                     <div className="inputProf">
                         <FontAwesomeIcon icon={faUser} className='profIcon'/>
-                        <input type="text" name="uname"  placeholder='Name' value={data.uname} onChange={event => handleInputs(event)} />
+                        <input type="text" name="name"  placeholder='Name' value={data.name} onChange={event => handleInputs(event)} />
                     </div>
                     <div className="inputProf">
                         <FontAwesomeIcon icon={faEnvelope} className='profIcon'/>
@@ -63,7 +79,7 @@ const Profile = () =>{
                     </div>
                     <div className="inputProf">
                         <FontAwesomeIcon icon={faUserTie} className='profIcon'/>
-                        <input type="text" name="prof"  placeholder='Profession' value={data.prof} onChange={event => handleInputs(event)} />
+                        <input type="text" name="profession"  placeholder='Profession' value={data.profession} onChange={event => handleInputs(event)} />
                     </div>
                     <div className="inputProf">
                         <FontAwesomeIcon icon={faCalendar} className='profIcon'/>
@@ -82,7 +98,7 @@ const Profile = () =>{
                     <ul>
                         <li>
                             <FontAwesomeIcon icon={faUser} className='profIcon'/>
-                            <span>{data.uname}</span>
+                            <span>{data.name}</span>
                         </li>
                         <li>
                             <FontAwesomeIcon icon={faEnvelope} className='profIcon'/>
@@ -94,7 +110,7 @@ const Profile = () =>{
                         </li>
                         <li>
                             <FontAwesomeIcon icon={faUserTie} className='profIcon'/>
-                            <span>{data.prof}</span>
+                            <span>{data.profession}</span>
                         </li>
                         <li>
                             <FontAwesomeIcon icon={faCalendar} className='profIcon'/>
