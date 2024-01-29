@@ -1,7 +1,10 @@
 import React from 'react';
 import Navbar from '../../components/Navbar';
-import Card from '../../components/Card/Card';
+import Table from '../../components/Table/Table';
+import Card from '../../components/Card/Card'
 import './Dashboard.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBorderAll, faList } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -25,6 +28,11 @@ const Dashboard = () => {
     const cardArray=array.map((obj) => {
         return <Card id={obj.id} paperName={obj.paperName} rating={obj.rating} authorName={obj.authorName} tags={obj.tags} />
     })
+    const tableArray=array.map((obj) => {
+        return <Table id={obj.id} paperName={obj.paperName} rating={obj.rating} authorName={obj.authorName} tags={obj.tags} />
+    })
+
+
 
     console.log(cardArray)
 
@@ -37,12 +45,42 @@ const Dashboard = () => {
                         <div className={!reviewStatus?'dashboard-reviewed':'dashboard-reviewed dashboard-toggle-active'} onClick={handleReviewStatusToggle}>View Reviewed Papers</div>
                 </div>
                 <div className='dashboard-filter-container'>
-                        {/* <div>Filter by Tags</div>
-                        <div>Filter by Review Rating</div> */}
+                        <div className="view-container">
+                            <div className="list-view">
+                                <FontAwesomeIcon icon={faList}/>
+                                <span>List View</span>
+                            </div>
+                            <div className="grid-view">
+                                <FontAwesomeIcon icon={faBorderAll} />
+                                <span>Grid View</span>
+                            </div>
+                        </div>
                 </div>
-                <div className='dashboard-card-grid'>
+                {/* <div className='dashboard-card-grid'>
                     {cardArray}
-                </div>  
+                </div>   */}
+                <div className="dashboard-table-container">
+                    {/* <div className='dashboard-table-cl'>
+                        <div className="table-icon-container-cl">
+                            Paper
+                        </div>
+                        <div className='dashboard-table-info-cl'>
+                            <div className="table-h1-cl">
+                                <h1>Title</h1>
+                            </div>
+                            <div className='table-rating-container-cl'>
+                                <p>Rating</p>
+                            </div>
+                            <div className="table-h2-cl">
+                                <h2>Author</h2>
+                            </div>
+                            <div className="table-tag-container-cl">
+                                Tags
+                            </div>
+                        </div>
+                    </div>   */}
+                    {tableArray}
+                </div>
             </div>
         </>
     )

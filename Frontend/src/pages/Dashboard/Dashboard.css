@@ -38,8 +38,10 @@
 }
 
 .dashboard-filter-container{
-    align-self: flex-end;
     display: flex;
+    justify-content: flex-start;
+    width: 100%;
+
 }
 
 .dashboard-card-grid{
@@ -48,6 +50,86 @@
     display: grid;
     grid-template-columns: repeat(4, 350px);
     gap:30px;
+}
+
+.dashboard-table-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:10px;
+
+    .dashboard-table-cl{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        gap:20px;
+        border: solid black;
+        padding: 0px 10px;
+    
+        .table-icon-container-cl{
+            width: 70px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-right: solid black;
+            font-size: 3em;
+            padding-right: 20px;
+        }
+    
+        .dashboard-table-info-cl{
+            display: flex;
+            align-items: center;
+            gap:20px;
+    
+            .table-h1-cl{
+                height: 100%;
+                border-right: solid black;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 0 20px 0px 0 ;
+    
+                h1{
+                    font-size: 3em;
+                }
+            }
+    
+    
+            .table-rating-container-cl{
+                height: 100%;
+                border-right: solid black;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 0 20px 0px 0 ;
+                font-size: 2em;
+            }
+    
+            .table-h2-cl{
+                height: 100%;
+                border-right: solid black;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 0 20px 0px 0 ;
+    
+                h2{
+                    font-size: 2.5em;
+                }
+            }
+    
+    
+            .table-tag-container-cl {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                font-size: 1.75em;
+                color: #505050;
+                max-width: 100%;
+            }
+        }
+    }
 }
 
 
