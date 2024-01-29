@@ -38,10 +38,63 @@
 }
 
 .dashboard-filter-container{
+    margin-top: 30px;
+    margin-bottom: 30px;
     display: flex;
     justify-content: flex-start;
     width: 100%;
 
+    .view-container{
+        cursor: pointer;
+        margin-left:30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: solid black;
+        border-radius: 40px;
+        background-color: #ebebeb;
+
+
+        .list-view{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap:10px;
+            font-size: 2em;
+            padding:0 10px;
+
+            .view-icon{
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        .grid-view{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap:10px;
+            font-size: 2em;
+            padding:0 10px;
+
+            .view-icon{
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+}
+
+.lactive{
+    background-color: rgb(21,199,113);
+    border-right: solid black;
+    border-radius: 40px;
+}
+
+.gactive{
+    background-color: rgb(21,199,113);
+    border-left: solid black;
+    border-radius: 40px;
 }
 
 .dashboard-card-grid{
@@ -53,6 +106,8 @@
 }
 
 .dashboard-table-container{
+    margin-top:30px;
+    margin-bottom: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
