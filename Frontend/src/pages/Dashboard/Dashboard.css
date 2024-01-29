@@ -5,6 +5,7 @@
 }
 
 .dashboard-toggle-container{
+    cursor: pointer;
     width: max-content;
     display: flex;
     flex-direction: row;
@@ -22,18 +23,18 @@
 
 .dashboard-reviewed{
     border-radius: 0px 20px 20px 0px;
-    box-shadow: 0 15px 0 0 rgb(77,115,138);
+    box-shadow: 0 10px 0 0 rgb(77,115,138);
 }
 
 .dashboard-unreviewed{
     border-right: 5px solid black;
     border-radius: 20px 0px 0px 20px;
-    box-shadow: 0 15px 0 0 rgb(77,115,138);
+    box-shadow: 0 10px 0 0 rgb(77,115,138);
 }
 
 .dashboard-toggle-active{
     transform: translateY(5px);
-    box-shadow: 0 10px 0 0 rgb(67,88,93);
+    box-shadow: 0 5px 0 0 rgb(67,88,93);
 }
 
 .dashboard-filter-container{
@@ -43,49 +44,10 @@
 
 .dashboard-card-grid{
     margin-top:30px;
+    margin-bottom: 30px;
     display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap:20px;
+    grid-template-columns: repeat(4, 350px);
+    gap:30px;
 }
 
-.dashboard-card{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    overflow: hidden;
-    background-color: black;
-    color: white;
-    gap:5px;
-    border-radius: 10px;
-}
-
-.dashboard-card-pdf{
-    width:110%;
-}
-
-.dashboard-card-info{
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap:15px;
-}
-
-.dashboard-card-pname{
-    font-size: 3em;
-}
-
-.rating-container{
-    margin-left:5px;
-    display: flex;
-    font-size: 1.5em;
-}
-
-.dashboard-card-aname{
-    font-size: 2em;
-}
-
-.dashboard-card-info > p{
-    font-size: 1.5em;
-}
 

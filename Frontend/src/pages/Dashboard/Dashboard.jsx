@@ -1,8 +1,7 @@
 import React from 'react';
 import Navbar from '../../components/Navbar';
+import Card from '../../components/Card/Card';
 import './Dashboard.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -12,6 +11,22 @@ const Dashboard = () => {
     function handleReviewStatusToggle(){
         setReviewStatus((prevstate) => !prevstate);
     }
+
+    const array=[   {id:1,paperName:"Exploring the Cosmos",rating:9.5,authorName:"Dr Joel Joseph",tags:["Science","Technology","Art","Management"]},
+                    {id:2,paperName:"Exploring the Cosmos",rating:9.5,authorName:"Dr Joel Joseph",tags:["Science","Technology","Art","Management"]},
+                    {id:3,paperName:"Exploring the Cosmos",rating:9.5,authorName:"Dr Joel Joseph",tags:["Science","Technology","Art","Management"]},
+                    {id:4,paperName:"Exploring the Cosmos",rating:9.5,authorName:"Dr Joel Joseph",tags:["Science","Technology","Art","Management"]},
+                    {id:5,paperName:"Exploring the Cosmos",rating:9.5,authorName:"Dr Joel Joseph",tags:["Science","Technology","Art","Management"]},
+                    {id:6,paperName:"Exploring the Cosmos",rating:9.5,authorName:"Dr Joel Joseph",tags:["Science","Technology","Art","Management"]},
+                    {id:7,paperName:"Exploring the Cosmos",rating:9.5,authorName:"Dr Joel Joseph",tags:["Science","Technology","Art","Management"]},
+                    {id:8,paperName:"Exploring the Cosmos",rating:9.5,authorName:"Dr Joel Joseph",tags:["Science","Technology","Art","Management"]}
+                ]
+
+    const cardArray=array.map((obj) => {
+        return <Card id={obj.id} paperName={obj.paperName} rating={obj.rating} authorName={obj.authorName} tags={obj.tags} />
+    })
+
+    console.log(cardArray)
 
     return (
         <>
@@ -26,107 +41,9 @@ const Dashboard = () => {
                         <div>Filter by Review Rating</div> */}
                 </div>
                 <div className='dashboard-card-grid'>
-                    <div className='dashboard-card'>
-                        <iframe src='/Assignment2.pdf' className='dashboard-card-pdf'/>
-                        <div className='dashboard-card-info'>    
-                            <h1 className='dashboard-card-pname'>Paper Name</h1>
-                            <div className='rating-container'>
-                                <FontAwesomeIcon icon={faStar} color='yellow'></FontAwesomeIcon>
-                                <p>Rating amount</p>
-                            </div>
-                            <h2 className='dashboard-card-aname'>Author Name</h2>
-                            <p>Tags</p>
-                        </div>
-                    </div>
-                    <div className='dashboard-card'>
-                        <iframe src='/Assignment2.pdf' className='dashboard-card-pdf'/>
-                        <div className='dashboard-card-info'>    
-                            <h1 className='dashboard-card-pname'>Paper Name</h1>
-                            <div className='rating-container'>
-                                <FontAwesomeIcon icon={faStar} color='yellow'></FontAwesomeIcon>
-                                <p>Rating amount</p>
-                            </div>
-                            <h2 className='dashboard-card-aname'>Author Name</h2>
-                            <p>Tags</p>
-                        </div>
-                    </div>
-                    <div className='dashboard-card'>
-                        <iframe src='/Assignment2.pdf' className='dashboard-card-pdf'/>
-                        <div className='dashboard-card-info'>    
-                            <h1 className='dashboard-card-pname'>Paper Name</h1>
-                            <div className='rating-container'>
-                                <FontAwesomeIcon icon={faStar} color='yellow'></FontAwesomeIcon>
-                                <p>Rating amount</p>
-                            </div>
-                            <h2 className='dashboard-card-aname'>Author Name</h2>
-                            <p>Tags</p>
-                        </div>
-                    </div>
-                    <div className='dashboard-card'>
-                        <iframe src='/Assignment2.pdf' className='dashboard-card-pdf'/>
-                        <div className='dashboard-card-info'>    
-                            <h1 className='dashboard-card-pname'>Paper Name</h1>
-                            <div className='rating-container'>
-                                <FontAwesomeIcon icon={faStar} color='yellow'></FontAwesomeIcon>
-                                <p>Rating amount</p>
-                            </div>
-                            <h2 className='dashboard-card-aname'>Author Name</h2>
-                            <p>Tags</p>
-                        </div>
-                    </div>
-                    <div className='dashboard-card'>
-                        <iframe src='/Assignment2.pdf' className='dashboard-card-pdf'/>
-                        <div className='dashboard-card-info'>    
-                            <h1 className='dashboard-card-pname'>Paper Name</h1>
-                            <div className='rating-container'>
-                                <FontAwesomeIcon icon={faStar} color='yellow'></FontAwesomeIcon>
-                                <p>Rating amount</p>
-                            </div>
-                            <h2 className='dashboard-card-aname'>Author Name</h2>
-                            <p>Tags</p>
-                        </div>
-                    </div>
-                    <div className='dashboard-card'>
-                        <iframe src='/Assignment2.pdf' className='dashboard-card-pdf'/>
-                        <div className='dashboard-card-info'>    
-                            <h1 className='dashboard-card-pname'>Paper Name</h1>
-                            <div className='rating-container'>
-                                <FontAwesomeIcon icon={faStar} color='yellow'></FontAwesomeIcon>
-                                <p>Rating amount</p>
-                            </div>
-                            <h2 className='dashboard-card-aname'>Author Name</h2>
-                            <p>Tags</p>
-                        </div>
-                    </div>
-                    <div className='dashboard-card'>
-                        <iframe src='/Assignment2.pdf' className='dashboard-card-pdf'/>
-                        <div className='dashboard-card-info'>    
-                            <h1 className='dashboard-card-pname'>Paper Name</h1>
-                            <div className='rating-container'>
-                                <FontAwesomeIcon icon={faStar} color='yellow'></FontAwesomeIcon>
-                                <p>Rating amount</p>
-                            </div>
-                            <h2 className='dashboard-card-aname'>Author Name</h2>
-                            <p>Tags</p>
-                        </div>
-                    </div>
-                    <div className='dashboard-card'>
-                        <iframe src='/Assignment2.pdf' className='dashboard-card-pdf'/>
-                        <div className='dashboard-card-info'>    
-                            <h1 className='dashboard-card-pname'>Paper Name</h1>
-                            <div className='rating-container'>
-                                <FontAwesomeIcon icon={faStar} color='yellow'></FontAwesomeIcon>
-                                <p>Rating amount</p>
-                            </div>
-                            <h2 className='dashboard-card-aname'>Author Name</h2>
-                            <p>Tags</p>
-                        </div>
-                    </div>
+                    {cardArray}
                 </div>  
             </div>
-            {/* <div className='card-container'>
-                <iframe src='/Assignment2.pdf'className='card-pdf'/>
-            </div> */}
         </>
     )
 }
