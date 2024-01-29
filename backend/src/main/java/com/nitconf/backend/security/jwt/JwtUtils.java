@@ -86,6 +86,10 @@ public class JwtUtils {
                 .signWith(key(), SignatureAlgorithm.HS256)
                 .compact();
   }
+
+  public ResponseCookie deleteJwtCookie(){
+    return ResponseCookie.from(jwtCookie,"").path("/api").maxAge(0).httpOnly(true).build();
+  }
 }
 
 

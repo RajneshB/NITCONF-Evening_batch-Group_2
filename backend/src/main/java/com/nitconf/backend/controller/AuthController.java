@@ -2,10 +2,14 @@
 
 package com.nitconf.backend.controller;
 
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -27,6 +31,8 @@ import com.nitconf.backend.repository.UserRepository;
 import com.nitconf.backend.security.jwt.JwtUtils;
 import com.nitconf.backend.security.services.UserDetailsImpl;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,7 +41,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 
 
-@CrossOrigin(origins="*", maxAge = 3600)
+@CrossOrigin(origins="http://localhost:5173", maxAge = 3600,allowCredentials = "true")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -50,6 +56,8 @@ public class AuthController {
 
     @Autowired
     JwtUtils jwtUtils;
+    private static final Logger logger =LoggerFactory.getLogger(AuthController.class);
+    
     
     @PostMapping("/signIn")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest){
@@ -87,6 +95,38 @@ public class AuthController {
             return ResponseEntity.ok(new MessageResponse("Account created"));
 
 
+    }
+    @PostMapping("/logout")
+    public ResponseEntity<?> logoutUser(HttpServletRequest request, HttpServletResponse response){
+        try{
+            logger.info("Received logout request.");
+            String jwt= jwtUtils.getJwtFromCookies(request);
+            logger.info("Received JWT: {}", jwt);
+            if (jwt != null) {
+                if (jwtUtils.validateJwtToken(jwt)) {
+                    // Valid token
+                    logger.info("JWT is valid.");
+                } else {
+                    // Invalid token
+                    logger.error("JWT is invalid.");
+                }
+            }
+            if(jwt!=null && jwtUtils.validateJwtToken(jwt)){
+                SecurityContextHolder.clearContext();
+
+                ResponseCookie  jwtCookie=jwtUtils.deleteJwtCookie();
+                response.addHeader(HttpHeaders.SET_COOKIE,jwtCookie.toString());
+                logger.info("Logout successful.");
+                return  ResponseEntity.ok(new MessageResponse("Logout Successful"));
+            } else {
+                logger.error("Invalid or expired token.");
+                return ResponseEntity.badRequest().body(new MessageResponse("Invalid or expired token"));
+            }
+        }catch(Exception e){
+             logger.error("Exception during logout:", e);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new MessageResponse("Internal Server Error"));
+    
+        }
     }
 private byte[] loadDefaultImageContent() {
     try {
