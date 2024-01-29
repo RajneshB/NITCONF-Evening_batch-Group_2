@@ -1,0 +1,26 @@
+.pdfContainer{
+    height: calc(100vh - 100px);
+    width: 50vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    .pdfDoc{
+        height: calc(100vh - 100px);
+        width: 50vw;
+    }
+
+    .navbtn{
+        background-color: black;
+        width: max-content;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        button{
+            
+        }
+    }
+    
+}
