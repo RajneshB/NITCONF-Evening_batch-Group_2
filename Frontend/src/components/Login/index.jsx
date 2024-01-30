@@ -1,5 +1,7 @@
 import React from "react"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
 import './styles.css'
 import image1 from "../../assets/image1.webp"
 // import {faMoon} from "@fortawesome/free-solid-svg-icons"
@@ -12,8 +14,25 @@ import Navbar from '../Navbar'
 
 const Login = () =>{
     const [showPass,setShowPass]=React.useState(false)
-
-
+    const [email,setEmail]=React.useState("");
+    const [password,setPassword]=React.useState("");
+    const navigate=useNavigate();
+    async function login(event){
+      event.preventDefault();
+      try{
+        const res = await axios.post("http://localhost:8080/api/auth/signIn", {
+          email:email,
+          password:password,
+        },{
+          withCredentials: true
+        });
+        console.log(res);
+        navigate("/dashboard");
+      }
+      catch(err){
+        alert("Login Error");
+      }
+    }
     function togglePass(){
         setShowPass(prevShow => !prevShow)
     }
@@ -34,12 +53,12 @@ const Login = () =>{
             <p className="login--text">Program Committee Login</p>
             <div className="input--login">
                 <FontAwesomeIcon icon={faEnvelope}  className="input--icon"/>
-                <input type="text" placeholder="Email"  className="input--text"/>
+                <input type="text" placeholder="Email"  className="input--text" value={email} onChange={(event) =>setEmail(event.target.value)}/>
 
             </div>
             <div className="input--login">
                 <FontAwesomeIcon icon={faLock}  className="input--icon"/>
-                <input type={showPass? "text":"password"} placeholder="Password"  className="input--text"/>
+                <input type={showPass? "text":"password"} placeholder="Password"  className="input--text" value={password} onChange={(event) =>setPassword(event.target.value)}/>
                 {eyeIcon}
 
             </div>
@@ -48,7 +67,7 @@ const Login = () =>{
                     <label htmlFor="remember--check" className="remember--text">Remember me</label>
                     <a href="#" className="forgot--pass">Forgot Password</a>
             </div>
-            <button type="submit"className="login--submit">Login</button>
+            <button type="submit"className="login--submit" onClick={login}>Login</button>
           </div>
         </div>
       </div>
