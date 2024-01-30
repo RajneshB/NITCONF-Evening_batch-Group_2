@@ -17,6 +17,7 @@ const Login = () =>{
     const [email,setEmail]=React.useState("");
     const [password,setPassword]=React.useState("");
     const navigate=useNavigate();
+    console.log("hello")
     async function login(event){
       event.preventDefault();
       try{
