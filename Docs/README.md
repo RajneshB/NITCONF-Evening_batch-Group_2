@@ -11,7 +11,7 @@ Prepared by Johann B Simon, Rajnesh B and Joel Joseph.
 # Table of Contents
 
 
-* [Revision History](#RevisionHistory)
+* [Revision History](#revision-history)
 * [Introduction](#1-introduction)
   * 1.1 [Purpose](#11-purpose)
   * 1.2 [Intended Audience](#12-intended-audience)
@@ -28,8 +28,9 @@ Prepared by Johann B Simon, Rajnesh B and Joel Joseph.
 * [System Features](#3-system-features)
   * 3.1 [Login and Validation](#31-login-and-validation)
   * 3.2 [Profile](#32-profile)
-  * 3.3 [View Reviewed Papers](#33-view-reviewed-papers)
-  * 3.4 [View All Papers](#34-view-all-papers)
+  * 3.3 [Dashboard](#33-dashboard)
+  * 3.4 [View-Reviewed-Paper](#34-view-reviewed-paper)
+  * 3.5 [View-Unreviewed-Papers](#35-view-unreviewed-papers)
 * [Other Nonfunctional Requirements](#4-other-nonfunctional-requirements)
   * 4.1 [Performance Requirements](#41-performance-requirements)
   * 4.2 [Safety Requirements](#42-safety-requirements)
@@ -37,7 +38,6 @@ Prepared by Johann B Simon, Rajnesh B and Joel Joseph.
   * 4.4 [Software Quality Attributes](#44-software-quality-attributes)
   * 4.5 [Business Rules](#45-business-rules)
 * [Appendix](#appendix)
-
 
 # Revision History
 
@@ -216,116 +216,104 @@ Users are assumed to have access to reliable internet connectivity and devices c
 
 ## 3. System Features
 
+### 3.1 Login and Validation
 
-## 3.1 Login and Validation
+#### 3.1.1 Description and Priority
 
+This feature facilitates user authentication and credential validation, assigned a priority level of High.
 
-### 3.1.1 Description and Priority
+#### 3.1.2 Stimulus/Action Sequences
 
+1. **User Login (Function 3.1.3.1):** Users must input their credentials, including Email and Password.
+2. **Credential Validation (Function 3.1.3.2):** The system must verify provided credentials.
+3. **Redirect on Validation (Functions 3.1.3.3 to 3.1.3.6):**
+    - If validation fails, return to the Login feature.
+    - If validation succeeds, redirect the user to the Dashboard (Function 3.3).
 
-This feature enables users to log in and validates their credentials. It is of High priority.
+#### 3.1.3 Functional Requirements
 
+1. **User Login (Function 3.1.3.1):** Users must be able to input their credentials.
+2. **Credential Validation (Function 3.1.3.2):** The system must verify the provided credentials.
+3. **Redirect to Dashboard (Function 3.1.3.3):** If validation succeeds, redirect the user to the Dashboard feature.
 
-### 3.1.2 Stimulus/Response Sequences
+### 3.2 System Feature: Profile
 
+#### 3.2.1 Description and Priority
 
+This feature allows users to manage their profile information, assigned a priority level of Medium.
 
-* User provides login credentials.
-* System validates credentials.
-* If validation fails, return to the Login feature.
-* If validation succeeds, proceed to the Profile, View-reviewed-papers, and View-all-papers features.
+#### 3.2.2 Stimulus/Action Sequences
 
+1. **User Accesses Profile (Function 3.2.3.1):** Users access the Profile feature, where they can view information regarding their Name, Email, Phone Number, Profession, Date of Birth, and Profile Picture.
+2. **User Updates Profile (Function 3.2.3.2):** Users update their profile information, with the ability to modify details such as Name, Email, Phone Number, Profession, Date of Birth, and Profile Picture.
 
-### 3.1.3 Functional Requirements
+#### 3.2.3 Functional Requirements
 
+1. **View Profile (Function 3.2.3.1):** Users can view their profile information.
+2. **Edit Profile (Function 3.2.3.2):** Users can edit and update their profile details.
 
+### 3.3 System Feature: Dashboard
 
-1. **User Login:** Users must be able to input their credentials.
-2. **Credential Validation:** The system must verify the provided credentials.
-3. **Redirect to Profile:** If validation succeeds, redirect the user to the Profile feature.
-4. **Redirect to View-reviewed-papers:** If validation succeeds, redirect the user to the View-reviewed-papers feature.
-5. **Redirect to View-all-papers:** If validation succeeds, redirect the user to the View-all-papers feature.
+#### 3.3.1 Description and Priority
 
+This feature enables users to view all papers and perform various actions, assigned a priority level of Medium.
 
-## 3.2 System Feature: Profile
+#### 3.3.2 Stimulus/Action Sequences for the Dashboard
 
+- **Toggle Papers (Function 3.3.3.1):** Users initiate the action to switch between unreviewed and reviewed papers.
+- **View Options (Function 3.3.3.2):** Users trigger the action to view information about papers in grid or list view.
+- **Filter by Review Ratings (Function 3.3.3.3):** Users prompt the system to filter papers based on review ratings.
+- **Filter by Tags (Function 3.3.3.3):** Users activate the action to filter papers based on tags.
 
-### 3.2.1 Description and Priority
+#### 3.3.3 Stimulus/Action Sequences for Each Paper
 
+- **View Paper Tags (Function 3.3.3.4):** Users elicit the action to view the tags associated with a specific paper.
+- **View Specific Paper (Function 3.3.3.5):** Users initiate the action to view detailed information about a specific paper.
 
-This feature allows users to manage their profile information. It is of Medium priority.
+#### 3.3.3 Functional Requirements
 
+1. **Toggle Papers (Function 3.3.3.1):** Option to switch between unreviewed and reviewed papers.
+2. **View Options (Function 3.3.3.2):** Options to view information about papers in grid and list view.
+3. **Filter Options (Function 3.3.3.3):** Options to filter based on review ratings and tags.
+4. **View a paper (Function 3.3.3.4):** Option to view a specific paper.
+5. **View paper tags (Function 3.3.3.5):** Option to view a specific paper's tags.
 
-### 3.2.2 Stimulus/Response Sequences
+### 3.4 System Feature: View-Reviewed-Paper
 
+#### 3.4.1 Description and Priority
 
+This feature allows users to view reviewed papers and take actions on them, assigned a priority level of High.
 
-* User accesses the Profile feature.
-* Users update profile information.
+#### 3.4.2 Stimulus/Action Sequences for Reviewed Paper
 
+- **View Reviewer Comments (Function 3.4.3.1):** Users initiate the action to view comments provided by reviewers on a reviewed paper.
+- **Assign Reviewer with Deadline (Function 3.4.3.2):** Users trigger the action to assign a reviewer to a paper with a specified deadline.
+- **Send Reminder to Reviewer (Function 3.4.3.3):** Users prompt the system to send a reminder to the assigned reviewer.
+- **Accept Paper with a message (Function 3.4.3.4):** Users initiate the action to accept a reviewed paper, accompanied by a message.
+- **Reject Paper with a message (Function 3.4.3.5):** Users initiate the action to reject a reviewed paper, accompanied by a message.
 
-### 3.2.3 Functional Requirements
+#### 3.4.3 Functional Requirements
 
+1. **View Reviewer Comments (Function 3.4.3.1):** Display a list of reviewed papers.
+2. **Assign Reviewer with Deadline (Function 3.4.3.2):** Allow the user to assign a reviewer to a paper with a deadline.
+3. **Send Reminder to Reviewer (Function 3.4.3.3):** Allow the user to send a reminder to the reviewer.
+4. **Accept Paper with a message (Function 3.4.3.4):** Allow the user to accept a reviewed paper with a message.
+5. **Reject Paper with a message (Function 3.4.3.5):** Allow the user to reject a reviewed paper with a message.
+### 3.5 System Feature: View-Unreviewed-Papers
 
+#### 3.5.1 Description and Priority
 
-1. **View Profile:** Users can view their profile information.
-2. **Edit Profile:** Users can edit and update their profile details.
+This feature enables users to view unreviewed papers and perform various actions, assigned a priority level of Medium.
 
+#### 3.5.2 Stimulus/Action Sequences for Unreviewed Papers
 
-## 3.3 System Feature: View-reviewed-papers
+- **Assign Reviewer with a Deadline (Function 3.5.3.1):** Users initiate the action to add a reviewer to an unreviewed paper with a specified deadline.
+- **Send Reminder to Reviewer (Function 3.5.3.2):** Users prompt the system to send a reminder to reviewers associated with unreviewed papers.
 
+#### 3.5.3 Functional Requirements
 
-### 3.3.1 Description and Priority
-
-
-This feature allows users to view reviewed papers and take actions on them. It is of High priority.
-
-
-### 3.3.2 Stimulus/Response Sequences
-
-
-
-* User accesses the View-reviewed-papers feature.
-* User performs actions like Accept, Reject, or Assign Reviewer on a paper.
-
-
-### 3.3.3 Functional Requirements
-
-
-
-1. **List Reviewed Papers:** Display a list of reviewed papers.
-2. **Accept Paper:** Allow the user to accept a reviewed paper.
-3. **Reject Paper:** Allow the user to reject a reviewed paper.
-4. **Assign Reviewer:** Allow the user to assign a reviewer to a paper.
-
-
-## 3.4 System Feature: View-all-papers
-
-
-### 3.4.1 Description and Priority
-
-
-This feature enables users to view all papers and perform various actions. It is of Medium priority.
-
-
-### 3.4.2 Stimulus/Response Sequences
-
-
-
-* User accesses the View-all-papers feature.
-* Users perform actions like filtering, adding reviewers, sending reminders, and contacting authors.
-
-
-### 3.4.3 Functional Requirements
-
-
-
-1. **List All Papers:** Display a list of all papers.
-2. **Filter Papers:** Allow the user to filter papers based on criteria.
-3. **Add Reviewer:** Enable the user to add a reviewer to a paper.
-4. **Send Reminder:** Allow the user to send reminders to authors.
-5. **Contact Author:** Provide a means for users to contact paper authors.
-
+1. **Assign Reviewer with a deadline (Function 3.5.3.1):** Enable the user to add a reviewer to an unreviewed paper with a deadline.
+2. **Send Reminder to Reviewer (Function 3.5.3.2):** Allow the user to send reminders to reviewers associated with unreviewed papers.
 
 # 4. Other Nonfunctional Requirements
 
