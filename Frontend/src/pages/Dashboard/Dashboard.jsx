@@ -2,9 +2,10 @@ import React from 'react';
 import Navbar from '../../components/Navbar';
 import Table from '../../components/Table/Table';
 import Card from '../../components/Card/Card'
+import Select from 'react-dropdown-select'
 import './Dashboard.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBorderAll, faList } from '@fortawesome/free-solid-svg-icons';
+import { faBorderAll, faFilter, faList } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -12,6 +13,19 @@ const Dashboard = () => {
     const [reviewStatus,setReviewStatus]=React.useState(true);
 
     const [list,setList]=React.useState(false);
+
+    const [selectedOption, setSelectedOption] = React.useState('None');
+
+    const options=[
+        {id:'Science',name:'Science'},
+        {id:'Technology',name:'Technology'},
+        {id:'Art',name:'Art'},
+        {id:'Management',name:'Management'}
+    ]
+
+    const handleSelectChange = (event) => {
+        setSelectedOption(event.target.value);
+    };
 
     function handleReviewStatusToggle(){
         setReviewStatus((prevstate) => !prevstate);
@@ -55,6 +69,32 @@ const Dashboard = () => {
                             <div className={`grid-view ${!list ? 'gactive' : ''}`} onClick={() => setList(false)}>
                                 <FontAwesomeIcon icon={faBorderAll} className='view-icon' />
                                 <span>Grid View</span>
+                            </div>
+                        </div>
+                        <div className="filter-container">
+                            <div className="filter-rating">
+                                <FontAwesomeIcon icon={faFilter} className='filter-icon'/>
+                                <div>Filter by Rating</div>
+                                <select className='filter-select' value={selectedOption} onChange={handleSelectChange}>
+                                    <option value="None">None</option>
+                                    <option value="Ascending">Ascending</option>
+                                    <option value="Descending">Descending</option>
+                                </select>
+                            </div>
+                            <div className="filter-tag">
+                                <FontAwesomeIcon icon={faFilter} className='filter-icon'/>
+                                <div>Filter by Tags</div>
+                                <Select
+                                    className='tag-select'
+                                    name="select"
+                                    options={options}
+                                    labelField='id'
+                                    valueField='name'
+                                    multi
+                                    color='rgb(21,199,113)'
+                                    searchable='true'
+                                    placeholder='Select your tags'
+                                ></Select>
                             </div>
                         </div>
                 </div>
