@@ -1,0 +1,94 @@
+.dashboard-table{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap:20px;
+    border: solid black;
+    padding: 0px 10px;
+
+    .table-icon-container{
+        width: 70px;
+        height: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-right: solid black;
+
+        .dashboard-table-icon{
+            height: 40px;
+            width: 40px;
+        }
+    }
+
+    .dashboard-table-info{
+        display: flex;
+        align-items: center;
+        gap:20px;
+
+        .table-h1{
+            height: 100%;
+            border-right: solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px 0px 0 ;
+
+            h1{
+                font-size: 3em;
+            }
+        }
+
+
+        .table-rating-container{
+            height: 100%;
+            border-right: solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px 0px 0 ;
+            font-size: 2em;
+        }
+
+        .table-h2{
+            height: 100%;
+            border-right: solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px 0px 0 ;
+
+            h2{
+                font-size: 2.5em;
+            }
+        }
+
+
+        .table-tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 1.75em;
+            color: #505050;
+            max-width: 100%;
+    
+            span {
+                background-color: #ebebeb;
+                border-radius: 40px;
+                padding: 5px;
+                white-space: nowrap;
+            }
+    
+            .table-excess-button {
+                background-color:rgb(21,199,113);
+                color: black;
+                border-radius: 40px;
+                padding: 5px;
+                cursor: pointer;
+            }
+        }
+    
+        .tag-hidden {
+            display: none;
+        }
+    }
+}
