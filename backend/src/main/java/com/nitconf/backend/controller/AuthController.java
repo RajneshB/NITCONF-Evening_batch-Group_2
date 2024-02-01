@@ -88,7 +88,12 @@ public class AuthController {
             byte[] defaultPic=loadDefaultImageContent();
             User user=new User(signupRequest.getUsername(), 
             signupRequest.getEmail(),
-            encoder.encode(signupRequest.getPassword()),defaultPic);
+            encoder.encode(signupRequest.getPassword()),
+            "",
+            "",
+            null,
+            defaultPic
+            );
 
 
             userRepository.save(user);

@@ -11,7 +11,7 @@ const Profile = () =>{
     const [light,setLight]=useState(true);
     const [edit,setEdit]=useState(false);
     const [img,setImg]=useState(profPic);
-    const [data, setData] = useState({ name: 'John Doe', contact: '+91 9747525206', mail: 'john@gmail.com', profession: 'Professor at NIT Calicut', doj: '2012-09-11' });
+    const [data, setData] = useState({ name: 'Johnny Doe', contact: '+91 9747525206', mail: 'john@gmail.com', profession: 'Professor at NIT Calicut', doj: '2012-09-11' });
     const [err, setErr] = useState(false);
     const [loading, setLoading] = useState(false);
     const [file,setFile]=useState(null);
@@ -41,13 +41,34 @@ const Profile = () =>{
     }
 
     const getProfile = async () => {
-        const details = await axios.get("http://localhost:8080/api/profile");
-        const profDetails = details.data;
-        setData(...profDetails);
+        try {
+            const details = await axios.get("http://localhost:8080/api/profile", { withCredentials: true });
+            const profDetails = details.data;
+            const dojFormatted = new Date(profDetails.doj);
+            const formattedDate = dojFormatted.toLocaleDateString();
+            const displayData = {
+            name: profDetails.username,
+            contact: profDetails.contact,
+            mail: profDetails.email,
+            profession: profDetails.profession,
+            doj: formattedDate,
+            };
+            setData(displayData);
+        } catch (error) {
+            setErr(error.response ? error.response.data : 'An error occurred');
+        }
+          
     }
 
     const updateProfile = async () => {
-        const updateStatus = await axios.put("http://localhost:8080/api/profile/65b4e8c93dc997e3d8c39c56",data);
+              const displayData = {
+                name: data.name,
+                contact: data.contact,
+                mail: data.mail,
+                profession: data.profession,
+                doj: data.doj,
+              };
+        const updateStatus = await axios.put("http://localhost:8080/api/profile",displayData, {withCredentials: true});
     }
 
     return(
