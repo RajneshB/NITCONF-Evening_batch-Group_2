@@ -49,7 +49,7 @@ public class ResetPasswordService {
         mailMessage.setTo(email);
         mailMessage.setSubject("Password Reset Link");
         mailMessage.setText("Click the link below to reset your password:\n\n"
-                + "http://localhost:5173/reset-password?token=" + token);
+                + "http://localhost:5173/#/reset-password?token=" + token);
         javaMailSender.send(mailMessage);
 
     }

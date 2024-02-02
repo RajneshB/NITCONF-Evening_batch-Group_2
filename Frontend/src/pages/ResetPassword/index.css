@@ -1,0 +1,68 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+.reset--card{
+    inset: 0;
+    margin: auto;
+    margin-top: 30px;
+    height: 40rem;
+    width: 36rem;
+    border: 1px solid grey;
+    border-radius: 8px;
+    box-shadow: 0 0 3px;
+    padding: 40px 20px;
+}
+#reset--title{
+    font-size: 24px;
+    padding: 10px;
+    border-bottom: 1px solid rgb(128,128,128,50%);
+}
+#reset--password{
+    margin-top: 24px;
+    border: 1px solid rgb(128,128,128,50%);
+    border-radius: 6px;
+    height: 4rem;
+    width: 100%;
+    text-indent: 10px;
+    font-size: 16px;
+    outline:none;
+}
+#confirm--password{
+    margin-top: 24px;
+    border: 1px solid rgb(128,128,128,50%);
+    border-radius: 6px;
+    height: 4rem;
+    width: 100%;
+    text-indent: 10px;
+    font-size: 16px;
+    outline:none;
+}
+#Invalid{
+    margin-top: 10px;
+    color:red;
+    font-size: 12px;
+    font-weight: 300;
+}
+
+#updatePass{
+    color: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 6rem;
+    height: 4rem;
+    width: auto;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #4c68d7 ;
+}
+
+#updatePass:active{
+    background-color: #2749d1 ;
+
+}

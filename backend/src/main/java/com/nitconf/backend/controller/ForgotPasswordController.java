@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.nitconf.backend.models.User;
 import com.nitconf.backend.payload.request.ForgotPasswordRequest;
+import com.nitconf.backend.payload.request.PasswordResetRequest;
 import com.nitconf.backend.payload.response.MessageResponse;
 import com.nitconf.backend.repository.UserRepository;
 import com.nitconf.backend.security.services.ResetPasswordService;
@@ -46,6 +48,18 @@ public class ForgotPasswordController {
             return ResponseEntity.badRequest().body(new MessageResponse("User not found"));
 
         }
+    }
+    @PostMapping("/updatePassword")
+    public ResponseEntity<?> passwordReset(@Valid @RequestBody PasswordResetRequest request,@RequestParam String token){
+        String newPassword= request.getPassword();
+        User user= resetPasswordService.get(token);
+        if(user!=null){
+            resetPasswordService.updatePassword(user, newPassword);
+            return ResponseEntity.ok(new MessageResponse("PasswordSuccessfully changed"));
+        }else{
+            return ResponseEntity.badRequest().body(new MessageResponse("User not found"));
+        }
+
     }
 
 }
