@@ -1,12 +1,103 @@
 .paperPage{
-    height: 91.7vh;
-    width: 100vw;
+     height: 91.7vh;
+     width: 100vw;
     background: black;
     overflow: hidden;
+    border-top: 1px solid white;
+    display: flex;
+    flex-direction: row;
 
     .viewPaper{
-        position: absolute;
+        flex:1;
+        // position: absolute;
         bottom: 0;
         background: black;
     }
+    .interactive{
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        margin-top: 60px;
+        gap: 100px;
+
+        .paper--buttons--container{
+            height: 5rem;
+            display: flex;
+            justify-content: space-around;
+
+            .paper--buttons{
+                font-size: 18px;
+                padding: 4px;
+                height: 4.5rem;
+                width: 23%;
+                background-color: grey;
+                color: white;
+                border-radius: 50rem;
+                cursor: pointer;
+                transition: transform 0.5s ease;
+                border:1px solid grey;
+            }
+            .paper--buttons:hover{
+                transform: scale(1.3);
+                box-shadow: 0 0 5px white;
+            }
+            .paper--buttons:active{
+                opacity: 0.4;
+            }
+
+        }
+        .Comments--container{
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            margin-left: auto;
+            margin-right: auto;
+            width: 70%;
+            background-color: rgb(128,128,128,0.5);
+            height: 75%;
+            gap: 15px;
+            border-radius: 8px;
+            overflow-y: scroll;
+
+            
+            color: white;
+            #comment--title{
+                height: 40px;
+                width: 100%;
+                font-size: 24px;
+                padding-bottom: 5px;
+                border-bottom: 1px solid white;
+                
+            }
+            .comments{
+                margin-bottom: 2%;
+                .comment--author{
+                    font-size: 16px;
+                }
+                .Review{
+
+                    line-height: 24px;
+                    font-size: 14px;
+                    margin-top: 5px;
+                    text-indent: 4px;
+                    width: 95%
+                }
+                .tag{
+                    margin-top: 10px;
+                    display: flex;
+                    justify-content: center;
+                    font-size: 14px;
+                    align-items: center;
+                    width:20%;
+                    border-radius: 50rem;
+                    background-color: white;
+                    color: black;
+                    height: 25px ;
+                }
+            }
+
+        }
+        
+    }
+
 }

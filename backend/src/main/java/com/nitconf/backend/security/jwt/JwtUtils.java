@@ -35,6 +35,7 @@ public class JwtUtils {
     @Value("86400000")
     private int jwtExpirationMs;
 
+    @SuppressWarnings("null")
     public String getJwtFromCookies(HttpServletRequest request) {
         Cookie cookie =WebUtils.getCookie(request, jwtCookie) ;
         if(cookie != null){
@@ -44,11 +45,13 @@ public class JwtUtils {
             return null;
         }
     }
+    @SuppressWarnings("null")
     public ResponseCookie generateJwtCookie(UserDetailsImpl userDetails){
             String jwt= generateTokenFromUsername(userDetails.getEmail());
             ResponseCookie cookie=ResponseCookie.from(jwtCookie,jwt).path("/api").maxAge(24*60*60).httpOnly(true).build();
             return cookie;
     }
+    @SuppressWarnings("null")
     public ResponseCookie getCleanJwtCookie(){
         ResponseCookie cookie=ResponseCookie.from(jwtCookie,null).path("/api").maxAge(24*60*60).httpOnly(true).build();
         return cookie;
@@ -87,7 +90,8 @@ public class JwtUtils {
                 .compact();
   }
 
-  public ResponseCookie deleteJwtCookie(){
+  @SuppressWarnings("null")
+public ResponseCookie deleteJwtCookie(){
     return ResponseCookie.from(jwtCookie,"").path("/api").maxAge(0).httpOnly(true).build();
   }
 }
