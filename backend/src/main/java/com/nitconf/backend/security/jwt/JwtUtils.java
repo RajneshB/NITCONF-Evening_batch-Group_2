@@ -91,5 +91,3 @@ public class JwtUtils {
     return ResponseCookie.from(jwtCookie,"").path("/api").maxAge(0).httpOnly(true).build();
   }
 }
-
-
