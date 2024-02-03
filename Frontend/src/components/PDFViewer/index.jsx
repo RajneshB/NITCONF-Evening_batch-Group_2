@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from 'react'
 import './index.scss'
 import {Viewer,Worker} from '@react-pdf-viewer/core'
