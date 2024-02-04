@@ -8,13 +8,11 @@ import org.springframework.web.util.WebUtils;
 import com.nitconf.backend.security.services.UserDetailsImpl;
 
 import io.jsonwebtoken.*;
-import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 
 import java.security.Key;
 import java.util.Date;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,7 +33,9 @@ public class JwtUtils {
     @Value("86400000")
     private int jwtExpirationMs;
 
+    @SuppressWarnings("null")
     public String getJwtFromCookies(HttpServletRequest request) {
+        @SuppressWarnings("null")
         Cookie cookie =WebUtils.getCookie(request, jwtCookie) ;
         if(cookie != null){
             return cookie.getValue();
@@ -44,12 +44,16 @@ public class JwtUtils {
             return null;
         }
     }
+    @SuppressWarnings("null")
     public ResponseCookie generateJwtCookie(UserDetailsImpl userDetails){
             String jwt= generateTokenFromUsername(userDetails.getEmail());
+            @SuppressWarnings("null")
             ResponseCookie cookie=ResponseCookie.from(jwtCookie,jwt).path("/api").maxAge(24*60*60).httpOnly(true).build();
             return cookie;
     }
+    @SuppressWarnings("null")
     public ResponseCookie getCleanJwtCookie(){
+        @SuppressWarnings("null")
         ResponseCookie cookie=ResponseCookie.from(jwtCookie,null).path("/api").maxAge(24*60*60).httpOnly(true).build();
         return cookie;
     }
@@ -87,7 +91,8 @@ public class JwtUtils {
                 .compact();
   }
 
-  public ResponseCookie deleteJwtCookie(){
+  @SuppressWarnings("null")
+public ResponseCookie deleteJwtCookie(){
     return ResponseCookie.from(jwtCookie,"").path("/api").maxAge(0).httpOnly(true).build();
   }
 }
