@@ -1,6 +1,8 @@
 package com.nitconf.backend.security;
 
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -59,6 +61,7 @@ public class SecurityConfig {
         .authorizeHttpRequests(auth -> 
           auth.requestMatchers("/api/auth/**").permitAll()
               .requestMatchers("/api/paper/**").permitAll()
+              .requestMatchers("/api/forgotPassword/**").permitAll()
               .anyRequest().authenticated()
         );
     http.authenticationProvider(authenticationProvider());

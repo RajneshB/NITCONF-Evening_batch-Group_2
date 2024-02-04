@@ -3,6 +3,8 @@
 package com.nitconf.backend.controller;
 
 
+import java.util.Date;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,7 +90,12 @@ public class AuthController {
             byte[] defaultPic=loadDefaultImageContent();
             User user=new User(signupRequest.getUsername(), 
             signupRequest.getEmail(),
-            encoder.encode(signupRequest.getPassword()),defaultPic);
+            encoder.encode(signupRequest.getPassword()),
+            "",
+            "",
+            new Date(),
+            defaultPic
+            );
 
 
             userRepository.save(user);

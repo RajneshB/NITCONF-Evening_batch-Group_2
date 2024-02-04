@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from 'react'
 import './index.scss'
 import {Viewer,Worker} from '@react-pdf-viewer/core'
@@ -10,6 +11,8 @@ import { ScrollMode } from '@react-pdf-viewer/core';
 import { pageNavigationPlugin, NextIcon, PreviousIcon } from '@react-pdf-viewer/page-navigation';
 import '@react-pdf-viewer/page-navigation/lib/styles/index.css';
 import { GoToPreviousPage, GoToNextPage, RenderGoToPageProps } from '@react-pdf-viewer/page-navigation';
+import PropTypes from 'prop-types';
+
 
 const PDFViewer = () => {
     const [pdfFIle,setpdfFile]=useState(null);
@@ -64,7 +67,7 @@ const PDFViewer = () => {
                             display: 'flex',
                             width: '100%',
                             background: 'black',
-                            height: '7em',
+                            height: '5em',
                             color: 'white',
                         }}
                     >
@@ -153,5 +156,6 @@ const PDFViewer = () => {
         </div>
     )
 }
+
 
 export default PDFViewer;

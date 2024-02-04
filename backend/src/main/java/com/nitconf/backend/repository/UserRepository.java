@@ -10,7 +10,7 @@ import com.nitconf.backend.models.User;
 
 public interface UserRepository extends MongoRepository<User, String> {
   Optional<User> findByUsername(String username);
-  
+  User findByResetPasswordToken(String token);
   Optional<User> findByEmail(String email);
   Boolean existsByUsername(String username);
 

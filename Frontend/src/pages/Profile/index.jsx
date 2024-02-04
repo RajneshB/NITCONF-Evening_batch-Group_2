@@ -4,18 +4,17 @@ import profPic from '../../assets/images/profpic.webp'
 import Navbar from '../../components/Navbar'
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendar, faEnvelope, faMobile, faUser, faUserTie } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router-dom';
+import { faCalendar, faCircleNotch, faEnvelope, faMobile, faSpinner, faUser, faUserTie } from '@fortawesome/free-solid-svg-icons';
+import { Buffer } from 'buffer';
 
 const Profile = () =>{
     const [light,setLight]=useState(true);
     const [edit,setEdit]=useState(false);
     const [img,setImg]=useState(profPic);
-    const [data, setData] = useState({ name: 'John Doe', contact: '+91 9747525206', mail: 'john@gmail.com', profession: 'Professor at NIT Calicut', doj: '2012-09-11' });
+    const [data, setData] = useState({ name: 'Username', contact: 'Contact', mail: 'Mail', profession: 'Profession', doj: 'DOJ' });
     const [err, setErr] = useState(false);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [file,setFile]=useState(null);
-    const navigate = useNavigate();
 
     useEffect(() => {
         getProfile();
@@ -26,8 +25,15 @@ const Profile = () =>{
     }
 
     const handleImg = (e) => {
-        setImg(URL.createObjectURL(e.target.files[0]));
-        setFile(e.target.files[0]);
+        const selectedFile=e.target.files[0];
+        if(selectedFile){
+            if (selectedFile.type === "image/png") {
+                setImg(URL.createObjectURL(selectedFile));
+                setFile(selectedFile);
+            } else {
+                console.error("Invalid file type. Please select a .png file.");
+            }
+        }
     }
 
     const handleSave = () => {
@@ -41,26 +47,74 @@ const Profile = () =>{
     }
 
     const getProfile = async () => {
-        const details = await axios.get("http://localhost:8080/api/profile");
-        const profDetails = details.data;
-        setData(...profDetails);
+        try {
+            const details = await axios.get("http://localhost:8080/api/profile", { withCredentials: true });
+            const profDetails = details.data;
+            if(profDetails.profilePic !== null){
+                const pfpic = await axios.get("http://localhost:8080/api/profile/pic", { withCredentials: true, responseType: 'arraybuffer' });
+                const pfpdata = pfpic.data;
+                const base64String = Buffer.from(pfpdata, 'binary').toString('base64');
+                const dataURL = `data:image/png;base64,${base64String}`;
+                setImg(dataURL);
+            }
+            else setImg(profPic);
+            const dojFormatted = new Date(profDetails.doj);
+            const formattedDate = dojFormatted.toLocaleDateString();
+            const displayData = {
+                name: profDetails.username,
+                contact: profDetails.contact,
+                mail: profDetails.email,
+                profession: profDetails.profession,
+                doj: formattedDate,
+            };
+            setData(displayData);
+            setLoading(false);
+        } catch (error) {
+            console.log(error)
+            setErr(error.response ? error.response.data : 'An error occurred');
+        }
+          
     }
 
     const updateProfile = async () => {
-        const updateStatus = await axios.put("http://localhost:8080/api/profile/65b4e8c93dc997e3d8c39c56",data);
-    }
+        try {
+            const profileData = {
+                name: data.name,
+                contact: data.contact,
+                mail: data.mail,
+                profession: data.profession,
+                doj: data.doj,
+            };
+            setLoading(true);
+            const updateStatus = await axios.put("http://localhost:8080/api/profile", profileData, { withCredentials: true });
+            if (file) {
+                const formData = new FormData();
+                formData.append("profilePic", file);
+                await axios.put("http://localhost:8080/api/profile/pic", formData, { withCredentials: true });
+            }
+            setLoading(false);
+        } catch (error) {
+            console.error("Error updating profile:", error.response ? error.response.data : error.message);
+        }
+    };
+    
 
     return(
         <>
         <Navbar/>
+        {loading?
+        <div className='loadingIcon'>
+            <FontAwesomeIcon icon={faSpinner} size='4x' className='loaderIcon'/>
+        </div>
+        :
         <div className="profile">
             {edit?
             <div className='profileContainer'>
                 <div className="profilePic">
-                    <input type="file" id="file" style={{ display: "none" }} onChange={event => handleImg(event)} />
+                    <input type="file" id="file" style={{ display: "none" }} onChange={event => handleImg(event)} accept="image/x-png" />
                     <label htmlFor="file" style={{ cursor: "pointer" }}>
                         <img src={img} alt='' title='click on image to edit'/>
-                    </label>
+                        <span>{file ? file.name : 'click to add a .png file as profile picture'}</span>                    </label>
                     <button onClick={handleSave}>Save changes</button>
                 </div>
                 <div className="profileInfo">
@@ -83,7 +137,7 @@ const Profile = () =>{
                     </div>
                     <div className="inputProf">
                         <FontAwesomeIcon icon={faCalendar} className='profIcon'/>
-                        <input type="date" required pattern="\d{4}-\d{2}-\d{2}" name="doj" min="2000-01-01" max="2024-04-20" placeholder='DOJ' value={data.doj} onChange={event => handleInputs(event)} />
+                        <input type="date" pattern="\d{2}-\d{2}-\d{4}" name="doj" min="01/01/2000" max="04/20/2024" placeholder='DOJ' value={data.doj} onChange={event => handleInputs(event)} />
                     </div>
                 </div>
             </div>
@@ -120,6 +174,7 @@ const Profile = () =>{
                 </div>
             </div>}
         </div>
+        }
         </>
     )
 }
