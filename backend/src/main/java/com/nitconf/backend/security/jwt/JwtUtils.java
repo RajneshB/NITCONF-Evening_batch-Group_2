@@ -33,6 +33,7 @@ public class JwtUtils {
     @Value("86400000")
     private int jwtExpirationMs;
 
+    @SuppressWarnings("null")
     public String getJwtFromCookies(HttpServletRequest request) {
         @SuppressWarnings("null")
         Cookie cookie =WebUtils.getCookie(request, jwtCookie) ;
@@ -43,12 +44,14 @@ public class JwtUtils {
             return null;
         }
     }
+    @SuppressWarnings("null")
     public ResponseCookie generateJwtCookie(UserDetailsImpl userDetails){
             String jwt= generateTokenFromUsername(userDetails.getEmail());
             @SuppressWarnings("null")
             ResponseCookie cookie=ResponseCookie.from(jwtCookie,jwt).path("/api").maxAge(24*60*60).httpOnly(true).build();
             return cookie;
     }
+    @SuppressWarnings("null")
     public ResponseCookie getCleanJwtCookie(){
         @SuppressWarnings("null")
         ResponseCookie cookie=ResponseCookie.from(jwtCookie,null).path("/api").maxAge(24*60*60).httpOnly(true).build();
