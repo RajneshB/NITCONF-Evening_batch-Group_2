@@ -49,15 +49,15 @@ const Profile = () =>{
     const getProfile = async () => {
         try {
             const details = await axios.get("http://localhost:8080/api/profile", { withCredentials: true });
-            const pfpic = await axios.get("http://localhost:8080/api/profile/pic", { withCredentials: true, responseType: 'arraybuffer' });
-            const pfpdata = pfpic.data;
-            if(pfpdata !== null){
+            const profDetails = details.data;
+            if(profDetails.profilePic !== null){
+                const pfpic = await axios.get("http://localhost:8080/api/profile/pic", { withCredentials: true, responseType: 'arraybuffer' });
+                const pfpdata = pfpic.data;
                 const base64String = Buffer.from(pfpdata, 'binary').toString('base64');
                 const dataURL = `data:image/png;base64,${base64String}`;
                 setImg(dataURL);
             }
             else setImg(profPic);
-            const profDetails = details.data;
             const dojFormatted = new Date(profDetails.doj);
             const formattedDate = dojFormatted.toLocaleDateString();
             const displayData = {
