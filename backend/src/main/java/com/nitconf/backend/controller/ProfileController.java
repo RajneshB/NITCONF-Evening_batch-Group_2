@@ -3,10 +3,18 @@ package com.nitconf.backend.controller;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.nitconf.backend.security.jwt.JwtUtils;
+import com.nitconf.backend.service.StorageService;
 import com.nitconf.backend.models.User;
 import com.nitconf.backend.repository.UserRepository;
 import com.nitconf.backend.request.profileReq;
@@ -28,16 +36,29 @@ public class ProfileController {
     @Autowired
     private JwtUtils jwtUtils;
 
-    @GetMapping("")
+    @Autowired
+    private StorageService service;
+
+    @GetMapping("/pic")
     public ResponseEntity<?> getProfile(HttpServletRequest request) {
         String jwt=jwtUtils.getJwtFromCookies(request);
         String mail=jwtUtils.getUsernameFromJwtToken(jwt);
-        System.out.println(mail);
-        Optional<User> user=profRepo.findByEmail(mail);
-        if(user==null)
-            return ResponseEntity.notFound().build();
+        User user=profRepo.findByEmail(mail).orElseThrow();
+        ByteArrayResource resource = service.downloadImage(user);
+        return ResponseEntity.ok()
+        .contentType(MediaType.valueOf("image/png"))
+        .contentLength(resource.contentLength())
+        .body(resource);
+    }
+
+    @GetMapping("")
+    public ResponseEntity<User> getUserProfile(HttpServletRequest request) {
+        String jwt=jwtUtils.getJwtFromCookies(request);
+        String mail=jwtUtils.getUsernameFromJwtToken(jwt);
+        User user=profRepo.findByEmail(mail).orElseThrow();
         return ResponseEntity.ok(user);
     }
+    
 
     @PutMapping("")
     public ResponseEntity<Object> editProfile(HttpServletRequest request, @RequestBody profileReq entity) {
@@ -55,12 +76,28 @@ public class ProfileController {
                 profile.setContact(entity.contact);
             if(entity.profession!=null)
                 profile.setProfession(entity.profession);
-            if(entity.doj!=null)
-                profile.setDoj(entity.doj);
+            // if(entity.doj!=null)
+            //     profile.setDoj(entity.doj);
             profRepo.save(profile);
             return ResponseEntity.ok("Updated successfully");
         }
         return ResponseEntity.badRequest().build();
+    }
+
+    @PutMapping("/pic")
+    public ResponseEntity<?> editProfilePic(HttpServletRequest request, @RequestParam("profilePic") MultipartFile profilePic) {
+        String jwt=jwtUtils.getJwtFromCookies(request);
+        String mail=jwtUtils.getUsernameFromJwtToken(jwt);
+        Optional<User> optionalProfile=profRepo.findByEmail(mail);
+        User profile = optionalProfile.get();
+        MultipartFile profilePicFile = profilePic;
+        if (profilePicFile != null) {
+            String uploadResult = service.uploadImage(profilePicFile,profile);
+            if (!uploadResult.equals("successful")) {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error uploading profile picture: " + uploadResult);
+            }
+        }
+        return ResponseEntity.ok(profile);
     }
     
 }

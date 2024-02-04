@@ -1,6 +1,6 @@
 package com.nitconf.backend.request;
 
-import org.springframework.format.annotation.DateTimeFormat;
+// import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -12,6 +12,6 @@ public class profileReq {
     public String mail;
     public String contact;
     public String profession;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    public java.util.Date doj;
+    // @DateTimeFormat(pattern = "yyyy-MM-dd")
+    // public java.util.Date doj;   
 }

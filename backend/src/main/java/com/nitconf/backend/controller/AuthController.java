@@ -3,6 +3,8 @@
 package com.nitconf.backend.controller;
 
 
+import java.util.Date;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,7 +93,7 @@ public class AuthController {
             encoder.encode(signupRequest.getPassword()),
             "",
             "",
-            null,
+            new Date(),
             defaultPic
             );
 
