@@ -59,6 +59,7 @@
             border-radius: 8px;
             overflow-y: scroll;
 
+
             
             color: white;
             #comment--title{
@@ -73,6 +74,13 @@
                 margin-bottom: 2%;
                 .comment--author{
                     font-size: 16px;
+                    .ratings{
+                        margin-left: 4px;
+                        font-size: 14px;
+                        font-weight: 100;
+                        color: rgb(158, 157, 157);
+
+                    }
                 }
                 .Review{
 
