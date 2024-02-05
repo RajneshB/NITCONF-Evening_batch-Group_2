@@ -30,9 +30,9 @@ const Table = ({id,paperName,rating,authorName,tags}) => {
                     {displayedTags.map((tag, index) => (
                         <span key={index}>{tag}</span>
                     ))}
-                    {showAllTags?
-                        <div className="table-excess-button" onClick={() => setShowAllTags(false)}>Show less</div>:
-                        <div className="table-excess-button" onClick={() => setShowAllTags(true)}>Show more</div>
+                    {tags.length>2 && (showAllTags?
+                        <div className="excess-button" onClick={() => setShowAllTags(false)}>Show less</div>:
+                        <div className="excess-button" onClick={() => setShowAllTags(true)}>Show more</div>)
                     }
                 </div>
             </div>

@@ -14,7 +14,8 @@ import { GoToPreviousPage, GoToNextPage, RenderGoToPageProps } from '@react-pdf-
 import PropTypes from 'prop-types';
 
 
-const PDFViewer = () => {
+const PDFViewer = ({pdf}) => {
+
     const [pdfFIle,setpdfFile]=useState(null);
     const [viewPdf,setViewPdf]=useState(null);
     const fileType=['application/pdf']
@@ -150,7 +151,7 @@ const PDFViewer = () => {
         <div className="pdfContainer">
             <div className='pdfDoc'>
             <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
-                    <Viewer theme='dark'  fileUrl={testpdf} plugins={[defaultLayoutPluginInstance,scrollModePluginInstance,pageNavigationPluginInstance]} />
+                    <Viewer theme='dark'  fileUrl={`data:application/pdf;base64,${pdf}`} plugins={[defaultLayoutPluginInstance,scrollModePluginInstance,pageNavigationPluginInstance]} />
             </Worker>
             </div>
         </div>

@@ -76,6 +76,7 @@
                 border-radius: 40px;
                 padding: 5px;
                 white-space: nowrap;
+                user-select: none;
             }
     
             .table-excess-button {
@@ -84,6 +85,7 @@
                 border-radius: 40px;
                 padding: 5px;
                 cursor: pointer;
+                user-select: none;
             }
         }
     
