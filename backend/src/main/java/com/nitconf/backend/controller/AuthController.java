@@ -68,13 +68,14 @@ public class AuthController {
             SecurityContextHolder.getContext().setAuthentication(authentication);
             UserDetailsImpl userDetails=(UserDetailsImpl) authentication.getPrincipal();
             ResponseCookie jwtCookie =jwtUtils.generateJwtCookie(userDetails);
+            String token = jwtCookie.getValue();
             return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE,jwtCookie.toString())
 
             .body(new JwtResponse (
                 userDetails.getUsername(),
                 userDetails.getEmail(),
                    userDetails.getId(),
-                   authentication.toString(),
+                   token,
                    "Bearer"
             ));
     }
