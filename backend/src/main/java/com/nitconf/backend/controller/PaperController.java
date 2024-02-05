@@ -26,8 +26,14 @@ public class PaperController {
 
     @GetMapping("/all")
     public ResponseEntity<List<Paper>> getAllPapers() {
-        List<Paper> papers = paperService.getAllPapers();
-        return ResponseEntity.ok(papers);
+        try {
+            List<Paper> papers = paperService.getAllPapers();
+            return ResponseEntity.ok(papers);
+        }
+        catch (Exception e) {
+            System.out.println(e);
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @GetMapping("/{id}")
@@ -36,24 +42,27 @@ public class PaperController {
         return ResponseEntity.of(paper);
     }
 
-    @PostMapping("/save")
-    public ResponseEntity<String> savePaper(
-            @RequestParam("pdfFile") MultipartFile pdfFile,
-            @RequestBody Paper paper) {
-        
+    @PutMapping("/savefile/{id}")
+    public ResponseEntity<?> saveFile(
+            @RequestPart("pdfFile") MultipartFile pdfFile,
+            @PathVariable String id) {
+
         try {
             byte[] pdfBytes = pdfFile.getBytes();
-
-            paper.setPdfFile(pdfBytes);
-
-            paperService.savePaper(paper);
+            paperService.updatePaperPdfFile(id,pdfBytes);
 
             return ResponseEntity.status(HttpStatus.CREATED).body("Paper saved successfully");
         } catch (IOException e) {
-
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error processing PDF file: " + e.getMessage());
-            
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error processing PDF file: " + e.getMessage());
         }
+    }
+
+    @PostMapping("/savedata")
+    public void saveData(
+            @RequestBody Paper paper) {
+                paper.setRating();
+                paperService.savePaper(paper);
     }
 
     @GetMapping("/tags")

@@ -3,13 +3,15 @@ package com.nitconf.backend.models;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 @Document(collection = "Paper")
 public class Paper {
     @Id
     private String id;
-    private String Status;
+    private String status;
     private String paperName;
     private Integer rating;
     private String authorName;
@@ -22,7 +24,7 @@ public class Paper {
     public Paper(String id, String status, String paperName, Integer rating, String authorName, List<String> tags,
             List<Review> reviews, String decision,byte[] pdfFile) {
         this.id = id;
-        Status = status;
+        this.status = status;
         this.paperName = paperName;
         this.rating = rating;
         this.authorName = authorName;
@@ -41,11 +43,11 @@ public class Paper {
     }
 
     public String getStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(String status) {
-        Status = status;
+        this.status = status;
     }
 
     public String getPaperName() {
@@ -115,16 +117,19 @@ public class Paper {
     }
 
     public static class Review {
+
+        private String reviewer;
         private String comments;
         private Integer rating;
         private String reviewerDecision;
 
-
-        public Review(String comments, Integer rating, String reviewerDecision) {
+        public Review(String reviewer, String comments, Integer rating, String reviewerDecision) {
+            this.reviewer = reviewer;
             this.comments = comments;
             this.rating = rating;
             this.reviewerDecision = reviewerDecision;
         }
+        
         public String getComments() {
             return comments;
         }
@@ -142,6 +147,14 @@ public class Paper {
         }
         public void setReviewerDecision(String reviewerDecision) {
             this.reviewerDecision = reviewerDecision;
+        }
+
+        public String getReviewer() {
+            return reviewer;
+        }
+
+        public void setReviewer(String reviewer) {
+            this.reviewer = reviewer;
         }
         
     }

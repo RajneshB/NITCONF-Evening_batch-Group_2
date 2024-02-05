@@ -70,4 +70,28 @@ public class PaperService {
         }
     }
 
+    public void updatePaperPdfFile(String id, byte[] newPdfFile) {
+        Optional<Paper> optionalPaper = paperRepository.findById(id);
+    
+        if (optionalPaper.isPresent()) {
+            Paper existingPaper = optionalPaper.get();
+    
+            paperRepository.deleteById(id);
+    
+            Paper updatedPaper = new Paper(
+                existingPaper.getId(),
+                existingPaper.getStatus(),
+                existingPaper.getPaperName(),
+                existingPaper.getRating(),
+                existingPaper.getAuthorName(),
+                existingPaper.getTags(),
+                existingPaper.getReviews(),
+                existingPaper.getDecision(),
+                newPdfFile  // Set the new pdfFile here
+            );
+    
+            paperRepository.save(updatedPaper);
+        }
+    }
+
 }
