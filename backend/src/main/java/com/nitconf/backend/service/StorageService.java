@@ -25,6 +25,7 @@ public class StorageService {
         }
     }
 
+    @SuppressWarnings("null")
     public ByteArrayResource downloadImage(User user){
         ByteArrayResource pfp=new ByteArrayResource(ImageUtils.decompressImage(user.getProfilePic()));
         return pfp;
