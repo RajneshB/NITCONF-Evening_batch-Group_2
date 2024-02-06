@@ -289,16 +289,16 @@ This feature allows users to view reviewed papers and take actions on them, assi
 - **View Reviewer Comments (Function 3.4.3.1):** Users initiate the action to view comments provided by reviewers on a reviewed paper.
 - **Assign Reviewer with Deadline (Function 3.4.3.2):** Users trigger the action to assign a reviewer to a paper with a specified deadline.
 - **Send Reminder to Reviewer (Function 3.4.3.3):** Users prompt the system to send a reminder to the assigned reviewer.
-- **Accept Paper with a message (Function 3.4.3.4):** Users initiate the action to accept a reviewed paper, accompanied by a message.
-- **Reject Paper with a message (Function 3.4.3.5):** Users initiate the action to reject a reviewed paper, accompanied by a message.
+- **Accept Paper (Function 3.4.3.4):** Users initiate the action to accept a reviewed paper.
+- **Reject Paper  (Function 3.4.3.5):** Users initiate the action to reject a reviewed paper.
 
 #### 3.4.3 Functional Requirements
 
 1. **View Reviewer Comments (Function 3.4.3.1):** Display a list of reviewed papers.
 2. **Assign Reviewer with Deadline (Function 3.4.3.2):** Allow the user to assign a reviewer to a paper with a deadline.
 3. **Send Reminder to Reviewer (Function 3.4.3.3):** Allow the user to send a reminder to the reviewer.
-4. **Accept Paper with a message (Function 3.4.3.4):** Allow the user to accept a reviewed paper with a message.
-5. **Reject Paper with a message (Function 3.4.3.5):** Allow the user to reject a reviewed paper with a message.
+4. **Accept Paper  (Function 3.4.3.4):** Allow the user to accept a reviewed paper.
+5. **Reject Paper  (Function 3.4.3.5):** Allow the user to reject a reviewed paper.
 ### 3.5 System Feature: View-Unreviewed-Papers
 
 #### 3.5.1 Description and Priority
