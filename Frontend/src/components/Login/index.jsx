@@ -9,7 +9,6 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
 import { faLock } from "@fortawesome/free-solid-svg-icons"
 import { faEye as show } from "@fortawesome/free-solid-svg-icons"
 import { faEye as hidden } from "@fortawesome/free-regular-svg-icons"
-import Navbar from '../Navbar'
 import { Link } from 'react-router-dom'
 
 // import "./App.css"
@@ -44,7 +43,6 @@ const Login = () =>{
 
     return(
         <>
-        <Navbar/>
         <div className="login--container">
         <div className="login--card">
           <img src={image1} className="login--image" />
