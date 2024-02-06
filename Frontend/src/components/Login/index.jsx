@@ -66,8 +66,7 @@ const Login = () =>{
 
             </div>
             <div className="login--extra">
-                    <input type="checkbox" id="remember--check"/>
-                    <label htmlFor="remember--check" className="remember--text">Remember me</label>
+                  
                     <Link to="/forgotPassword" className="forgot--pass">Forgot Password</Link>
             </div>
             <button type="submit"className="login--submit" onClick={login}>Login</button>
