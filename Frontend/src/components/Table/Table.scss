@@ -2,12 +2,12 @@
     display: flex;
     flex-direction: row;
     width: 100%;
-    gap:20px;
+    height: 100%;
     border: solid black;
-    padding: 0px 10px;
+    padding-left: 10px;
 
     .table-icon-container{
-        width: 70px;
+        width: 80px;
         height: 70px;
         display: flex;
         justify-content: center;
@@ -23,15 +23,15 @@
     .dashboard-table-info{
         display: flex;
         align-items: center;
-        gap:20px;
 
         .table-h1{
             height: 100%;
+            width: 500px;
             border-right: solid black;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 0 20px 0px 0 ;
+            padding: 0 10px;
 
             h1{
                 font-size: 3em;
@@ -41,21 +41,24 @@
 
         .table-rating-container{
             height: 100%;
+            width: 100px;
             border-right: solid black;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 0 20px 0px 0 ;
+            padding: 0px 10px;
             font-size: 2em;
         }
 
         .table-h2{
+            width: 200px;
             height: 100%;
             border-right: solid black;
             display: flex;
+            text-align: center;
             justify-content: center;
             align-items: center;
-            padding: 0 20px 0px 0 ;
+            padding: 0px 10px;
 
             h2{
                 font-size: 2.5em;
@@ -66,10 +69,11 @@
         .table-tag-container {
             display: flex;
             flex-wrap: wrap;
+            padding-left: 10px;
             gap: 20px;
             font-size: 1.75em;
             color: #505050;
-            max-width: 100%;
+            width: 230px;
     
             span {
                 background-color: #ebebeb;
@@ -88,9 +92,33 @@
                 user-select: none;
             }
         }
-    
+
+        
         .tag-hidden {
             display: none;
         }
+    }
+    
+    .table-view-container{
+        border-left: solid black;
+        flex-grow: 1;
+        height: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0px 10px;
+
+        .view-button2 {
+            text-align: center;
+            user-select: none;
+            background-color:rgb(21,199,113);
+            color: black;
+            border-radius: 40px;
+            padding: 5px;
+            cursor: pointer;
+            user-select: none;
+            font-size: 2.25em;
+        }
+
     }
 }

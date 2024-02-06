@@ -150,7 +150,7 @@ const Dashboard = () => {
                         {cardArray}
                     </div> :
                     <div className="dashboard-table-container">
-                        {/* <div className='dashboard-table-cl'>
+                        <div className='dashboard-table-cl'>
                             <div className="table-icon-container-cl">
                                 Paper
                             </div>
@@ -167,8 +167,11 @@ const Dashboard = () => {
                                 <div className="table-tag-container-cl">
                                     Tags
                                 </div>
+                                <div className="table-view-container-cl">
+                                    View Paper
+                                </div>
                             </div>
-                        </div>   */}
+                        </div>
                         {tableArray}
                     </div>
                 }

@@ -26,7 +26,7 @@ const Card = ({id,paperName,rating,authorName,tags}) => {
                 <h1>{paperName}</h1>
                 <div className='rating-container'>
                     <FontAwesomeIcon icon={faStar} color='yellow'></FontAwesomeIcon>
-                    <p>{rating}</p>
+                    <p>{rating?rating:"NA"}</p>
                 </div>
                 <h2>{authorName}</h2>
                 <div className="tag-container">

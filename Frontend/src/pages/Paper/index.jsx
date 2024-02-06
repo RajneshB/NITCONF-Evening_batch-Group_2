@@ -75,8 +75,8 @@ const Paper = () => {
             </div>
             <div className='interactive'>
                 <div className='paper--buttons--container'>
-                        <button className='paper--buttons' onClick={acceptPaper}>Accept</button>
-                        <button className='paper--buttons'onClick={rejectPaper}>Reject</button>
+                        <button className='paper--buttons accept' onClick={acceptPaper}>Accept</button>
+                        <button className='paper--buttons reject'onClick={rejectPaper}>Reject</button>
                         <button className='paper--buttons'>Assign Reviewers</button>
 
                 </div>
