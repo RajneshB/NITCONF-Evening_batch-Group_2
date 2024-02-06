@@ -19,7 +19,7 @@
     }
     
 
-![alt_text](./SignIn.png "image_tooltip")
+![alt_text](./assets/SignIn.png "image_tooltip")
 
 <br>
 
@@ -34,7 +34,7 @@
     Response: {
         "message": "Account created"
     }
-![alt_text](./Signup.png "image_tooltip")
+![alt_text](./assets/Signup.png "image_tooltip")
 
 
 <br>
@@ -48,7 +48,7 @@
     Response: {
         "message": "Logout Successful"
     }
-![alt_text](./logout.png "image_tooltip")
+![alt_text](./assets/logout.png "image_tooltip")
 
 <br>
 
@@ -63,7 +63,7 @@
     Response: {
         "message": "Reset Link Sent to email"
     }
-![alt_text](./sentlink.png "image_tooltip")
+![alt_text](./assets/sentlink.png "image_tooltip")
 
 <br>
 
@@ -77,7 +77,7 @@
     Response: {
         "message": "PasswordSuccessfully changed"
     }
-![alt_text](./resetPassword.png "image_tooltip")
+![alt_text](./assets/resetPassword.png "image_tooltip")
 
 ### 3.1 Get user profile
     [GET] /api/profile
@@ -96,7 +96,7 @@
         resetPassswordToken: idk
     }
 
-![alt_text](./userprofile.jpeg "image_tooltip")
+![alt_text](./assets/userprofile.jpeg "image_tooltip")
 
 ### 3.2 Get profile pic
     [GET] /api/profile/pic
@@ -105,7 +105,7 @@
     Body: None
     Response: profile picture in .png format
 
-![alt_text](./getprofilepic.jpeg "image_tooltip")
+![alt_text](./assets/getprofilepic.jpeg "image_tooltip")
 
 ### 3.3 Update profile
     [PUT] /api/profile
@@ -119,7 +119,7 @@
     }
     Response:  String (“Updated successfully” if success and error message if failed)
     
-![alt_text](./putprofile.jpeg "image_tooltip")
+![alt_text](./assets/putprofile.jpeg "image_tooltip")
 
 ### 3.4 Update profile pic
     [PUT] /api/profile/pic
@@ -128,7 +128,7 @@
     Body: Multipart file containing the image in .png format
     Response: Updated user details
     
-![alt_text](./putprofilepic.jpeg "image_tooltip")
+![alt_text](./assets/putprofilepic.jpeg "image_tooltip")
     
 ### 4.1 Get All Papers
     [GET] /api/paper/all
@@ -161,7 +161,7 @@
 
         404 Not Found - If there are no papers or an error occurs.
 
-![alt_text](./getall.png "image_tooltip")
+![alt_text](./assets/getall.png "image_tooltip")
 
 ### 4.2 Get Paper By Id
 
@@ -194,7 +194,7 @@
 
         404 Not Found - If the paper with the specified ID is not found.
         
-![alt_text](./getbyid.png "image_tooltip")
+![alt_text](./assets/getbyid.png "image_tooltip")
 
 ### 4.3 Update Decision of Paper
     [PUT] /api/paper/updateDecision/{id}?newDecision=decision
@@ -211,6 +211,6 @@
     
             404 Not Found - If the paper with the specified ID is not found.
             
-![alt_text](./updatedecision.png "image_tooltip")
+![alt_text](./assets/updatedecision.png "image_tooltip")
 
 
