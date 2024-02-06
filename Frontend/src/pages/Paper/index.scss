@@ -37,6 +37,15 @@
                 transition: transform 0.5s ease;
                 border:1px solid grey;
             }
+
+            .accept{
+                background-color: rgb(21,199,113);
+            }
+
+            .reject{
+                background-color: red;
+            }
+
             .paper--buttons:hover{
                 transform: scale(1.3);
                 box-shadow: 0 0 5px white;
@@ -70,6 +79,13 @@
                 border-bottom: 1px solid white;
                 
             }
+
+            .text-div{
+                text-align: center;
+                font-size: 5em;
+                margin:auto;
+            }
+
             .comments{
                 margin-bottom: 2%;
                 .comment--author{

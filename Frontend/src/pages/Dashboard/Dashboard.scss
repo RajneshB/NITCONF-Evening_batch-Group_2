@@ -5,6 +5,7 @@
 }
 
 .dashboard-toggle-container{
+    user-select: none;
     cursor: pointer;
     width: max-content;
     display: flex;
@@ -93,7 +94,7 @@
         gap:30px;
         margin-right: 70px;
 
-        .filter-rating{
+        .filter-rating,.filter-decision{
             display: flex;
             justify-content: center;
             align-items: center;
@@ -164,28 +165,30 @@
         display: flex;
         flex-direction: row;
         width: 100%;
-        gap:20px;
         border: solid black;
-        padding: 0px 10px;
+        padding-left: 10px;
+        
     
         .table-icon-container-cl{
-            width: 70px;
+            width: 80px;
             height: 70px;
+            text-align: center;
             display: flex;
             justify-content: center;
             align-items: center;
             border-right: solid black;
             font-size: 3em;
-            padding-right: 20px;
+            font-weight: 700;
+            padding-right: 10px;
         }
     
         .dashboard-table-info-cl{
             display: flex;
             align-items: center;
-            gap:20px;
     
             .table-h1-cl{
                 height: 100%;
+                width: 500px;
                 border-right: solid black;
                 display: flex;
                 justify-content: center;
@@ -194,41 +197,57 @@
     
                 h1{
                     font-size: 3em;
+                    font-weight: 700;
                 }
             }
     
     
             .table-rating-container-cl{
                 height: 100%;
+                width: 100px;
                 border-right: solid black;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                padding: 0 20px 0px 0 ;
-                font-size: 2em;
+                font-size: 3em;
+                font-weight: 700;
             }
     
             .table-h2-cl{
                 height: 100%;
+                width: 200px;
                 border-right: solid black;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                padding: 0 20px 0px 0 ;
+                padding: 0px 10px;
     
                 h2{
-                    font-size: 2.5em;
+                    font-size: 3em;
+                    font-weight: 700;
                 }
             }
     
     
             .table-tag-container-cl {
+                font-size: 3em;
+                font-weight: 700;
+                height: 100%;
+                width: 230px;
                 display: flex;
-                flex-wrap: wrap;
-                gap: 20px;
-                font-size: 1.75em;
-                color: #505050;
-                max-width: 100%;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .table-view-container-cl{
+                border-left: solid black;
+                font-size: 3em;
+                font-weight: 700;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 0px 10px;
             }
         }
     }

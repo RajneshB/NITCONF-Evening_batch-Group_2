@@ -3,19 +3,38 @@ import Navbar from '../../components/Navbar';
 import Table from '../../components/Table/Table';
 import Card from '../../components/Card/Card'
 import Select from 'react-dropdown-select'
-import './Dashboard.css'
+import './Dashboard.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBorderAll, faFilter, faList } from '@fortawesome/free-solid-svg-icons';
-
+import axios from 'axios';
 
 
 const Dashboard = () => {
+
     const [reviewStatus,setReviewStatus]=React.useState(true);
 
     const [list,setList]=React.useState(false);
+    
+    const [selectedRating, setSelectedRating] = React.useState('None');
+    
+    const [selectedTags, setSelectedTags] = React.useState([]);
 
-    const [selectedOption, setSelectedOption] = React.useState('None');
+    const [selectedDecision,setSelectedDecision] = React.useState('None');
 
+    const [papers,setPapers] = React.useState([]);
+
+    const handleTagChange = (selectedTags) => {
+        setSelectedTags(selectedTags);
+    };
+
+    const handleSelectChange = (event) => {
+        setSelectedRating(event.target.value);
+    };
+
+    const handleSelectDecisionChange = (event) => {
+        setSelectedDecision(event.target.value);
+    }
+    
     const options=[
         {id:'Science',name:'Science'},
         {id:'Technology',name:'Technology'},
@@ -23,42 +42,57 @@ const Dashboard = () => {
         {id:'Management',name:'Management'}
     ]
 
-    const handleSelectChange = (event) => {
-        setSelectedOption(event.target.value);
-    };
+    React.useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('http://localhost:8080/api/paper/all');
+                setPapers(response.data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+        fetchData();
+    }, []);
 
-    function handleReviewStatusToggle(){
-        setReviewStatus((prevstate) => !prevstate);
-    }
+    const filteredByDecision = selectedDecision === 'None' ? papers : papers.filter(paper => paper.decision === selectedDecision);
 
-    const array=[   {id:1,paperName:"Exploring the Cosmos",rating:9.5,authorName:"Dr Joel Joseph",tags:["Science","Technology","Art","Management"]},
-                    {id:2,paperName:"Exploring the Cosmos",rating:9.5,authorName:"Dr Joel Joseph",tags:["Science","Technology","Art","Management"]},
-                    {id:3,paperName:"Exploring the Cosmos",rating:9.5,authorName:"Dr Joel Joseph",tags:["Science","Technology","Art","Management"]},
-                    {id:4,paperName:"Exploring the Cosmos",rating:9.5,authorName:"Dr Joel Joseph",tags:["Science","Technology","Art","Management"]},
-                    {id:5,paperName:"Exploring the Cosmos",rating:9.5,authorName:"Dr Joel Joseph",tags:["Science","Technology","Art","Management"]},
-                    {id:6,paperName:"Exploring the Cosmos",rating:9.5,authorName:"Dr Joel Joseph",tags:["Science","Technology","Art","Management"]},
-                    {id:7,paperName:"Exploring the Cosmos",rating:9.5,authorName:"Dr Joel Joseph",tags:["Science","Technology","Art","Management"]},
-                    {id:8,paperName:"Exploring the Cosmos",rating:9.5,authorName:"Dr Joel Joseph",tags:["Science","Technology","Art","Management"]}
-                ]
+    const filteredByRating = selectedRating === 'None' ? filteredByDecision : selectedRating === 'Ascending' ?
+        filteredByDecision.slice().sort((a, b) => a.rating - b.rating) :
+        filteredByDecision.slice().sort((a, b) => b.rating - a.rating);
 
-    const cardArray=array.map((obj) => {
-        return <Card id={obj.id} paperName={obj.paperName} rating={obj.rating} authorName={obj.authorName} tags={obj.tags} />
+
+        const filteredByTags = selectedTags.length === 0
+        ? filteredByRating
+        : filteredByRating.filter(paper => 
+          paper.tags.some(paperTag => 
+            selectedTags.some(selectedTag => selectedTag.id === paperTag)
+          )
+        );
+
+    // Further filter by Review Status
+    const finalPapers = reviewStatus?
+        filteredByTags.filter(paper => paper.status === 'Reviewed'):
+        filteredByTags.filter(paper => paper.status !== 'Reviewed');
+
+    const cardArray=finalPapers.map((i) => {
+        return (
+            <Card id={i.id}   paperName={i.paperName} rating={i.rating} authorName={i.authorName} tags={i.tags} />
+        )
     })
-    const tableArray=array.map((obj) => {
-        return <Table id={obj.id} paperName={obj.paperName} rating={obj.rating} authorName={obj.authorName} tags={obj.tags} />
+
+    const tableArray=finalPapers.map((i) => {
+        return (
+            <Table id={i.id}   paperName={i.paperName} rating={i.rating} authorName={i.authorName} tags={i.tags} />
+        )
     })
-
-
-
-    console.log(cardArray)
 
     return (
         <>
             <Navbar />
             <div className='dashboard-layout'>
                 <div className='dashboard-toggle-container'>
-                        <div className={reviewStatus?'dashboard-unreviewed':'dashboard-unreviewed dashboard-toggle-active'} onClick={handleReviewStatusToggle}>View Unreviewed Papers</div>
-                        <div className={!reviewStatus?'dashboard-reviewed':'dashboard-reviewed dashboard-toggle-active'} onClick={handleReviewStatusToggle}>View Reviewed Papers</div>
+                        <div className={reviewStatus?'dashboard-unreviewed':'dashboard-unreviewed dashboard-toggle-active'} onClick={()=>setReviewStatus(false)}>View Unreviewed Papers</div>
+                        <div className={!reviewStatus?'dashboard-reviewed':'dashboard-reviewed dashboard-toggle-active'} onClick={()=>setReviewStatus(true)}>View Reviewed Papers</div>
                 </div>
                 <div className='dashboard-filter-container'>
                         <div className="view-container">
@@ -72,10 +106,21 @@ const Dashboard = () => {
                             </div>
                         </div>
                         <div className="filter-container">
+                            
+                            <div className="filter-decision">
+                                <FontAwesomeIcon icon={faFilter} className='filter-icon'/>
+                                <div>Filter by Decision</div>
+                                <select className='filter-select' value={selectedDecision} onChange={handleSelectDecisionChange}>
+                                    <option value="None">None</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="Accept">Accept</option>
+                                    <option value="Reject">Reject</option>
+                                </select>
+                            </div>
                             <div className="filter-rating">
                                 <FontAwesomeIcon icon={faFilter} className='filter-icon'/>
                                 <div>Filter by Rating</div>
-                                <select className='filter-select' value={selectedOption} onChange={handleSelectChange}>
+                                <select className='filter-select' value={selectedRating} onChange={handleSelectChange}>
                                     <option value="None">None</option>
                                     <option value="Ascending">Ascending</option>
                                     <option value="Descending">Descending</option>
@@ -94,6 +139,8 @@ const Dashboard = () => {
                                     color='rgb(21,199,113)'
                                     searchable='true'
                                     placeholder='Select your tags'
+                                    onChange={(values) => handleTagChange(values)}
+                                    value={selectedTags}
                                 ></Select>
                             </div>
                         </div>
@@ -103,7 +150,7 @@ const Dashboard = () => {
                         {cardArray}
                     </div> :
                     <div className="dashboard-table-container">
-                        {/* <div className='dashboard-table-cl'>
+                        <div className='dashboard-table-cl'>
                             <div className="table-icon-container-cl">
                                 Paper
                             </div>
@@ -120,8 +167,11 @@ const Dashboard = () => {
                                 <div className="table-tag-container-cl">
                                     Tags
                                 </div>
+                                <div className="table-view-container-cl">
+                                    View Paper
+                                </div>
                             </div>
-                        </div>   */}
+                        </div>
                         {tableArray}
                     </div>
                 }

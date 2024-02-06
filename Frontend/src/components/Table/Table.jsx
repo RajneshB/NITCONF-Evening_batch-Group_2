@@ -3,6 +3,7 @@ import './Table.scss';
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar,faFilePdf } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from "react-router-dom";
 
 
 const Table = ({id,paperName,rating,authorName,tags}) => {
@@ -10,6 +11,12 @@ const Table = ({id,paperName,rating,authorName,tags}) => {
     const [showAllTags, setShowAllTags] = useState((tags.length>2?false:true));
 
     const displayedTags = showAllTags ? tags : tags.slice(0, 2);
+
+    const navigate=useNavigate();
+
+    function handleRedirect(){
+        navigate(`/paper/${id}`,{replace:true});
+    }
     
     return (
         <div className='dashboard-table'>
@@ -21,7 +28,7 @@ const Table = ({id,paperName,rating,authorName,tags}) => {
                     <h1>{paperName}</h1>
                 </div>
                 <div className='table-rating-container'>
-                    <p>{rating}</p>
+                    <p>{rating?rating:"NA"}</p>
                 </div>
                 <div className="table-h2">
                     <h2>{authorName}</h2>
@@ -30,11 +37,14 @@ const Table = ({id,paperName,rating,authorName,tags}) => {
                     {displayedTags.map((tag, index) => (
                         <span key={index}>{tag}</span>
                     ))}
-                    {showAllTags?
-                        <div className="table-excess-button" onClick={() => setShowAllTags(false)}>Show less</div>:
-                        <div className="table-excess-button" onClick={() => setShowAllTags(true)}>Show more</div>
+                    {tags.length>2 && (showAllTags?
+                        <div className="excess-button" onClick={() => setShowAllTags(false)}>Show less</div>:
+                        <div className="excess-button" onClick={() => setShowAllTags(true)}>Show more</div>)
                     }
                 </div>
+            </div>
+            <div className="table-view-container">
+                <div className="view-button2" onClick={handleRedirect}>View Paper</div>
             </div>
         </div>  
     )
