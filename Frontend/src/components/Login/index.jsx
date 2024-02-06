@@ -9,7 +9,6 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
 import { faLock } from "@fortawesome/free-solid-svg-icons"
 import { faEye as show } from "@fortawesome/free-solid-svg-icons"
 import { faEye as hidden } from "@fortawesome/free-regular-svg-icons"
-import Navbar from '../Navbar'
 import { Link } from 'react-router-dom'
 
 // import "./App.css"
@@ -44,7 +43,6 @@ const Login = () =>{
 
     return(
         <>
-        <Navbar/>
         <div className="login--container">
         <div className="login--card">
           <img src={image1} className="login--image" />
@@ -66,8 +64,7 @@ const Login = () =>{
 
             </div>
             <div className="login--extra">
-                    <input type="checkbox" id="remember--check"/>
-                    <label htmlFor="remember--check" className="remember--text">Remember me</label>
+                  
                     <Link to="/forgotPassword" className="forgot--pass">Forgot Password</Link>
             </div>
             <button type="submit"className="login--submit" onClick={login}>Login</button>

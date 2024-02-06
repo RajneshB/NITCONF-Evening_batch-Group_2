@@ -102,15 +102,6 @@
     font-weight: 8px;
     align-items: center;
   }
-
-  #remember--check{
-    box-shadow: 0 0 1.5px;
-
-  }
-  .remember--text{
-    font-size: 18px;
-    margin-left: 6px;
-  }
   .forgot--pass{
     color: #4c68d7 ;
     margin-left: auto;
