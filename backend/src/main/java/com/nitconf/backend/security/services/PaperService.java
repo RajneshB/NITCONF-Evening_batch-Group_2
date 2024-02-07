@@ -22,10 +22,12 @@ public class PaperService {
         return paperRepository.findAll();
     }
 
+    @SuppressWarnings("null")
     public Optional<Paper> getPaperById(String id) {
         return paperRepository.findById(id);
     }
 
+    @SuppressWarnings("null")
     public void savePaper(Paper paper) {
         paperRepository.save(paper);
     }
@@ -34,6 +36,7 @@ public class PaperService {
         return paperRepository.findByTagsIn(tags);
     }
 
+    @SuppressWarnings("null")
     public void deletePaper(String id) {
         paperRepository.deleteById(id);
     }
@@ -46,6 +49,7 @@ public class PaperService {
         return paperRepository.findByDecision(decision);
     }
 
+    @SuppressWarnings("null")
     public void updatePaperDecision(String id, String newDecision) {
         Optional<Paper> optionalPaper = paperRepository.findById(id);
 
@@ -70,6 +74,7 @@ public class PaperService {
         }
     }
 
+    @SuppressWarnings("null")
     public void updatePaperPdfFile(String id, byte[] newPdfFile) {
         Optional<Paper> optionalPaper = paperRepository.findById(id);
     
