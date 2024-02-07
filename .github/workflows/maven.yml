@@ -26,4 +26,6 @@ jobs:
 
     # Run tests
     - name: Run Tests
-      run: mvn test
+      run: |
+        cd backend 
+        mvn test
