@@ -19,6 +19,8 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 21
+    - name: Change to backend directory
+      run: cd backend
 
     - name: Build project with Maven
       run: mvn -B package --file pom.xml
