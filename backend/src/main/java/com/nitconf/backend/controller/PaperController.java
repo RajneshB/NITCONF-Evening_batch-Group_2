@@ -36,6 +36,7 @@ public class PaperController {
         }
     }
 
+    @SuppressWarnings("null")
     @GetMapping("/{id}")
     public ResponseEntity<Paper> getPaperById(@PathVariable String id) {
         Optional<Paper> paper = paperService.getPaperById(id);
