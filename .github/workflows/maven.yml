@@ -20,10 +20,10 @@ jobs:
       with:
         java-version: 21
     - name: Change to backend directory
-      run: cd backend
+      run: cd NITCONF-Evening_batch-Group_2/backend
 
     - name: Build project with Maven
-      run: mvn -B package --file ../pom.xml
+      run: mvn -B package --file pom.xml
 
     # Run tests
     - name: Run Tests
