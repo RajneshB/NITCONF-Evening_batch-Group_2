@@ -7,12 +7,13 @@
     padding-left: 10px;
 
     .table-icon-container{
-        width: 80px;
+        width: 100px;
         height: 70px;
         display: flex;
         justify-content: center;
         align-items: center;
         border-right: solid black;
+        padding: 0 10px;
 
         .dashboard-table-icon{
             height: 40px;
@@ -41,7 +42,7 @@
 
         .table-rating-container{
             height: 100%;
-            width: 100px;
+            width: 120px;
             border-right: solid black;
             display: flex;
             justify-content: center;
