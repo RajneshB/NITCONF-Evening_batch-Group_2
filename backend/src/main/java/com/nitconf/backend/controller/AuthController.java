@@ -60,7 +60,15 @@ public class AuthController {
     JwtUtils jwtUtils;
     private static final Logger logger =LoggerFactory.getLogger(AuthController.class);
     
-    
+    /**
+     * login
+     * <p>
+     *  logs in a user 
+     * @param loginRequest :{@link LoginRequest}
+     * @return {@link JwtResponse}
+     * @since 1.0
+     * @author <a href="https://github.com/RajneshB">Rajnesh B</a>
+     */
     @PostMapping("/signIn")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest){
         Authentication authentication = authenticationManager.authenticate(
@@ -79,6 +87,15 @@ public class AuthController {
                    "Bearer"
             ));
     }
+    /**
+     * create user
+     * <p>
+     * registers a new user 
+     * @param signupRequest :{@link SignupRequest}
+     * @return {@link MessageResponse}
+     * @since 1.0
+     * @author <a href="https://github.com/RajneshB">Rajnesh B</a>
+     */
     @PostMapping("/create")
     public ResponseEntity<?> createUser(@Valid @RequestBody SignupRequest signupRequest){
             if(userRepository.existsByUsername(signupRequest.getUsername())){
@@ -104,6 +121,16 @@ public class AuthController {
 
 
     }
+    /**
+     * logout
+     * <p>
+     *  logs out the user
+     * @param request :{@link HttpServletRequest}
+     * @param response :{@link HttpServletResponse}
+     * @return :{@link MessageResponse}
+     * @since 1.0
+     * @author <a href="https://github.com/RajneshB">Rajnesh B</a>
+     */
     @PostMapping("/logout")
     public ResponseEntity<?> logoutUser(HttpServletRequest request, HttpServletResponse response){
         try{

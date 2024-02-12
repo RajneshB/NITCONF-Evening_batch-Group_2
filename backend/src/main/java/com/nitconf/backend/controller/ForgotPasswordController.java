@@ -32,7 +32,17 @@ public class ForgotPasswordController {
 
     @Autowired 
     private ResetPasswordService resetPasswordService;
+
     
+    /**
+     * Sent Link:
+     * <p>
+     * Sent the reset link to the given email
+     * @param request :{@link ForgotPasswordRequest}
+     * @return :{@link MessageResponse}
+     * @since 1.0
+     * @author <a href="https://github.com/RajneshB">Rajnesh B</a>
+     */
     @PostMapping("/sentlink")
     public ResponseEntity<?> forgotPassword(@Valid @RequestBody ForgotPasswordRequest request){
         String email= request.getEmail();
@@ -49,6 +59,16 @@ public class ForgotPasswordController {
 
         }
     }
+    /**
+     * PasswordReset
+     * <p>
+     *  resets the password of a user
+     * @param request : {@link PasswordResetRequest}
+     * @param token : A valid token string
+     * @return : {@link MessageResponse}
+     * @since 1.0
+     * @author <a href="https://github.com/RajneshB">Rajnesh B</a>
+     */
     @PostMapping("/updatePassword")
     public ResponseEntity<?> passwordReset(@Valid @RequestBody PasswordResetRequest request,@RequestParam String token){
         String newPassword= request.getPassword();
