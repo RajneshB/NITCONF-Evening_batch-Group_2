@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.nitconf.backend.security.jwt.JwtUtils;
 import com.nitconf.backend.service.StorageService;
 import com.nitconf.backend.models.User;
+import com.nitconf.backend.payload.response.JwtResponse;
 import com.nitconf.backend.repository.UserRepository;
 import com.nitconf.backend.request.profileReq;
 
@@ -24,6 +25,13 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
+/**
+ * The controller class responsible for handling profile-related endpoints.
+ * 
+ * @author <a href="https://github.com/zEvoker">Johann B Simon</a>
+ * @since 1.0
+ */
 
 @CrossOrigin(origins="http://localhost:5173", maxAge = 3600,allowCredentials = "true")
 @RestController
@@ -38,6 +46,12 @@ public class ProfileController {
     @Autowired
     private StorageService service;
 
+    /**
+     * Retrieves the profile picture of the authenticated user.
+     * 
+     * @param request :{@link HttpServletRequest}
+     * @return {@link ResponseEntity}
+     */
     @GetMapping("/pic")
     public ResponseEntity<?> getProfile(HttpServletRequest request) {
         String jwt=jwtUtils.getJwtFromCookies(request);
@@ -50,6 +64,12 @@ public class ProfileController {
         .body(resource);
     }
 
+    /**
+     * Retrieves the profile information of the authenticated user.
+     * 
+     * @param request :{@link HttpServletRequest}
+     * @return {@link ResponseEntity}
+     */
     @GetMapping("")
     public ResponseEntity<User> getUserProfile(HttpServletRequest request) {
         String jwt=jwtUtils.getJwtFromCookies(request);
@@ -58,7 +78,13 @@ public class ProfileController {
         return ResponseEntity.ok(user);
     }
     
-
+    /**
+     * Edits the profile information of the authenticated user.
+     * 
+     * @param request :{@link HttpServletRequest}
+     * @param entity :{@link profileReq}
+     * @return {@link ResponseEntity}
+     */
     @PutMapping("")
     public ResponseEntity<Object> editProfile(HttpServletRequest request, @RequestBody profileReq entity) {
         String jwt=jwtUtils.getJwtFromCookies(request);
@@ -83,6 +109,13 @@ public class ProfileController {
         return ResponseEntity.badRequest().build();
     }
 
+    /**
+     * Edits the profile picture of the authenticated user.
+     * 
+     * @param request :{@link HttpServletRequest}
+     * @param profilePic :{@link MultipartFile}
+     * @return {@link ResponseEntity}
+     */
     @PutMapping("/pic")
     public ResponseEntity<?> editProfilePic(HttpServletRequest request, @RequestParam("profilePic") MultipartFile profilePic) {
         String jwt=jwtUtils.getJwtFromCookies(request);
