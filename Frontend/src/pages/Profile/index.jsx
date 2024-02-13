@@ -6,15 +6,16 @@ import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendar, faCircleNotch, faEnvelope, faMobile, faSpinner, faUser, faUserTie } from '@fortawesome/free-solid-svg-icons';
 import { Buffer } from 'buffer';
+import { useTheme,useThemeUpdate } from '../../context/ThemeContext';
 
 const Profile = () =>{
-    const [light,setLight]=useState(true);
     const [edit,setEdit]=useState(false);
     const [img,setImg]=useState(profPic);
     const [data, setData] = useState({ name: 'Username', contact: 'Contact', mail: 'Mail', profession: 'Profession', doj: 'DOJ' });
     const [err, setErr] = useState(false);
     const [loading, setLoading] = useState(true);
     const [file,setFile]=useState(null);
+    const dark=useTheme();
 
     useEffect(() => {
         getProfile();
@@ -142,8 +143,7 @@ const Profile = () =>{
                 </div>
             </div>
             :
-            <div className="profileContainer">                
-                <div className="profilePic">
+            <div className={`profileContainer ${dark ? 'dark' : ''}`}>                <div className="profilePic">
                     <img src={img} alt='profile picture'/>
                     <button onClick={handleEdit}>Edit Profile</button>
                 </div>
