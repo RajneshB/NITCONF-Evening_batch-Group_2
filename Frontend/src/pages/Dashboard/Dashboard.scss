@@ -170,7 +170,7 @@
         
     
         .table-icon-container-cl{
-            width: 80px;
+            width: 100px;
             height: 70px;
             text-align: center;
             display: flex;
@@ -179,7 +179,8 @@
             border-right: solid black;
             font-size: 3em;
             font-weight: 700;
-            padding-right: 10px;
+            padding: 0 10px;
+
         }
     
         .dashboard-table-info-cl{
@@ -204,13 +205,14 @@
     
             .table-rating-container-cl{
                 height: 100%;
-                width: 100px;
+                width: 120px;
                 border-right: solid black;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 font-size: 3em;
                 font-weight: 700;
+                padding:0 10px;
             }
     
             .table-h2-cl{
