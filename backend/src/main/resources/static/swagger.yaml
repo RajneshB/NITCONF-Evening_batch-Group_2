@@ -11,6 +11,8 @@ paths:
     get:
       tags:
       - profile-controller
+      summary: Get Profile
+      description: Get profile details of the currently logged in user
       operationId: getUserProfile
       responses:
         "200":
@@ -22,6 +24,8 @@ paths:
     put:
       tags:
       - profile-controller
+      summary: Edit Profile
+      description: Edit profile details of the currently logged in user
       operationId: editProfile
       requestBody:
         content:
@@ -40,6 +44,8 @@ paths:
     get:
       tags:
       - profile-controller
+      summary: Get Profile
+      description: Get profile details of the currently logged in user
       operationId: getProfile
       responses:
         "200":
@@ -51,6 +57,8 @@ paths:
     put:
       tags:
       - profile-controller
+      summary: Get Profile Pic
+      description: Get profile picture of the currently logged in user
       operationId: editProfilePic
       requestBody:
         content:
