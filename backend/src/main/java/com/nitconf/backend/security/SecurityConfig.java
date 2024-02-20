@@ -60,6 +60,8 @@ public class SecurityConfig {
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authorizeHttpRequests(auth -> 
           auth.requestMatchers("/api/auth/**", "/api/docs/**").permitAll()
+              .requestMatchers("/swagger/**").permitAll()
+              .requestMatchers("/content/**").permitAll()
               .requestMatchers("/api/paper/**").permitAll()
               .requestMatchers("/api/forgotPassword/**").permitAll()
               .anyRequest().authenticated()

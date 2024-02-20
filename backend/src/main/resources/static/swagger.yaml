@@ -1,0 +1,470 @@
+openapi: 3.0.1
+info:
+  title: NITCONF
+  description: nitconf
+  version: v0
+servers:
+- url: http://localhost:8080
+  description: Generated server url
+paths:
+  /api/profile:
+    get:
+      tags:
+      - profile-controller
+      operationId: getUserProfile
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/User'
+    put:
+      tags:
+      - profile-controller
+      operationId: editProfile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/profileReq'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/profile/pic:
+    get:
+      tags:
+      - profile-controller
+      operationId: getProfile
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+    put:
+      tags:
+      - profile-controller
+      operationId: editProfilePic
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - profilePic
+              type: object
+              properties:
+                profilePic:
+                  type: string
+                  format: binary
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/paper/updateDecision/{id}:
+    put:
+      tags:
+      - paper-controller
+      operationId: updatePaperDecision
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: newDecision
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+  /api/paper/savefile/{id}:
+    put:
+      tags:
+      - paper-controller
+      operationId: saveFile
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - pdfFile
+              type: object
+              properties:
+                pdfFile:
+                  type: string
+                  format: binary
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/paper/savedata:
+    post:
+      tags:
+      - paper-controller
+      operationId: saveData
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Paper'
+        required: true
+      responses:
+        "200":
+          description: OK
+  /api/forgotPassword/updatePassword:
+    post:
+      tags:
+      - forgot-password-controller
+      operationId: passwordReset
+      parameters:
+      - name: token
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordResetRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/forgotPassword/sentlink:
+    post:
+      tags:
+      - forgot-password-controller
+      operationId: forgotPassword
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ForgotPasswordRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/auth/signIn:
+    post:
+      tags:
+      - auth-controller
+      operationId: authenticateUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/auth/logout:
+    post:
+      tags:
+      - auth-controller
+      operationId: logoutUser
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/auth/create:
+    post:
+      tags:
+      - auth-controller
+      operationId: createUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignupRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/paper/{id}:
+    get:
+      tags:
+      - paper-controller
+      operationId: getPaperById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Paper'
+  /api/paper/tags:
+    get:
+      tags:
+      - paper-controller
+      operationId: getPapersByTags
+      parameters:
+      - name: tags
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Paper'
+  /api/paper/status:
+    get:
+      tags:
+      - paper-controller
+      operationId: getPapersByStatus
+      parameters:
+      - name: status
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Paper'
+  /api/paper/decision:
+    get:
+      tags:
+      - paper-controller
+      operationId: getPapersByDecision
+      parameters:
+      - name: decision
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Paper'
+  /api/paper/all:
+    get:
+      tags:
+      - paper-controller
+      operationId: getAllPapers
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Paper'
+  /api/paper/delete/{id}:
+    delete:
+      tags:
+      - paper-controller
+      operationId: deletePaper
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+components:
+  schemas:
+    profileReq:
+      type: object
+      properties:
+        name:
+          type: string
+        mail:
+          type: string
+        contact:
+          type: string
+        profession:
+          type: string
+    Paper:
+      type: object
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+        paperName:
+          type: string
+        rating:
+          type: integer
+          format: int32
+        authorName:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        reviews:
+          type: array
+          items:
+            $ref: '#/components/schemas/Review'
+        decision:
+          type: string
+        pdfFile:
+          type: array
+          items:
+            type: string
+            format: byte
+    Review:
+      type: object
+      properties:
+        reviewer:
+          type: string
+        comments:
+          type: string
+        rating:
+          type: integer
+          format: int32
+        reviewerDecision:
+          type: string
+    PasswordResetRequest:
+      required:
+      - password
+      type: object
+      properties:
+        password:
+          type: string
+    ForgotPasswordRequest:
+      required:
+      - email
+      type: object
+      properties:
+        email:
+          type: string
+    LoginRequest:
+      required:
+      - email
+      - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+    SignupRequest:
+      required:
+      - email
+      - password
+      - username
+      type: object
+      properties:
+        username:
+          maxLength: 20
+          minLength: 0
+          type: string
+        password:
+          maxLength: 20
+          minLength: 6
+          type: string
+        email:
+          type: string
+    User:
+      required:
+      - email
+      - password
+      - username
+      type: object
+      properties:
+        id:
+          type: string
+        username:
+          maxLength: 20
+          minLength: 0
+          type: string
+        email:
+          maxLength: 50
+          minLength: 0
+          type: string
+        password:
+          maxLength: 120
+          minLength: 0
+          type: string
+        contact:
+          type: string
+        profession:
+          type: string
+        doj:
+          type: string
+          format: date-time
+        profilePic:
+          type: array
+          items:
+            type: string
+            format: byte
+        resetPasswordToken:
+          type: string
