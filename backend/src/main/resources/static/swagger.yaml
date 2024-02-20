@@ -140,6 +140,8 @@ paths:
     post:
       tags:
       - forgot-password-controller
+      summary: update password
+      description: updates the password of the user in the database 
       operationId: passwordReset
       parameters:
       - name: token
@@ -164,6 +166,8 @@ paths:
     post:
       tags:
       - forgot-password-controller
+      summary: Sent link
+      description: Sent a link with the reset token to the user's email
       operationId: forgotPassword
       requestBody:
         content:
@@ -182,6 +186,8 @@ paths:
     post:
       tags:
       - auth-controller
+      summary: Login
+      description: This endpoint is used to login to the account
       operationId: authenticateUser
       requestBody:
         content:
@@ -200,6 +206,8 @@ paths:
     post:
       tags:
       - auth-controller
+      summary: Logout
+      description: This endpoint is used to logout the user 
       operationId: logoutUser
       responses:
         "200":
@@ -212,6 +220,8 @@ paths:
     post:
       tags:
       - auth-controller
+      summary: Register user
+      description: Creates a user and adds it to the database
       operationId: createUser
       requestBody:
         content:
