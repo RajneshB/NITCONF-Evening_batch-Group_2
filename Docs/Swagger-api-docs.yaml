@@ -1,0 +1,512 @@
+openapi: 3.0.1
+info:
+  title: NITCONF
+  description: We have created program module for the nitconf conference site
+  version: v0
+servers:
+- url: http://localhost:8080
+  description: Generated server url
+paths:
+  /api/profile:
+    get:
+      tags:
+      - profile-controller
+      summary: Get Profile
+      description: Get profile details of the currently logged in user
+      operationId: getUserProfile
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/User'
+    put:
+      tags:
+      - profile-controller
+      summary: Edit Profile
+      description: Edit profile details of the currently logged in user
+      operationId: editProfile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/profileReq'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/profile/pic:
+    get:
+      tags:
+      - profile-controller
+      summary: Get Profile
+      description: Get profile details of the currently logged in user
+      operationId: getProfile
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+    put:
+      tags:
+      - profile-controller
+      summary: Get Profile Pic
+      description: Get profile picture of the currently logged in user
+      operationId: editProfilePic
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - profilePic
+              type: object
+              properties:
+                profilePic:
+                  type: string
+                  format: binary
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/paper/updateDecision/{id}:
+    put:
+      tags:
+      - paper-controller
+      operationId: updatePaperDecision
+      summary: "Update the decision of a paper by ID"
+      description: "This endpoint allows updating the decision of a paper identified by its ID."
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: newDecision
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: "Paper decision updated successfully"
+          content:
+            '*/*':
+              schema:
+                type: string
+  /api/paper/savefile/{id}:
+    put:
+      tags:
+      - paper-controller
+      operationId: saveFile
+      summary: "Update PDF file associated with a paper"
+      description: "This endpoint allows updating the PDF file associated with a paper by its ID."
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - pdfFile
+              type: object
+              properties:
+                pdfFile:
+                  type: string
+                  format: binary
+      responses:
+        201:
+          description: "Paper saved successfully"
+          content:
+            '*/*':
+              schema:
+                type: object
+        500:
+          description: "Error processing PDF file"
+  /api/paper/savedata:
+    post:
+      tags:
+      - paper-controller
+      operationId: saveData
+      summary: "Save paper data to the system"
+      description: "This endpoint allows saving paper data to the system."
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Paper'
+        required: true
+      responses:
+        "200":
+          description: OK
+  /api/forgotPassword/updatePassword:
+    post:
+      tags:
+      - forgot-password-controller
+      summary: update password
+      description: updates the password of the user in the database 
+      operationId: passwordReset
+      parameters:
+      - name: token
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordResetRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/forgotPassword/sentlink:
+    post:
+      tags:
+      - forgot-password-controller
+      summary: Sent link
+      description: Sent a link with the reset token to the user's email
+      operationId: forgotPassword
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ForgotPasswordRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/auth/signIn:
+    post:
+      tags:
+      - auth-controller
+      summary: Login
+      description: This endpoint is used to login to the account
+      operationId: authenticateUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/auth/logout:
+    post:
+      tags:
+      - auth-controller
+      summary: Logout
+      description: This endpoint is used to logout the user 
+      operationId: logoutUser
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/auth/create:
+    post:
+      tags:
+      - auth-controller
+      summary: Register user
+      description: Creates a user and adds it to the database
+      operationId: createUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignupRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/paper/{id}:
+    get:
+      tags:
+      - paper-controller
+      operationId: getPaperById
+      summary: "Retrieve a paper by ID"
+      description: "This endpoint allows retrieving information about a paper based on its ID."
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Paper'
+        404:
+          description: "Paper not found"
+  /api/paper/tags:
+    get:
+      tags:
+      - paper-controller
+      operationId: getPapersByTags
+      summary: "Retrieve papers based on tags"
+      description: "This endpoint allows retrieving papers based on specified tags."
+      parameters:
+      - name: tags
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Paper'
+  /api/paper/status:
+    get:
+      tags:
+      - paper-controller
+      operationId: getPapersByStatus
+      summary: "Retrieve papers based on status"
+      description: "This endpoint allows retrieving papers based on a specified status."
+      parameters:
+      - name: status
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Paper'
+  /api/paper/decision:
+    get:
+      tags:
+      - paper-controller
+      operationId: getPapersByDecision
+      summary: "Retrieve papers based on decision"
+      description: "This endpoint allows retrieving papers based on a specified decision."
+      parameters:
+      - name: decision
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+         200:
+          description: "Successful operation"
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Paper'
+  /api/paper/all:
+    get:
+      tags:
+      - paper-controller
+      operationId: getAllPapers
+      summary: "Retrieve all papers"
+      description: "This endpoint allows retrieving information about all papers in the system."
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Paper'
+        404:
+          description: "Papers not found"
+  /api/paper/delete/{id}:
+    delete:
+      tags:
+      - paper-controller
+      operationId: deletePaper
+      summary: "Delete a paper by ID"
+      description: "This endpoint allows deleting a paper from the system based on its ID."
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: "Paper deleted successfully"
+          content:
+            '*/*':
+              schema:
+                type: string
+components:
+  schemas:
+    profileReq:
+      type: object
+      properties:
+        name:
+          type: string
+        mail:
+          type: string
+        contact:
+          type: string
+        profession:
+          type: string
+    Paper:
+      type: object
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+        paperName:
+          type: string
+        rating:
+          type: integer
+          format: int32
+        authorName:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        reviews:
+          type: array
+          items:
+            $ref: '#/components/schemas/Review'
+        decision:
+          type: string
+        pdfFile:
+          type: array
+          items:
+            type: string
+            format: byte
+    Review:
+      type: object
+      properties:
+        reviewer:
+          type: string
+        comments:
+          type: string
+        rating:
+          type: integer
+          format: int32
+        reviewerDecision:
+          type: string
+    PasswordResetRequest:
+      required:
+      - password
+      type: object
+      properties:
+        password:
+          type: string
+    ForgotPasswordRequest:
+      required:
+      - email
+      type: object
+      properties:
+        email:
+          type: string
+    LoginRequest:
+      required:
+      - email
+      - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+    SignupRequest:
+      required:
+      - email
+      - password
+      - username
+      type: object
+      properties:
+        username:
+          maxLength: 20
+          minLength: 0
+          type: string
+        password:
+          maxLength: 20
+          minLength: 6
+          type: string
+        email:
+          type: string
+    User:
+      required:
+      - email
+      - password
+      - username
+      type: object
+      properties:
+        id:
+          type: string
+        username:
+          maxLength: 20
+          minLength: 0
+          type: string
+        email:
+          maxLength: 50
+          minLength: 0
+          type: string
+        password:
+          maxLength: 120
+          minLength: 0
+          type: string
+        contact:
+          type: string
+        profession:
+          type: string
+        doj:
+          type: string
+          format: date-time
+        profilePic:
+          type: array
+          items:
+            type: string
+            format: byte
+        resetPasswordToken:
+          type: string
