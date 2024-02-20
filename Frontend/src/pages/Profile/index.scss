@@ -22,6 +22,11 @@
         opacity: 0;
         animation: fadeIn 1s 0.5s forwards;
 
+        &.dark{
+            background: black;
+            color: white;
+        }
+
         .profilePic{
             background-color: #060c21;
             flex: 1;

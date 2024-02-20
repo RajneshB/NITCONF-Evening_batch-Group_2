@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTheme,useThemeUpdate } from '../../context/ThemeContext'
 import './index.scss'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
@@ -7,7 +8,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 const Navbar = () => {
-    const navigate= useNavigate();
+    const navigate = useNavigate();
+    const light = useTheme();
+    const toggleTheme = useThemeUpdate();
 
     const handleLogout=async ()=>{
         try{
@@ -24,10 +27,7 @@ const Navbar = () => {
         }
 
     }
-    const [light,setLight] =React.useState(false)
-    function toggleMode(){
-        setLight(prevLight => !prevLight)
-    }
+    
     const spring = {
         type: "spring",
         stiffness: 700,
@@ -41,7 +41,7 @@ const Navbar = () => {
                 <div className='navlink-container'>
                     <Link to='/dashboard'>Home</Link>
                     <Link to='/profile'>Profile</Link>
-                    <div className="toggle--bar" data-isOn={light} onClick={toggleMode}>
+                    <div className="toggle--bar" data-isOn={light} onClick={toggleTheme}>
                         {light && <FontAwesomeIcon icon={faSun} color='white' size={'2x'} className='toggle-sun'/>}
                         <motion.div className="toggle--circle" layout transition={spring} data-isOn={light}/>
                         {!light && <FontAwesomeIcon icon={faMoon} color='black' size={'2x'} className='toggle-moon'/>}
