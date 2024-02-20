@@ -85,8 +85,6 @@ paths:
       operationId: updatePaperDecision
       summary: "Update the decision of a paper by ID"
       description: "This endpoint allows updating the decision of a paper identified by its ID."
-      produces:
-        - "application/json"
       parameters:
       - name: id
         in: path
@@ -112,8 +110,6 @@ paths:
       operationId: saveFile
       summary: "Update PDF file associated with a paper"
       description: "This endpoint allows updating the PDF file associated with a paper by its ID."
-      consumes:
-        - "multipart/form-data"
       parameters:
       - name: id
         in: path
@@ -147,8 +143,6 @@ paths:
       operationId: saveData
       summary: "Save paper data to the system"
       description: "This endpoint allows saving paper data to the system."
-      consumes:
-        - "application/json"
       requestBody:
         content:
           application/json:
@@ -265,8 +259,6 @@ paths:
       operationId: getPaperById
       summary: "Retrieve a paper by ID"
       description: "This endpoint allows retrieving information about a paper based on its ID."
-      produces:
-        - "application/json"
       parameters:
       - name: id
         in: path
@@ -289,8 +281,6 @@ paths:
       operationId: getPapersByTags
       summary: "Retrieve papers based on tags"
       description: "This endpoint allows retrieving papers based on specified tags."
-      produces:
-        - "application/json"
       parameters:
       - name: tags
         in: query
@@ -315,8 +305,6 @@ paths:
       operationId: getPapersByStatus
       summary: "Retrieve papers based on status"
       description: "This endpoint allows retrieving papers based on a specified status."
-      produces:
-        - "application/json"
       parameters:
       - name: status
         in: query
@@ -339,8 +327,6 @@ paths:
       operationId: getPapersByDecision
       summary: "Retrieve papers based on decision"
       description: "This endpoint allows retrieving papers based on a specified decision."
-      produces:
-        - "application/json"
       parameters:
       - name: decision
         in: query
@@ -363,8 +349,6 @@ paths:
       operationId: getAllPapers
       summary: "Retrieve all papers"
       description: "This endpoint allows retrieving information about all papers in the system."
-      produces:
-        - "application/json"
       responses:
         200:
           description: "Successful operation"
@@ -383,8 +367,6 @@ paths:
       operationId: deletePaper
       summary: "Delete a paper by ID"
       description: "This endpoint allows deleting a paper from the system based on its ID."
-      produces:
-        - "application/json"
       parameters:
       - name: id
         in: path
