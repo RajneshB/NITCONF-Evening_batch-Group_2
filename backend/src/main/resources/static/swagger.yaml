@@ -83,6 +83,10 @@ paths:
       tags:
       - paper-controller
       operationId: updatePaperDecision
+      summary: "Update the decision of a paper by ID"
+      description: "This endpoint allows updating the decision of a paper identified by its ID."
+      produces:
+        - "application/json"
       parameters:
       - name: id
         in: path
@@ -95,8 +99,8 @@ paths:
         schema:
           type: string
       responses:
-        "200":
-          description: OK
+        200:
+          description: "Paper decision updated successfully"
           content:
             '*/*':
               schema:
@@ -106,6 +110,10 @@ paths:
       tags:
       - paper-controller
       operationId: saveFile
+      summary: "Update PDF file associated with a paper"
+      description: "This endpoint allows updating the PDF file associated with a paper by its ID."
+      consumes:
+        - "multipart/form-data"
       parameters:
       - name: id
         in: path
@@ -124,17 +132,23 @@ paths:
                   type: string
                   format: binary
       responses:
-        "200":
-          description: OK
+        201:
+          description: "Paper saved successfully"
           content:
             '*/*':
               schema:
                 type: object
+        500:
+          description: "Error processing PDF file"
   /api/paper/savedata:
     post:
       tags:
       - paper-controller
       operationId: saveData
+      summary: "Save paper data to the system"
+      description: "This endpoint allows saving paper data to the system."
+      consumes:
+        - "application/json"
       requestBody:
         content:
           application/json:
@@ -249,6 +263,10 @@ paths:
       tags:
       - paper-controller
       operationId: getPaperById
+      summary: "Retrieve a paper by ID"
+      description: "This endpoint allows retrieving information about a paper based on its ID."
+      produces:
+        - "application/json"
       parameters:
       - name: id
         in: path
@@ -256,17 +274,23 @@ paths:
         schema:
           type: string
       responses:
-        "200":
-          description: OK
+        200:
+          description: "Successful operation"
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/Paper'
+        404:
+          description: "Paper not found"
   /api/paper/tags:
     get:
       tags:
       - paper-controller
       operationId: getPapersByTags
+      summary: "Retrieve papers based on tags"
+      description: "This endpoint allows retrieving papers based on specified tags."
+      produces:
+        - "application/json"
       parameters:
       - name: tags
         in: query
@@ -276,8 +300,8 @@ paths:
           items:
             type: string
       responses:
-        "200":
-          description: OK
+        200:
+          description: "Successful operation"
           content:
             '*/*':
               schema:
@@ -289,6 +313,10 @@ paths:
       tags:
       - paper-controller
       operationId: getPapersByStatus
+      summary: "Retrieve papers based on status"
+      description: "This endpoint allows retrieving papers based on a specified status."
+      produces:
+        - "application/json"
       parameters:
       - name: status
         in: query
@@ -296,8 +324,8 @@ paths:
         schema:
           type: string
       responses:
-        "200":
-          description: OK
+        200:
+          description: "Successful operation"
           content:
             '*/*':
               schema:
@@ -309,6 +337,10 @@ paths:
       tags:
       - paper-controller
       operationId: getPapersByDecision
+      summary: "Retrieve papers based on decision"
+      description: "This endpoint allows retrieving papers based on a specified decision."
+      produces:
+        - "application/json"
       parameters:
       - name: decision
         in: query
@@ -316,8 +348,8 @@ paths:
         schema:
           type: string
       responses:
-        "200":
-          description: OK
+         200:
+          description: "Successful operation"
           content:
             '*/*':
               schema:
@@ -329,20 +361,30 @@ paths:
       tags:
       - paper-controller
       operationId: getAllPapers
+      summary: "Retrieve all papers"
+      description: "This endpoint allows retrieving information about all papers in the system."
+      produces:
+        - "application/json"
       responses:
-        "200":
-          description: OK
+        200:
+          description: "Successful operation"
           content:
             '*/*':
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/Paper'
+        404:
+          description: "Papers not found"
   /api/paper/delete/{id}:
     delete:
       tags:
       - paper-controller
       operationId: deletePaper
+      summary: "Delete a paper by ID"
+      description: "This endpoint allows deleting a paper from the system based on its ID."
+      produces:
+        - "application/json"
       parameters:
       - name: id
         in: path
@@ -350,8 +392,8 @@ paths:
         schema:
           type: string
       responses:
-        "200":
-          description: OK
+        200:
+          description: "Paper deleted successfully"
           content:
             '*/*':
               schema:
