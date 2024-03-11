@@ -2,10 +2,10 @@ name: Maven CI/CD
 
 on:
   push:
-    branches: 
+    branches:
       - '*'
   pull_request:
-    branches: 
+    branches:
       - '*'
 
 jobs:
@@ -29,3 +29,8 @@ jobs:
       run: |
         cd backend 
         mvn test
+
+    - name: JaCoCo Report
+      run: |
+        cd backend
+        mvn jacoco:prepare-agent jacoco:report
