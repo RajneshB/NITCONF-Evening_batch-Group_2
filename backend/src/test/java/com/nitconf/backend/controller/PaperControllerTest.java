@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.*;
 
 public class PaperControllerTest {
@@ -41,7 +42,15 @@ public class PaperControllerTest {
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(mockPapers, response.getBody());
+
+        when(paperService.getAllPapers()).thenThrow(new RuntimeException("Simulated exception"));
+
+        response = paperController.getAllPapers();
+
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        assertNull(response.getBody());
     }
+
 
     @Test
     void testGetPaperById() {
@@ -88,6 +97,17 @@ public class PaperControllerTest {
 
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
         assertEquals("Paper saved successfully", response.getBody());
+
+        doThrow(new RuntimeException("Simulated exception")).when(paperService).updatePaperPdfFile(paperId, pdfBytes);
+
+        response = paperController.saveFile(mockMultipartFile, paperId);
+    
+        // Verify the response when an exception occurs
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+        assertEquals("Error processing PDF file: Simulated exception", response.getBody());
+    
+        // Verify that the service method was called with the correct arguments
+        verify(paperService, times(2)).updatePaperPdfFile(paperId, pdfBytes);
     }
 
     @Test

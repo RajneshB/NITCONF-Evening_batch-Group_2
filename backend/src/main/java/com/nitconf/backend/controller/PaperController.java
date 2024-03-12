@@ -88,7 +88,7 @@ public class PaperController {
             paperService.updatePaperPdfFile(id, pdfBytes);
 
             return ResponseEntity.status(HttpStatus.CREATED).body("Paper saved successfully");
-        } catch (IOException e) {
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Error processing PDF file: " + e.getMessage());
         }
