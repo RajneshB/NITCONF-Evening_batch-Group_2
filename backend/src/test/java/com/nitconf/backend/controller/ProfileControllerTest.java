@@ -110,6 +110,28 @@ public class ProfileControllerTest {
     }
 
     @Test
+    public void testEditProfileNoDetails() {
+        HttpServletRequest request = mock(HttpServletRequest.class);
+        String jwt = "valid_jwt";
+        String email = "test@example.com";
+        User user = new User();
+        user.setEmail(email);
+        
+        // Creating a mock instance of profileReq
+        profileReq entity = new profileReq();
+        
+        when(jwtUtils.getJwtFromCookies(request)).thenReturn(jwt);
+        when(jwtUtils.getUsernameFromJwtToken(jwt)).thenReturn(email);
+        when(profRepo.findByEmail(email)).thenReturn(Optional.of(user));
+        when(profRepo.save(user)).thenReturn(user); // Mocking the behavior of the save method
+        
+        ResponseEntity<Object> responseEntity = profileController.editProfile(request, entity);
+    
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+        assertEquals("Updated successfully", responseEntity.getBody());
+    }
+
+    @Test
     public void testEditProfileUserNotFound() {
         HttpServletRequest request = mock(HttpServletRequest.class);
         String jwt = "valid_jwt";
@@ -139,6 +161,25 @@ public class ProfileControllerTest {
         User user = new User();
         user.setEmail(email);
         MultipartFile profilePic = new MockMultipartFile("file", "filename.png", "image/png", "test data".getBytes());
+        when(jwtUtils.getJwtFromCookies(request)).thenReturn(jwt);
+        when(jwtUtils.getUsernameFromJwtToken(jwt)).thenReturn(email);
+        when(profRepo.findByEmail(email)).thenReturn(Optional.of(user));
+        when(service.uploadImage(profilePic, user)).thenReturn("successful");
+        
+        ResponseEntity<?> responseEntity = profileController.editProfilePic(request, profilePic);
+
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+        assertEquals(user, responseEntity.getBody());
+    }
+
+    @Test
+    public void testEditProfilePicNull() {
+        HttpServletRequest request = mock(HttpServletRequest.class);
+        String jwt = "valid_jwt";
+        String email = "test@example.com";
+        User user = new User();
+        user.setEmail(email);
+        MultipartFile profilePic = null;
         when(jwtUtils.getJwtFromCookies(request)).thenReturn(jwt);
         when(jwtUtils.getUsernameFromJwtToken(jwt)).thenReturn(email);
         when(profRepo.findByEmail(email)).thenReturn(Optional.of(user));
