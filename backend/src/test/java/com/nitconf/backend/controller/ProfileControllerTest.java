@@ -95,6 +95,8 @@ public class ProfileControllerTest {
         profileReq entity = new profileReq();
         entity.name = "John Doe";
         entity.mail = "john.doe@example.com";
+        entity.contact="9747529067";
+        entity.profession="professor";
         
         when(jwtUtils.getJwtFromCookies(request)).thenReturn(jwt);
         when(jwtUtils.getUsernameFromJwtToken(jwt)).thenReturn(email);
@@ -117,6 +119,8 @@ public class ProfileControllerTest {
         profileReq entity = new profileReq();
         entity.name = "John Doe";
         entity.mail = "john.doe@example.com";
+        entity.contact="9747529067";
+        entity.profession="professor";
         
         when(jwtUtils.getJwtFromCookies(request)).thenReturn(jwt);
         when(jwtUtils.getUsernameFromJwtToken(jwt)).thenReturn(email);
