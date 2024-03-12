@@ -2,6 +2,7 @@ package com.nitconf.backend.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -21,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.nitconf.backend.models.User;
 import com.nitconf.backend.repository.UserRepository;
+import com.nitconf.backend.request.profileReq;
 import com.nitconf.backend.security.jwt.JwtUtils;
 import com.nitconf.backend.service.StorageService;
 
@@ -64,20 +66,6 @@ public class ProfileControllerTest {
         assertTrue(responseEntity.getBody() instanceof ByteArrayResource);
     }
 
-    // @Test
-    // public void testGetProfileUserNotFound() {
-    //     HttpServletRequest request = mock(HttpServletRequest.class);
-    //     String jwt = "valid_jwt";
-    //     String email = "test@example.com";
-    //     when(jwtUtils.getJwtFromCookies(request)).thenReturn(jwt);
-    //     when(jwtUtils.getUsernameFromJwtToken(jwt)).thenReturn(email);
-    //     when(profRepo.findByEmail(email)).thenReturn(Optional.empty());
-        
-    //     ResponseEntity<?> responseEntity = profileController.getProfilePic(request);
-    
-    //     assertEquals(HttpStatus.NOT_FOUND, responseEntity.getStatusCode());
-    // }
-
     @Test
     public void testGetUserProfile() {
         HttpServletRequest request = mock(HttpServletRequest.class);
@@ -95,43 +83,49 @@ public class ProfileControllerTest {
         assertEquals(user, responseEntity.getBody());
     }
 
-    // @Test
-    // public void testEditProfile() {
-    //     HttpServletRequest request = mock(HttpServletRequest.class);
-    //     String jwt = "valid_jwt";
-    //     String email = "test@example.com";
-    //     User user = new User();
-    //     user.setEmail(email);
-    //     profileReq entity = new profileReq();
-    //     entity.setName("John Doe");
-    //     entity.setMail("john.doe@example.com");
-    //     when(jwtUtils.getJwtFromCookies(request)).thenReturn(jwt);
-    //     when(jwtUtils.getUsernameFromJwtToken(jwt)).thenReturn(email);
-    //     when(profRepo.findByEmail(email)).thenReturn(Optional.of(user));
-    //     doNothing().when(profRepo).save(user);
+    @Test
+    public void testEditProfile() {
+        HttpServletRequest request = mock(HttpServletRequest.class);
+        String jwt = "valid_jwt";
+        String email = "test@example.com";
+        User user = new User();
+        user.setEmail(email);
         
-    //     ResponseEntity<Object> responseEntity = profileController.editProfile(request, entity);
-
-    //     assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-    //     assertEquals("Updated successfully", responseEntity.getBody());
-    // }
-
-    // @Test
-    // public void testEditProfileUserNotFound() {
-    //     HttpServletRequest request = mock(HttpServletRequest.class);
-    //     String jwt = "valid_jwt";
-    //     String email = "test@example.com";
-    //     profileReq entity = new profileReq();
-    //     entity.setUsername("John Doe");
-    //     entity.setEmail("john.doe@example.com");
-    //     when(jwtUtils.getJwtFromCookies(request)).thenReturn(jwt);
-    //     when(jwtUtils.getUsernameFromJwtToken(jwt)).thenReturn(email);
-    //     when(profRepo.findByEmail(email)).thenReturn(Optional.empty());
+        // Creating a mock instance of profileReq
+        profileReq entity = new profileReq();
+        entity.name = "John Doe";
+        entity.mail = "john.doe@example.com";
         
-    //     ResponseEntity<Object> responseEntity = profileController.editProfile(request, entity);
+        when(jwtUtils.getJwtFromCookies(request)).thenReturn(jwt);
+        when(jwtUtils.getUsernameFromJwtToken(jwt)).thenReturn(email);
+        when(profRepo.findByEmail(email)).thenReturn(Optional.of(user));
+        when(profRepo.save(user)).thenReturn(user); // Mocking the behavior of the save method
+        
+        ResponseEntity<Object> responseEntity = profileController.editProfile(request, entity);
+    
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+        assertEquals("Updated successfully", responseEntity.getBody());
+    }
 
-    //     assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
-    // }
+    @Test
+    public void testEditProfileUserNotFound() {
+        HttpServletRequest request = mock(HttpServletRequest.class);
+        String jwt = "valid_jwt";
+        String email = "test@example.com";
+        
+        // Creating a mock instance of profileReq
+        profileReq entity = new profileReq();
+        entity.name = "John Doe";
+        entity.mail = "john.doe@example.com";
+        
+        when(jwtUtils.getJwtFromCookies(request)).thenReturn(jwt);
+        when(jwtUtils.getUsernameFromJwtToken(jwt)).thenReturn(email);
+        when(profRepo.findByEmail(email)).thenReturn(Optional.empty());
+        
+        ResponseEntity<Object> responseEntity = profileController.editProfile(request, entity);
+    
+        assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
+    }
 
     @Test
     public void testEditProfilePic() {
