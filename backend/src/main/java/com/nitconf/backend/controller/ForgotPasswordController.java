@@ -47,7 +47,7 @@ public class ForgotPasswordController {
     public ResponseEntity<?> forgotPassword(@Valid @RequestBody ForgotPasswordRequest request){
         String email= request.getEmail();
         Optional<User> u= userRepository.findByEmail(email);
-        if(u.isPresent()){
+        if(u!=null){
          
             String token=UUID.randomUUID().toString();
             resetPasswordService.updateResetPassword(token, email);
