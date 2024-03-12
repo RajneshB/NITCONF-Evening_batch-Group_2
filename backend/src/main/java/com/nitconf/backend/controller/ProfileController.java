@@ -53,7 +53,7 @@ public class ProfileController {
      * @return {@link ResponseEntity}
      */
     @GetMapping("/pic")
-    public ResponseEntity<?> getProfile(HttpServletRequest request) {
+    public ResponseEntity<?> getProfilePic(HttpServletRequest request) {
         String jwt=jwtUtils.getJwtFromCookies(request);
         String mail=jwtUtils.getUsernameFromJwtToken(jwt);
         User user=profRepo.findByEmail(mail).orElseThrow();

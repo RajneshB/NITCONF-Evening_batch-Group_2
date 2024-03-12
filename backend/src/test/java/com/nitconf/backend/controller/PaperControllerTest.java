@@ -1,6 +1,5 @@
 package com.nitconf.backend.controller;
 
-import com.nitconf.backend.controller.PaperController;
 import com.nitconf.backend.models.Paper;
 import com.nitconf.backend.security.services.PaperService;
 import org.junit.jupiter.api.BeforeEach;
