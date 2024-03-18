@@ -107,6 +107,10 @@
             flex: 1;
             padding: 20px;
 
+            .mobButton{
+                display: none;
+            }
+
             h1{
                 font-size: 4em;
                 font-weight: bold;
@@ -203,5 +207,63 @@
     }
     100%{
         transform: rotateZ(360deg);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .profile{
+
+        .profileContainer{
+            width: 90%;
+
+            .profilePic{
+                display: none;
+            }
+
+            .profileInfo{
+                .mobButton{
+                    display: block;
+                    width: 30%;
+                    height: 3em;
+                    margin-top: 1em;
+                    border-radius: 15px;
+                    box-shadow: 0 3px #999;
+                    text-align: center;
+                    cursor: pointer;
+                    outline: none;
+                    border: none;
+                    background-color: #060c21;
+                    color: white;
+
+                    &:hover{
+                        opacity: 0.8;
+                    }
+
+                    &:active{
+                        opacity: 0.8;
+                        box-shadow: 0 1px #999;
+                        transform: translateY(2px);
+                    }
+                }
+                h1{
+                    font-size: 3em;
+                }
+                ul{
+                    li{
+                        width: 100%;
+                        overflow: hidden;
+                        padding: 5px;
+                        font-size: 1.4em;
+                    }
+                }
+
+                .inputProf{
+                    width: 100%;
+                    overflow: hidden;
+                    padding: 5px;
+                    font-size: 1.4em;
+                }
+            }
+        }
     }
 }

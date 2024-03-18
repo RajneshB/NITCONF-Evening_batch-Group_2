@@ -140,6 +140,7 @@ const Profile = () =>{
                         <FontAwesomeIcon icon={faCalendar} className='profIcon'/>
                         <input type="date" pattern="\d{2}-\d{2}-\d{4}" name="doj" min="01/01/2000" max="04/20/2024" placeholder='DOJ' value={data.doj} onChange={event => handleInputs(event)} />
                     </div>
+                    <button onClick={handleSave} className='mobButton'>Save changes</button>
                 </div>
             </div>
             :
@@ -171,6 +172,7 @@ const Profile = () =>{
                             <span>{data.doj}</span>
                         </li>
                     </ul>
+                    <button onClick={handleEdit} className='mobButton'>Edit Profile</button>
                 </div>
             </div>}
         </div>
