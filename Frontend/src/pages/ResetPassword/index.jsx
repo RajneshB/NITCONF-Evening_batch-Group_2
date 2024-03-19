@@ -45,14 +45,18 @@ const ResetPassword= () => {
             setValid(false)
         }
     }
-
+    function handleKeyPress(event){
+        if(event.key=='Enter'){
+          updatePass(event);
+        }
+      }
     return(
         <>
             <Navbar />
             <div className="reset--card">
                     <h2 id="reset--title">Reset Password</h2>
-                    <input id='reset--password' type="password" placeholder="New Password" value={password} onChange={passwordChange} />
-                    <input id='confirm--password' type="password" placeholder="Confirm new Password" value={confirmPass} onChange={confirmPassChange} />
+                    <input id='reset--password' type="password" placeholder="New Password" value={password} onChange={passwordChange} onKeyDown={handleKeyPress}/>
+                    <input id='confirm--password' type="password" placeholder="Confirm new Password" value={confirmPass} onChange={confirmPassChange} onKeyDown={handleKeyPress} />
                     {!valid && <h3 id="Invalid">Passwords does not match</h3>}
                     <button id='updatePass' onClick={updatePass}>Update Password</button>
             </div>
