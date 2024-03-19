@@ -23,6 +23,11 @@ const ForgotPassword=() => {
             alert(err);
         }
     }
+    function handleKeyPress(event){
+        if(event.key=='Enter'){
+          sentLink(event);
+        }
+      }
 
     return(
         <>
@@ -30,7 +35,7 @@ const ForgotPassword=() => {
             <div className='Password--card'>
                 <h2 id='passwordReset--title'>Password Reset</h2>
                 <p id='password--description'>Forgotten your password? Enter your e-mail address below, and we'll send you an e-mail allowing you to reset it.</p>
-                <input id='email--input' placeholder='Email Address' type='email' value={email} onChange={emailChange}/>
+                <input id='email--input' placeholder='Email Address' type='email' value={email} onChange={emailChange} onKeyDown={handleKeyPress}/>
 
 
                 <button id='reset' onClick={sentLink}>Reset My Password</button>

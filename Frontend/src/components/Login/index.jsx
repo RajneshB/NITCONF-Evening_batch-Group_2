@@ -35,6 +35,11 @@ const Login = () =>{
         alert("Login Error");
       }
     }
+    function handleKeyPress(event){
+      if(event.key=='Enter'){
+        login(event);
+      }
+    }
     function togglePass(){
         setShowPass(prevShow => !prevShow)
     }
@@ -54,12 +59,12 @@ const Login = () =>{
             <p className="login--text">Program Committee Login</p>
             <div className="input--login">
                 <FontAwesomeIcon icon={faEnvelope}  className="input--icon"/>
-                <input type="text" placeholder="Email"  className="input--text" value={email} onChange={(event) =>setEmail(event.target.value)}/>
+                <input type="text" placeholder="Email"  className="input--text" value={email} onChange={(event) =>setEmail(event.target.value) } onKeyDown={handleKeyPress}/>
 
             </div>
             <div className="input--login">
                 <FontAwesomeIcon icon={faLock}  className="input--icon"/>
-                <input type={showPass? "text":"password"} placeholder="Password"  className="input--text" value={password} onChange={(event) =>setPassword(event.target.value)}/>
+                <input type={showPass? "text":"password"} placeholder="Password"  className="input--text" value={password} onChange={(event) =>setPassword(event.target.value)} onKeyDown={handleKeyPress}/>
                 {eyeIcon}
 
             </div>
