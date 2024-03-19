@@ -53,7 +53,7 @@ public class ProfileController {
      * @return {@link ResponseEntity}
      */
     @GetMapping("/pic")
-    public ResponseEntity<?> getProfile(HttpServletRequest request) {
+    public ResponseEntity<?> getProfilePic(HttpServletRequest request) {
         String jwt=jwtUtils.getJwtFromCookies(request);
         String mail=jwtUtils.getUsernameFromJwtToken(jwt);
         User user=profRepo.findByEmail(mail).orElseThrow();
@@ -87,26 +87,29 @@ public class ProfileController {
      */
     @PutMapping("")
     public ResponseEntity<Object> editProfile(HttpServletRequest request, @RequestBody profileReq entity) {
-        String jwt=jwtUtils.getJwtFromCookies(request);
-        String mail=jwtUtils.getUsernameFromJwtToken(jwt);
-        Optional<User> optionalProfile=profRepo.findByEmail(mail);
-        User profile = optionalProfile.get();
+        String jwt = jwtUtils.getJwtFromCookies(request);
+        String mail = jwtUtils.getUsernameFromJwtToken(jwt);
+        Optional<User> optionalProfile = profRepo.findByEmail(mail);
         
-        if(profile!=null){
-            if(entity.name!=null)
+        if (optionalProfile.isPresent()) {
+            User profile = optionalProfile.get();
+            
+            if (entity.name != null)
                 profile.setUsername(entity.name);
-            if(entity.mail!=null)
+            if (entity.mail != null)
                 profile.setEmail(entity.mail);
-            if(entity.contact!=null)
+            if (entity.contact != null)
                 profile.setContact(entity.contact);
-            if(entity.profession!=null)
+            if (entity.profession != null)
                 profile.setProfession(entity.profession);
             // if(entity.doj!=null)
             //     profile.setDoj(entity.doj);
+            
             profRepo.save(profile);
             return ResponseEntity.ok("Updated successfully");
+        } else {
+            return ResponseEntity.badRequest().build();
         }
-        return ResponseEntity.badRequest().build();
     }
 
     /**

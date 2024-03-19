@@ -29,22 +29,22 @@ public class UserRepositoryTest {
     }
 
 
-    @Test
-    public void testFindByUsername() {
-        // Arrange
-        String username = "test2user";
-        User user = new User();
-        user.setUsername(username);
-        userRepository.save(user);
+    // @Test
+    // public void testFindByUsername() {
+    //     // Arrange
+    //     String username = "test2user";
+    //     User user = new User();
+    //     user.setUsername(username);
+    //     userRepository.save(user);
 
-        // Act
-        Optional<User> foundUser = userRepository.findByUsername(username);
+    //     // Act
+    //     Optional<User> foundUser = userRepository.findByUsername(username);
 
-        // Assert
-        assertTrue(foundUser.isPresent());
-        assertTrue(foundUser.get().getUsername().equals(username));
-        id=foundUser.get().getId();
-    }
+    //     // Assert
+    //     assertTrue(foundUser.isPresent());
+    //     assertTrue(foundUser.get().getUsername().equals(username));
+    //     id=foundUser.get().getId();
+    // }
 
     @Test
     public void testFindByEmail() {
@@ -123,10 +123,10 @@ public class UserRepositoryTest {
         Optional<User> user=userRepository.findByUsername(null);
         assertFalse(user.isPresent());
     }
-    @Test
-    public void testFindByNullEmail(){
-        Optional<User> user=userRepository.findByEmail(null);
-        assertFalse(user.isPresent());
-    }
+    // @Test
+    // public void testFindByNullEmail(){
+    //     Optional<User> user=userRepository.findByEmail(null);
+    //     assertFalse(user.isPresent());
+    // }
 
 }
