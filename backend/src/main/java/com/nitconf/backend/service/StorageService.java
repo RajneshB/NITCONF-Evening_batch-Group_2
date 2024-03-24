@@ -13,7 +13,7 @@ import com.nitconf.backend.util.ImageUtils;
 public class StorageService {
     
     @Autowired
-    private UserRepository repository;
+    public UserRepository repository;
     
     public String uploadImage(MultipartFile file,User user){
         try{    
