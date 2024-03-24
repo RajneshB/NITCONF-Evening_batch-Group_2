@@ -43,7 +43,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 
 
-@CrossOrigin(origins="http://localhost:5173", maxAge = 3600,allowCredentials = "true")
+@CrossOrigin(origins="https://nitconf.vercel.app", maxAge = 3600,allowCredentials = "true")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {

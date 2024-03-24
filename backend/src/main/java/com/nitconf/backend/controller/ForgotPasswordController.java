@@ -24,7 +24,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/forgotPassword")
-@CrossOrigin(origins="http://localhost:5173", maxAge = 3600)
+@CrossOrigin(origins="https://nitconf.vercel.app", maxAge = 3600)
 public class ForgotPasswordController {
 
     @Autowired
