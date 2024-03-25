@@ -30,13 +30,20 @@ function App() {
     }
     return children
   };
+  const LoginRoute = ({children}) => {
+    getProfile();
+    if(loggedin){
+      return <Navigate to="/dashboard" />
+    }
+    return children
+  };
 
   return (
     <>
       <Routes>
         <Route path="/" >
           <Route index element={<Login />} />
-          <Route path="login" element={<Login />} />
+          <Route path="login" element={<LoginRoute><Login /></LoginRoute>} />
           <Route path="profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
           <Route path="dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>}  />
           <Route path="paper/:id" element={<ProtectedRoute><Paper /></ProtectedRoute>}/>
