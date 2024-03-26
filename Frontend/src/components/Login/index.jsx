@@ -10,6 +10,9 @@ import { faLock } from "@fortawesome/free-solid-svg-icons"
 import { faEye as show } from "@fortawesome/free-solid-svg-icons"
 import { faEye as hidden } from "@fortawesome/free-regular-svg-icons"
 import { Link } from 'react-router-dom'
+import { Bounce,ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 // import "./App.css"
 
@@ -32,7 +35,17 @@ const Login = () =>{
         navigate("/dashboard");
       }
       catch(err){
-        alert("Login Error");
+        toast.error('Incorrect Credentials', {
+          position: "top-center",
+          autoClose: 4000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          transition: Bounce,
+          });
       }
     }
     function handleKeyPress(event){
@@ -76,6 +89,7 @@ const Login = () =>{
           </div>
         </div>
       </div>
+      <ToastContainer />
         </>
     )
 }

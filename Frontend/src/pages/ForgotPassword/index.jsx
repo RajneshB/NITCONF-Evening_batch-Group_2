@@ -5,7 +5,8 @@ import React from "react"
 import Navbar from "../../components/Navbar"
 import axios from 'axios'
 import { useState } from 'react'
-
+import { Bounce,ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ForgotPassword=() => {
     const [email,setEmail]= useState("")
@@ -18,9 +19,29 @@ const ForgotPassword=() => {
             const res=await axios.post("http://localhost:8080/api/forgotPassword/sentlink",{
                 email: email
             });
-            alert("email sent")
+            toast.success('Email Successfully Sent', {
+                position: "top-center",
+                autoClose: 4000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Bounce,
+                });
         }catch(err){
-            alert(err);
+            toast.error('That email does not have an account', {
+                position: "top-center",
+                autoClose: 4000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Bounce,
+                });
         }
     }
     function handleKeyPress(event){
@@ -40,7 +61,7 @@ const ForgotPassword=() => {
 
                 <button id='reset' onClick={sentLink}>Reset My Password</button>
             </div>
-
+        <ToastContainer />
         </>
     )
 }

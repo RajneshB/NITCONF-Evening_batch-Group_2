@@ -6,6 +6,8 @@ import { useState } from "react"
 import Navbar from "../../components/Navbar"
 import axios from "axios"
 import { useLocation } from "react-router-dom"
+import { Bounce,ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ResetPassword= () => {
     const location= useLocation();
@@ -37,7 +39,17 @@ const ResetPassword= () => {
                 password:password
             });
             navigate("/login")
-            alert("password is updated")
+            toast.success('Password is changed', {
+                position: "top-center",
+                autoClose: 4000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Bounce,
+                });
         }catch(err){
             console.log(err)
         }
