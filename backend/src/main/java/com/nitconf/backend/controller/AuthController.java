@@ -115,7 +115,7 @@ public class AuthController {
                 return ResponseEntity.badRequest().body(new MessageResponse("This email is taken"));
             }
 
-            byte[] defaultPic=loadDefaultImageContent();
+            byte[] defaultPic=jwtUtils.loadDefaultImageContent();
             User user=new User(signupRequest.getUsername(), 
             signupRequest.getEmail(),
             encoder.encode(signupRequest.getPassword()),
@@ -173,13 +173,5 @@ public class AuthController {
     
         }
     }
-private byte[] loadDefaultImageContent() {
-    try {
-        Resource resource = new ClassPathResource("assets/Untitled.png");
-        return StreamUtils.copyToByteArray(resource.getInputStream());
-    } catch (Exception e) {
-        e.printStackTrace();
-        return null;
-    }
-}
+
 }
