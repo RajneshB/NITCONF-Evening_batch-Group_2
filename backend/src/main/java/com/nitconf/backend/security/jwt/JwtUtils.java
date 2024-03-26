@@ -1,8 +1,11 @@
 package com.nitconf.backend.security.jwt;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StreamUtils;
 import org.springframework.web.util.WebUtils;
 
 import com.nitconf.backend.security.services.UserDetailsImpl;
@@ -90,6 +93,15 @@ public class JwtUtils {
                 .signWith(key(), SignatureAlgorithm.HS256)
                 .compact();
   }
+  public byte[] loadDefaultImageContent() {
+    try {
+        Resource resource = new ClassPathResource("assets/Untitled.png");
+        return StreamUtils.copyToByteArray(resource.getInputStream());
+    } catch (Exception e) {
+        e.printStackTrace();
+        return null;
+    }
+}
 
   @SuppressWarnings("null")
 public ResponseCookie deleteJwtCookie(){

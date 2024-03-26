@@ -43,10 +43,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 
 
-@CrossOrigin(origins="http://localhost:5173", maxAge = 3600,allowCredentials = "true")
+@CrossOrigin(origins="https://nitconf.vercel.app", maxAge = 3600,allowCredentials = "true")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
+    
     @Autowired
     AuthenticationManager authenticationManager;
 
@@ -58,7 +59,12 @@ public class AuthController {
 
     @Autowired
     JwtUtils jwtUtils;
-    private static final Logger logger =LoggerFactory.getLogger(AuthController.class);
+    private static Logger logger =LoggerFactory.getLogger(AuthController.class);
+
+    void setLogger(Logger logger){
+        this.logger=logger;
+    }
+
     
     /**
      * login
@@ -73,6 +79,10 @@ public class AuthController {
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest){
         Authentication authentication = authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
+            if(authentication==null){
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(new MessageResponse("Invalid email or password"));
+            }
             SecurityContextHolder.getContext().setAuthentication(authentication);
             UserDetailsImpl userDetails=(UserDetailsImpl) authentication.getPrincipal();
             ResponseCookie jwtCookie =jwtUtils.generateJwtCookie(userDetails);
@@ -105,7 +115,7 @@ public class AuthController {
                 return ResponseEntity.badRequest().body(new MessageResponse("This email is taken"));
             }
 
-            byte[] defaultPic=loadDefaultImageContent();
+            byte[] defaultPic=jwtUtils.loadDefaultImageContent();
             User user=new User(signupRequest.getUsername(), 
             signupRequest.getEmail(),
             encoder.encode(signupRequest.getPassword()),
@@ -136,7 +146,7 @@ public class AuthController {
         try{
             logger.info("Received logout request.");
             String jwt= jwtUtils.getJwtFromCookies(request);
-            logger.info("Received JWT: {}", jwt);
+            // logger.info("Received JWT: {}", jwt);
             if (jwt != null) {
                 if (jwtUtils.validateJwtToken(jwt)) {
                     // Valid token
@@ -163,13 +173,5 @@ public class AuthController {
     
         }
     }
-private byte[] loadDefaultImageContent() {
-    try {
-        Resource resource = new ClassPathResource("assets/Untitled.png");
-        return StreamUtils.copyToByteArray(resource.getInputStream());
-    } catch (Exception e) {
-        e.printStackTrace();
-        return null;
-    }
-}
+
 }

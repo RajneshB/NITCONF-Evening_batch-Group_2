@@ -20,7 +20,7 @@ import java.util.Optional;
  *
  * @author <a href="https://github.com/jj58dev">Joel Joseph</a>
  */
-@CrossOrigin(origins = "http://localhost:5173", maxAge = 3600, allowCredentials = "true")
+@CrossOrigin(origins = "https://nitconf.vercel.app", maxAge = 3600, allowCredentials = "true")
 @RestController
 @RequestMapping("/api/paper")
 public class PaperController {
