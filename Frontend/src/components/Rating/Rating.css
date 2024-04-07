@@ -1,0 +1,16 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.rating--container{
+    display: flex;
+
+}
+.criteria{
+    color: white;
+    margin-right: 10px;
+}
+.stars--container{
+    display: flex;
+}
