@@ -44,7 +44,7 @@ const Paper = () => {
     
         fetchData();
     }, []);
-
+    //etst
     React.useEffect(() => {
         if (paper.reviews) {
             setCommentsArray(
