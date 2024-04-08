@@ -5,11 +5,10 @@
 }
 .rating--container{
     display: flex;
-
+    justify-content: space-between;
 }
 .criteria{
     color: white;
-    margin-right: 10px;
 }
 .stars--container{
     display: flex;

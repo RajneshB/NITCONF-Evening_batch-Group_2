@@ -133,7 +133,7 @@ public class PaperControllerTest {
             "endobj";
 
         byte[] mocksampledata=samplePdfContent.getBytes();
-        Paper mockPaper = new Paper("1", "Published", "Sample Paper", 5, "John Doe",
+        Paper mockPaper = new Paper("1", "Reviewed", "Sample Paper", 5, "John Doe",
             List.of("tag1", "tag2"), new ArrayList<>(), "Accept", mocksampledata);
         doNothing().when(paperService).savePaper(mockPaper);
 
@@ -199,6 +199,27 @@ public class PaperControllerTest {
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals("Paper decision updated successfully", response.getBody());
+    }
+
+    @Test
+    void testAddReviewerToPaper() {
+
+        String paperId = "1";
+        String newReviewerName = "John Doe";
+        
+
+        ResponseEntity<String> expectedResponse = ResponseEntity.ok("Reviewer added successfully");
+        doReturn(expectedResponse).when(paperService).addReviewerToPaper(paperId, newReviewerName);
+
+
+        ResponseEntity<String> response = paperController.addReviewerToPaper(paperId, newReviewerName);
+
+  
+        verify(paperService).addReviewerToPaper(paperId, newReviewerName);
+
+
+        assertEquals(expectedResponse.getStatusCode(), response.getStatusCode());
+        assertEquals(expectedResponse.getBody(), response.getBody());
     }
 }
 

@@ -178,4 +178,19 @@ public class PaperController {
         paperService.updatePaperDecision(id, newDecision);
         return ResponseEntity.ok("Paper decision updated successfully");
     }
+
+    /**
+     * Adds a new reviewer to the reviews array of a paper based on its unique identifier,
+     * only if the reviewer name is not already present.
+     *
+     * @param id              The unique identifier of the paper.
+     * @param newReviewerName The name of the new reviewer to be added.
+     * @return ResponseEntity indicating the success of the operation.
+     * @since 1.0
+     * @author <a href="https://github.com/jj58dev">Joel Joseph</a>
+     */
+    @PutMapping("/addReviewer/{id}")
+    public ResponseEntity<String> addReviewerToPaper(@PathVariable String id, @RequestParam String newReviewerName) {
+        return paperService.addReviewerToPaper(id, newReviewerName);
+    }
 }

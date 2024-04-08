@@ -9,7 +9,7 @@ const Rating=({name,rating})=>{
     const renderStars = () => {
         const stars = [];
         const solidStarsCount = Math.floor(rating); 
-        const emptyStarsCount = 5 - solidStarsCount; 
+        const emptyStarsCount = 10 - solidStarsCount; 
 
         for (let i = 0; i < solidStarsCount; i++) {
             stars.push(
@@ -28,7 +28,7 @@ const Rating=({name,rating})=>{
     };
     return(
         <div className="rating--container">
-            <span>{name}</span>
+            <span className='criteria'>{name}</span>
             <div className="stars-container">{renderStars()}</div>
         </div>
     )

@@ -44,9 +44,9 @@ function App() {
         <Route path="/" >
           <Route index element={<Login />} />
           <Route path="login" element={<LoginRoute><Login /></LoginRoute>} />
-          <Route path="profile" element={<Profile />} />
-          <Route path="dashboard" element={<Dashboard />}  />
-          <Route path="paper/:id" element={<Paper />}/>
+          <Route path="profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+          <Route path="dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>}  />
+          <Route path="paper/:id" element={<ProtectedRoute><Paper /></ProtectedRoute>}/>
           <Route path="forgotPassword" element={<ForgotPassword />} />
           <Route path="reset-Password" element={<ResetPassword />} />
         </Route>
