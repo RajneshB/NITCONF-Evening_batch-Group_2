@@ -12,7 +12,7 @@ public class CorsConfig implements WebMvcConfigurer {
         @Override
         public void addCorsMappings(@SuppressWarnings("null") CorsRegistry registry){
             registry.addMapping("/api/**")
-            .allowedOrigins("nitconf.vercel.app")
+            .allowedOrigins("http://localhost:5173/")
             .allowedMethods("GET", "POST", "PUT", "DELETE")
             .allowedHeaders("*")
             .allowCredentials(true)
